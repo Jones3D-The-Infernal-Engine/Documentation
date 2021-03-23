@@ -1,0 +1,1018 @@
+#### Copyright information #####
+SECTION: COPYRIGHT
+................................
+................@...@...@...@...
+.............@...@..@..@...@....
+................@.@.@.@.@.@.....
+@@@@@@@@......@...........@.....
+@@@@@@@@....@@......@@@....@....
+@@.....@.....@......@@@.....@@..
+@@.@@@@@......@.....@@@......@@.
+@@@@@@@@.......@....@@.....@@...
+@@@@@@@@.........@@@@@@@@@@.....
+@@@@@@@@..........@@@@@@........
+@@.....@..........@@@@@.........
+@@.@@@@@.........@@@@@@.........
+@@.....@.........@@@@@@.........
+@@@@@@@@.........@@@@@@.........
+@@@@@@@@.........@@@@@@@........
+@@@...@@.........@@@@@@@........
+@@.@@@.@.........@.....@........
+@@..@..@........@.......@.......
+@@@@@@@@........@.......@.......
+@@@@@@@@.......@........@.......
+@@..@@@@.......@........@.......
+@@@@..@@......@.........@.......
+@@@@.@.@......@.........@.......
+@@....@@........................
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@.@@@@@@@@@@@@@@@@@@
+@@.@@..@@@@@..@@@@@@@@@@.@@@@@@@
+@@.@.@.@@@@.@.@@@.@..@@...@@@..@
+@@..@@@@@@....@@@..@@@@@.@@@@.@@
+@@@@@@@@...@@.@@@.@@@@@..@@...@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@.(c).lucasarts.entertainment..@
+@.........company.llc..........@
+@....(c).lucasfilm.ltd.&.tm....@
+@.....all.rights.reserved......@
+@...used.under.authorization...@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+################################
+
+
+###### Header information ######
+SECTION: HEADER
+# version and global constant settings
+Version                  3
+World Gravity            2.000000
+Ceiling Sky Z            10.000000
+Horizon Distance         500.000000
+Horizon Pixels per Rev   768.000000
+Horizon Sky Offset       0.00000000 0.00000000
+Ceiling Sky Offset       30.00000000 0.00000000
+LOD Distances            0.30000000 0.60000000 0.90000000 1.20000000
+Fog                      1   0.50000000 0.50000000 0.50000000 1.00000000   10.00000000   300.00000000
+################################
+
+
+#### Sound information  #####
+SECTION: SOUNDS
+
+World sounds 54
+
+fol_bodyfall_fall.wav
+fol_in_lwalkhardecho.wav
+fol_in_rwalkhardecho.wav
+fol_in_lrunhardecho.wav
+fol_in_rrunhardecho.wav
+fol_in_lwalkwoodecho.wav
+fol_in_rwalkwoodecho.wav
+fol_in_lrunwoodecho.wav
+fol_in_rrunwoodecho.wav
+fol_in_lwalkearthecho.wav
+fol_in_rwalkearthecho.wav
+fol_in_lrunearthecho.wav
+fol_in_rrunearthecho.wav
+fol_in_lwalkaet.wav
+fol_in_rwalkaet.wav
+fol_in_lrunaet.wav
+fol_in_rrunaet.wav
+fol_in_exitwaterslow.wav
+fol_in_landhardecho.wav
+fol_in_landwoodecho.wav
+fol_in_landearthecho.wav
+fol_in_landaet.wav
+fol_in_scrapehard_short.wav
+fol_in_scrapemetal_short.wav
+fol_in_scrapeearth_short.wav
+gen_grenade_explode.wav
+gen_fallingrock_c.wav
+fol_bodyfall_buckle.wav
+inxs001.wav
+inxs002.wav
+inxs003.wav
+inxt001.wav
+inxt002.wav
+inxt003.wav
+inxv001.wav
+inxv002.wav
+inxv003.wav
+inxv004.wav
+fol_sc_walk1.wav
+fol_sc_walk2.wav
+fol_sc_attack.wav
+fol_sc_die.wav
+fol_cp_die.wav
+fol_rs_rattle.wav
+fol_sn_land.wav
+fol_sn_walk1.wav
+fol_sn_walk2.wav
+fol_sn_hiss.wav
+gen_sn_attack.wav
+fol_sp_walk1.wav
+fol_sp_walk2.wav
+fol_sp_attack.wav
+fol_sp_hitearth.wav
+fol_sp_hit.wav
+end
+################################
+
+
+##### Material information #####
+SECTION: MATERIALS
+
+World materials 423
+
+0:	cyn_sky_overhead.mat
+1:	ava_wall_interior_stones.mat
+3:	shw_floor_painted.mat
+3:	vol_wall_tiki_h.mat
+4:	teo_mural_face2.mat
+5:	nub_wall_lionhead.mat
+6:	tower_radio_pole.mat
+7:	tower_radio_plak.mat
+8:	door_4fence_link.mat
+9:	door_fence_hook.mat
+10:	door_fence_frme.mat
+11:	door_4fence_whl.mat
+12:	door_fence_trak.mat
+13:	door_fence_mtrsde.mat
+14:	door_fence_mtrfnt.mat
+15:	door_fence_brkt.mat
+16:	lamp_hang_top.mat
+17:	lamp_hang_bot.mat
+18:	lamp_hang_bulb.mat
+19:	lamp_hang_cord.mat
+20:	door_hole_frnt.mat
+21:	banner_cccp_a.mat
+22:	sofoot.mat
+23:	soskin.mat
+24:	sothigh.mat
+25:	soinsthigh.mat
+26:	sohip.mat
+27:	sobelt.mat
+28:	sohndoptp.mat
+29:	sohndopplm.mat
+30:	soarm.mat
+31:	sopouch.mat
+32:	so_hair.mat
+33:	so_hairbm.mat
+34:	so_hair_4.mat
+35:	so_head.mat
+36:	sotorsf.mat
+37:	sotorsb.mat
+38:	gen_lever_bsesde.mat
+39:	obj_bab_doors_truck.mat
+40:	lamp_hang_topb.mat
+41:	lamp_hang_botb.mat
+42:	ngin_desl_spuly.mat
+43:	ngin_desl_frnt.mat
+44:	ngin_desl_sde.mat
+45:	ngin_desl_lvr.mat
+46:	ngin_desl_coil.mat
+47:	ngin_desl_blok.mat
+48:	box_fuse_cndt.mat
+49:	plaks_cccpb_frnt.mat
+50:	plaks_cccpa_frnt.mat
+51:	cyn_tent_woodpost.mat
+52:	shs_bell_rope.mat
+53:	sifter_4screen.mat
+54:	sifter_side.mat
+55:	sifter_sand.mat
+56:	ruinside_stone.mat
+57:	ruintop_sand.mat
+58:	bofoot.mat
+59:	bxleg.mat
+60:	bxhipfr.mat
+61:	bxbutt.mat
+62:	bohandf.mat
+63:	bohanbk.mat
+64:	bohansd.mat
+65:	bohanbm.mat
+66:	rx4arm.mat
+67:	rxarm.mat
+68:	bxhdfr.mat
+69:	bxhdsd.mat
+70:	bxarm.mat
+71:	rxtorsf.mat
+72:	rxtorbk.mat
+73:	rafoot.mat
+74:	rxleg.mat
+75:	rxthigh.mat
+76:	rxhipf.mat
+77:	rxbutt.mat
+78:	rxhdsd.mat
+79:	rxhdfr.mat
+80:	raneck.mat
+81:	bab_wall_brick_blue_mural_writing_light.mat
+82:	bab_wall_brick_blue_light.mat
+83:	tufoot.mat
+84:	tuleg.mat
+85:	tuthigh.mat
+86:	tubutt.mat
+87:	tuhip.mat
+88:	tu4arm.mat
+89:	tuarm.mat
+90:	tu_head.mat
+91:	tuneck.mat
+92:	tutorsb.mat
+93:	tutorsf.mat
+94:	tuholst.mat
+95:	lift_stone_sde.mat
+96:	bab_floor_brick_b.mat
+97:	bab_2x2_push_block_side.mat
+98:	bab_2x2_push_block_top.mat
+99:	bowl_flame_sde.mat
+100:	bowl_flame_shlf.mat
+101:	bowl_flame_top.mat
+102:	bowl_flame_bot.mat
+103:	bab_button_front.mat
+104:	button_halfme_side.mat
+105:	crate_tnt_bot.mat
+106:	crate_tnt_top.mat
+107:	sol_wall_beam.mat
+108:	door_round_frnt.mat
+109:	door_round_back.mat
+110:	door_round_rim.mat
+111:	elgears_a.mat
+112:	elgeartp.mat
+113:	elgears_pegsd.mat
+114:	elgears_ssd.mat
+115:	elgears_bsd.mat
+116:	elgears_ch.mat
+117:	elgears_cha.mat
+118:	elgears_sm.mat
+119:	bab_ceiling_dec_b.mat
+120:	teo_wall_mossbrick.mat
+121:	bab_rock_pushhand_fnt.mat
+122:	bab_rock_pushhand_sde.mat
+123:	sktorso4.mat
+124:	skbone.mat
+125:	sktibia4.mat
+126:	skhand4.mat
+127:	skhdfr.mat
+128:	block_spike_frnt.mat
+129:	block_spike_side.mat
+130:	chair_dirctr_seat.mat
+131:	chair_dirctr_wood.mat
+132:	chair_4dirctr_back.mat
+133:	vofoot.mat
+134:	voleg.mat
+135:	vothigh.mat
+136:	vohols.mat
+137:	votorsf.mat
+138:	votorsb.mat
+139:	voskin.mat
+140:	vohanbm.mat
+141:	vohandf.mat
+142:	vohanbk.mat
+143:	vohansd.mat
+144:	vo4arm.mat
+145:	voarm.mat
+146:	vo_face.mat
+147:	voear.mat
+148:	voglas.mat
+149:	votorsba.mat
+150:	votorsfa.mat
+151:	rmhdfr.mat
+152:	headphones4.mat
+153:	bxtorsfr.mat
+154:	bxtorsbk.mat
+155:	table_ktchn_topr.mat
+156:	table_ktchn_wood.mat
+157:	table_ktchn_leg.mat
+158:	table_ktchn_spksde.mat
+159:	table_ktchn_trnsde.mat
+160:	table_ktchn_kyrbse.mat
+161:	table_ktchn_spkfnt.mat
+162:	table_ktchn_kyrbar.mat
+163:	table_ktchn_kyrsup.mat
+164:	table_ktchn_trnfnt.mat
+165:	table_ktchn_topl.mat
+166:	table_ktchn_spkbck.mat
+167:	table_ktchn_trnbck.mat
+168:	table_ktchn_kyrnob.mat
+169:	radio_mic_side.mat
+170:	radio_mic_back.mat
+171:	radio_mic_face.mat
+172:	radio_mic_ntnabse.mat
+173:	radio_4mic_trnsbse.mat
+174:	radio_mic_trnspst.mat
+175:	radio_mic_trnshed.mat
+176:	radio_4mic_ntna.mat
+177:	pyr_jeep_tire.mat
+178:	jeep_tiretread.mat
+179:	pyr_jeep_grill.mat
+180:	pyr_jeep_4wnd.mat
+181:	pyr_jeep_bbmp.mat
+182:	pyr_jeep_sbmp.mat
+183:	jeep_4sterweel.mat
+184:	jeep_clmn.mat
+185:	jeep_axl.mat
+186:	pyr_jeep_top.mat
+187:	jeep_bbot.mat
+188:	jeep_fbot.mat
+189:	pyr_jeep_seat.mat
+190:	jeep_frm.mat
+191:	box_4invsbl_side.mat
+192:	jeep_tire.mat
+193:	truck_fltbd_fndr.mat
+194:	truck_fltbd_hitch.mat
+195:	truck_fltbd_mudflp.mat
+196:	truck_fltbd_ngntop.mat
+197:	truck_4fltbd_wnsft.mat
+198:	truck_fltbd_bot.mat
+199:	truck_fltbd_bedsde.mat
+200:	truck_fltbd_gasfnt.mat
+201:	truck_fltbd_gassde.mat
+202:	truck_fltbd_bedbck.mat
+203:	truck_fltbd_ngnrt.mat
+204:	jcan_top.mat
+205:	jcan_frnt.mat
+206:	truck_fltbd_side.mat
+207:	truck_fltbd_door.mat
+208:	obj_gen_fadeplate.mat
+209:	canapy_door_cnvs.mat
+210:	canapy_door_brkt.mat
+211:	canapy_door_frme.mat
+212:	obj_inf_elvtr_gears_gear.mat
+213:	obj_inf_elvtr_gears_side.mat
+214:	obj_inf_elvtr_gears_top.mat
+215:	scclaw.mat
+216:	scarm.mat
+217:	sclega.mat
+218:	sctorsd.mat
+219:	schdfr.mat
+220:	sctorstp.mat
+221:	sctail.mat
+222:	table_sorting_lega.mat
+223:	table_sorting_legb.mat
+224:	table_sorting_topa.mat
+225:	table_sorting_bot.mat
+226:	table_sorting_topb.mat
+227:	bucket_metal_sde.mat
+228:	bucket_metal_bot.mat
+229:	pbflat4.mat
+230:	spmand.mat
+231:	spalpr.mat
+232:	spleg.mat
+233:	sphdtp.mat
+234:	spabsd.mat
+235:	sphdfr.mat
+236:	sphdsd.mat
+237:	obj_jep_gnr8tr_a.mat
+238:	obj_jep_4gnr8tr_cagefnt.mat
+239:	obj_jep_4gnr8tr_cagesde.mat
+240:	obj_jep_4gnr8tr_cagetop.mat
+241:	obj_jep_gnr8tr_b.mat
+242:	crate_wood_left.mat
+243:	crate_wood_right.mat
+244:	lamp_4desk_swch.mat
+245:	lamp_4desk_cord.mat
+246:	lamp_4desk_pool.mat
+247:	lamp_desk_dome.mat
+248:	lamp_desk_post.mat
+249:	lamp_desk_sckt.mat
+250:	lamp_desk_base.mat
+251:	lamp_desk_bulb.mat
+252:	whlbrw_wood_sde.mat
+253:	whlbrw_wood_hndl.mat
+254:	whlbrw_wood_frnt.mat
+255:	whlbrw_wood_stnd.mat
+256:	whlbrw_wood_whlsde.mat
+257:	whlbrw_wood_hndln.mat
+258:	whlbrw_wood_nsde.mat
+259:	whlbrw_wood_nfrnt.mat
+260:	pick_hndl.mat
+261:	shovel_scoop.mat
+262:	shovel_brkt.mat
+263:	nub_wall_rock_rough_small.mat
+264:	books_russian_sngle_front.mat
+265:	books_russian_sngle_back.mat
+266:	drum_oil_topr.mat
+267:	drum_oil_sidera.mat
+268:	gen_a4sprite_xpld2.mat
+269:	inf_wall_metal_d.mat
+270:	sheep.mat
+271:	gen_keyhole.mat
+272:	gen_keyhole_sd.mat
+273:	drum_oil_topr_sol_a.mat
+274:	drum_oil_side_sol_a.mat
+275:	tent_4brwn_int.mat
+276:	tent_brwn_flap.mat
+277:	tent_brwn_top.mat
+278:	tent_brwn_wndwa.mat
+279:	tent_brwn_side.mat
+280:	tent_woodpost.mat
+281:	tent_4brwn_shdw.mat
+282:	tent_brwn_wndwb.mat
+283:	pick_metl.mat
+284:	pick_top.mat
+285:	gen_torchflame4_01.mat
+286:	gen_a4sprite_rbblast.mat
+287:	gen_a4sprite_flash_purple.mat
+288:	gen_axplod_debris.mat
+289:	bab_sky_ceiling_sunset_clouds.mat
+290:	bab_wall_cliff_red.mat
+291:	bab_floor_brick_a.mat
+292:	bab_floor_rock_drive.mat
+293:	bab_floor_brick_d.mat
+294:	bridge_1arc_wood.mat
+295:	bab_wall_brick_blue_mural_animals.mat
+296:	bab_wall_brick_blue_mural_border.mat
+297:	bab_wall_brick_blue_mural_flower.mat
+298:	bab_wall_brick_blue_mural_animal_light.mat
+299:	bab_wall_brick_arch.mat
+300:	bab_floor_brick_c.mat
+301:	bab_wall_brick_blue_mural_border_light.mat
+302:	bab_wall_dec_a.mat
+303:	shs_woodbeam_b.mat
+304:	gen_a4_water_stillc.mat
+305:	bab_wall_underwater_moss.mat
+306:	bab_wall_tiles_c.mat
+307:	teo_wall_vines1.mat
+308:	riv_wall_stucko.mat
+309:	bab_radio_wall_sde_a.mat
+310:	bab_radio_ceiling_a.mat
+311:	bab_radio_wall_sde_b.mat
+312:	bab_radio_floor_b.mat
+313:	bab_radio_wall_sde_f.mat
+314:	bab_radio_wall_sde_e.mat
+315:	bab_radio_wall_a.mat
+316:	bab_radio_wall_c.mat
+317:	bab_radio_wall_sde_d.mat
+318:	bab_radio_wall_sde_c.mat
+319:	bab_radio_wall_b.mat
+320:	bab_wall_dec_c.mat
+321:	bab_wall_brick_blue_cracks.mat
+322:	bab_wall_brick_blue_mural_writing.mat
+323:	gen_a4water_stillb.mat
+324:	nub_1floor_grateb.mat
+325:	gen_4web_cut.mat
+326:	bab_wall_tiles_b.mat
+327:	bab_wall_brick_climbable.mat
+328:	bab_sky_horizon_b.mat
+329:	bab_sky_horizon.mat
+330:	bab_wall_cliff.mat
+331:	bab_wall_key_socket_cuneiform.mat
+332:	bab_wall_brick_blue_mural_flower_light.mat
+333:	inf_floor_tiles.mat
+334:	inf_floor_flower_squares.mat
+335:	bab_wall_tiles_a.mat
+336:	inf_wall_metal_girders_c.mat
+337:	inf_ceiling_dome_blue_ligh.mat
+338:	inf_wall_stucko_a.mat
+339:	inf_wall_girders_a.mat
+340:	inf_wall_elevator_face.mat
+341:	inf_wall_stone_metal_climbable.mat
+342:	inf_wall_metal_bracing_vert.mat
+343:	inf_wall_button_push_front.mat
+344:	teo_floor_moss.mat
+345:	gbshoe.mat
+346:	gbleg.mat
+347:	gbthigh.mat
+348:	gbhip.mat
+349:	gbbutt.mat
+350:	gb4arm.mat
+351:	gbarm.mat
+352:	gbhdfr.mat
+353:	gbhdsd.mat
+354:	so_helmet.mat
+355:	sogoggles.mat
+356:	sohlmbkl.mat
+357:	gen_a4web.mat
+358:	gen_a4sfx_dustcloud.mat
+end
+################################
+
+
+#### Geometry Resources Info ####
+SECTION: GEORESOURCE
+# ----- Vertices Subsection -----
+World vertices 8
+
+# num:	vertex:
+0:	-50.00000000	50.00000000	0.00000000
+1:	-50.00000000	-50.00000000	0.00000000
+2:	50.00000000	-50.00000000	0.00000000
+3:	50.00000000	50.00000000	0.00000000
+4:	-50.00000000	50.00000000	10.00000000
+5:	-50.00000000	-50.00000000	10.00000000
+6:	50.00000000	-50.00000000	10.00000000
+7:	50.00000000	50.00000000	10.00000000
+
+# -- Texture Verts Subsection ---
+World texture vertices 10
+0:	100.00000000	-100.00000000	1.00000000
+1:	100.00000000	100.00000000	1.00000000
+2:	-100.00000000	100.00000000	1.00000000
+3:	-100.00000000	-100.00000000	1.00000000
+4:	-5.00000000	1.00000000	1.00000000
+5:	5.00000000	1.00000000	1.00000000
+6:	5.00000000	0.00000000	1.00000000
+7:	-5.00000000	0.00000000	1.00000000
+8:	1.16865098	-0.27463299	0.80985701
+9:	1.09999502	-0.00001100	0.00000000
+
+# num:	u:	v:
+
+# ------ Adjoins Subsection -----
+World adjoins 0
+
+# num:	flags:	mirror:	dist:
+
+# ----- Surfaces Subsection -----
+World surfaces 6
+
+# num:	mat:	surfflags:	faceflags:	geo:	light:	tex:	adjoin:	extralight:	nverts:	vertices:			intensities:
+0:	1	0x05	0x0	4	3	3	-1		0.00000000	0.00000000	0.00000000	1.00000000		4	0,0	1,1	2,2	3,3		1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000
+1:	0	0x404	0x0	4	3	3	-1		0.00000000	0.00000000	0.00000000	1.00000000		4	7,0	6,0	5,0	4,0		1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000
+2:	2	0x04	0x0	4	3	3	-1		0.00000000	0.00000000	0.00000000	1.00000000		4	0,4	3,5	7,6	4,7		1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000
+3:	3	0x04	0x0	4	3	3	-1		0.00000000	0.00000000	0.00000000	1.00000000		4	1,4	0,5	4,6	5,7		1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000
+4:	4	0x04	0x0	4	3	3	-1		0.00000000	0.00000000	0.00000000	1.00000000		4	2,4	1,5	5,6	6,7		1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000
+5:	5	0x04	0x0	4	3	3	-1		0.00000000	0.00000000	0.00000000	1.00000000		4	3,4	2,5	6,6	7,7		1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000	1.00000000
+
+# --- Surface normals ---
+0:	0.00000000	0.00000000	1.00000000
+1:	0.00000000	0.00000000	-1.00000000
+2:	0.00000000	-1.00000000	0.00000000
+3:	1.00000000	0.00000000	0.00000000
+4:	0.00000000	1.00000000	0.00000000
+5:	-1.00000000	0.00000000	0.00000000
+################################
+
+
+###### Sector information ######
+SECTION: SECTORS
+
+World sectors	1
+
+SECTOR	0
+FLAGS	0x0
+AMBIENT LIGHT	1.00000000	1.00000000	1.00000000
+EXTRA LIGHT	0.00000000	0.00000000	0.00000000
+AVERAGE LIGHT FALLOFF	0.00000000	0.00000000
+BOUNDBOX	-50.00000000	50.00000000	0.00000000	5.00000000	0.00000000	1.00000000
+SOUND	gen_wind04.wav	1.000000
+CENTER	0.00000000	0.00000000	0.00000000
+RADIUS	0.00000000
+VERTICES	8
+0:	0
+1:	1
+2:	2
+3:	3
+4:	4
+5:	5
+6:	6
+7:	7
+SURFACES	0	6
+
+######### AI Classes ###########
+SECTION: AICLASS
+
+World AIClasses 64
+
+0:	actor.ai
+1:	none.ai
+2:	com_fists.ai
+3:	com_1h.ai
+4:	com_2h.ai
+5:	com_2hsniper.ai
+6:	centipede.ai
+7:	scorpion.ai
+8:	snake.ai
+9:	spider.ai
+10:	stickyspider.ai
+end
+################################
+
+
+###### Models information ######
+SECTION: MODELS
+
+World models 1024
+
+0:	aet_gy.3do
+1:	gen_in.3do
+2:	gen_in_shirt.3do
+3:	gen_hat.3do
+4:	gen_sfx_splash.3do
+5:	gen_dbre_wodwala.3do
+6:	gen_dbre_wodwalb.3do
+7:	gen_dbre_wodwalc.3do
+8:	gen_fadeplate.3do
+9:	gen_dbre_stnwalb.3do
+10:	gen_dbre_stnwalbm.3do
+11:	gen_dbre_stnwalbs.3do
+12:	gen_dbre_stnwalc.3do
+13:	gen_dbre_stnwalcm.3do
+14:	gen_dbre_stnwalcs.3do
+15:	gen_dbre_stnwalam.3do
+16:	gen_dbre_stnwalas.3do
+17:	gen_dbre_mtlwala.3do
+18:	gen_dbre_mtlwalb.3do
+19:	gen_dbre_mtlwalc.3do
+20:	gen_dbre_xplode_a.3do
+21:	gen_dbre_xplode_b.3do
+22:	gen_dbre_stnwala.3do
+23:	gen_wh.3do
+24:	gen_wc.3do
+25:	gen_so.3do
+26:	gen_tu.3do
+27:	gen_vo.3do
+end
+################################
+
+
+###### Sprite information ######
+SECTION: SPRITES
+
+World sprites 128
+
+1:	default.spr
+end
+################################
+
+
+##### Keyframe information #####
+SECTION: KEYFRAMES
+
+World keyframes 512
+
+end
+################################
+
+
+###### Animation Classes #######
+SECTION: ANIMCLASS
+
+World puppets 64
+
+0:	default.pup
+1:	indy.pup
+2:	indy_actor.pup
+3:	com_1h.pup
+4:	com_2h.pup
+5:	com_2g.pup
+6:	sophia.pup
+7:	turner.pup
+8:	volodnikov.pup
+9:	centipede.pup
+10:	scorpian.pup
+11:	snake.pup
+12:	spider.pup
+13:	whip.pup
+14:	whipc.pup
+end
+################################
+
+
+######### Sound Classes ########
+SECTION: Soundclass
+
+World soundclasses 128
+
+0:	indy.snd
+1:	russki1.snd
+2:	russki2.snd
+3:	russki3.snd
+4:	russki4.snd
+5:	russki5.snd
+6:	sophia.snd
+7:	turner.snd
+8:	volodnikov.snd
+9:	centipede.snd
+10:	scorpian.snd
+11:	snake.snd
+12:	spider.snd
+13:	gen_explode.snd
+14:	gen_explode_uw.snd
+15:	fists.snd
+16:	grenade.snd
+17:	satchel.snd
+end
+################################
+
+
+########## COG scripts #########
+SECTION: cogscripts
+
+World scripts 128
+
+# For animated materials (2020/09/14)
+0:	gen_MatAnim.cog
+
+# For pick up common item (2020/09/14)
+1:	item_tokarev.cog
+2:	item_mauser.cog
+3:	item_simonov.cog
+4:	item_submachine.cog
+5:	item_shotgun.cog
+6:	item_bazooka.cog
+7:	item_grenade.cog
+8:	item_satchel.cog
+9:	item_yerbisma.cog
+10:	item_yerbita.cog
+11:	item_healthsml.cog
+12:	item_healthbig.cog
+13:	item_poisonkit.cog
+14:	item_coinsilver.cog
+15:	item_coingold.cog
+16:	item_ingotsilver.cog
+17:	item_ingotgold.cog
+18:	item_idolsilver.cog
+19:	item_idolgold.cog
+20:	item_cashbox.cog
+21:	item_gemaethereal.cog
+
+# For actors operation (2020/09/14)
+22:	actor_indy.cog
+23:	actor_indyactor.cog
+24:	actor_aifists.cog
+25:	actor_aigrenade.cog
+26:	actor_aitokarev.cog
+27:	actor_aimauser.cog
+28:	actor_aisimonov.cog
+29:	actor_aisubmachine.cog
+30:	actor_aishotgun.cog
+31:	actor_sophia.cog
+32:	actor_turner.cog
+33:	actor_volodnikov.cog
+34:	actor_centipede.cog
+35:	actor_scorpian.cog
+36:	actor_snake.cog
+37:	actor_spider.cog
+38:	actor_stickyspider.cog
+39:	actor_boomthingwood.cog
+40:	actor_boomthing.cog
+
+# For object operation (2020/09/14)
+41:	class_grenade.cog
+
+end
+################################
+
+
+######### COG placement ########
+SECTION: cogs
+
+World cogs 512
+# Num	Script          Symbol values
+end
+################################
+
+
+##### Templates information ####
+SECTION: TEMPLATES
+
+World templates 228
+
+# Name:           Based On:        Params:
+
+# Base Templates (2020/09/14)
+_sprite           none              type=sprite move=physics sprite=default.spr 
++1947_mark        _sprite           sprite=x1947.spr 
++alien_mark       _sprite           sprite=xalien.spr 
++ankh_mark        _sprite           sprite=xankh.spr 
++ark_mark         _sprite           sprite=xark.spr 
++cccr_mark        _sprite           sprite=xcccr.spr 
++check_mark       _sprite           sprite=xcheck.spr 
++cir_mark         _sprite           sprite=xcircle.spr 
++cross_mark       _sprite           sprite=xcross.spr 
++eye_mark         _sprite           sprite=xeye.spr 
++five_mark        _sprite           sprite=xfive.spr 
++grail_mark       _sprite           sprite=xgrail.spr 
++guy_mark         _sprite           sprite=xguy.spr 
++happy_mark       _sprite           sprite=xhappy.spr 
++hawk_mark        _sprite           sprite=xhawk.spr 
++here_mark        _sprite           sprite=xhere.spr 
++indy_mark        _sprite           sprite=xindy.spr 
++indy2_mark       _sprite           sprite=xindy2.spr 
++la_mark          _sprite           sprite=xla.spr 
++love_mark        _sprite           sprite=xlove.spr 
++portrait_mark    _sprite           sprite=xportrait.spr 
++pound_mark       _sprite           sprite=xpound.spr 
++pyramid_mark     _sprite           sprite=xpyramid.spr 
++question_mark    _sprite           sprite=xquestion.spr 
++r2d2_mark        _sprite           sprite=xr2d2.spr 
++skull_mark       _sprite           sprite=xskull.spr 
++snake_mark       _sprite           sprite=xsnake.spr 
++square_mark      _sprite           sprite=xsquare.spr 
++star_mark        _sprite           sprite=xstar.spr 
++stones_mark      _sprite           sprite=xstones.spr 
++sunrise_mark     _sprite           sprite=xsunrise.spr 
++tentacle_mark    _sprite           sprite=xtentacle.spr 
++tictactoe_mark   _sprite           sprite=xtictactoe.spr 
++triangle_mark    _sprite           sprite=xtriangle.spr 
++usa_mark         _sprite           sprite=xusa.spr 
++x_mark           _sprite           sprite=xmark.spr
+
+_item             none              type=item collide=3 move=physics size=0.020000 movesize=0.020000 surfdrag=3.000000 airdrag=1.000000 staticdrag=0.005000 mass=0.100000 physflags=0x41 buoyancy=0.500000 
+hat               _item             model3d=gen_hat.3do size=0.016000 movesize=0.016000 collwidth=0.020000 collheight=0.020000 puppet=default.pup height=0.009000 buoyancy=1.000000 
+
+_decor            none              type=cog collide=1 move=path 
+_structure        _decor            collide=3 
+_pstruct2mwood    _structure        thingflags=0x44002040 
+_actor            none              type=actor collide=3 move=physics thingflags=0x1 airdrag=1.000000 mass=150.000000 physflags=0x4A4F maxrotvel=200.000000 maxvel=1.000000 health=20.000000 maxhealth=20.000000 maxrotthrust=100.000000 maxheadvel=600.000000 maxheadyaw=60.000000 jumpspeed=1.500000 typeflags=0x1 minheadpitch=-60.000000 maxheadpitch=60.000000 lightoffset=(0.000000/0.070000/0.040000) lightintensity=(0.000000/0.000000/0.000000/0.000000) voicecolor=(0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000) 
+_indyactor        _actor            type=player collide=1 thingflags=0x20004400 size=0.040000 movesize=0.040000 collwidth=0.040000 collheight=0.080000 puppet=indy.pup soundclass=indy.snd cog=actor_indy.cog surfdrag=3.000000 airdrag=0.500000 staticdrag=0.300000 health=1000.000000 maxhealth=1000.000000 maxthrust=0.520000 maxrotthrust=70.000000 jumpspeed=1.200000 typeflags=0x8000001 eyeoffset=(0.000000/0.010000/0.073500) 
+shirtplayer       _indyactor        model3d=gen_in_shirt.3do 
+_sstructmetal     _structure        thingflags=0x4000C0 
+_wstructmetal     _structure        thingflags=0x400040 
+_ghostdecor       _decor            collide=0 
+ghost             none              type=ghost move=path 
+_structmetal      _structure        thingflags=0x400000 
+_staticstruct     _structure        thingflags=0xC0 
+_cutactor         _actor            collide=1 thingflags=0x20084000 size=0.020000 movesize=0.020000 surfdrag=3.200000 staticdrag=0.001000 physflags=0xA4F maxrotvel=100.000000 health=1000.000000 maxhealth=1000.000000 maxthrust=0.520000 maxrotthrust=450.000000 typeflags=0x8110009 eyeoffset=(0.000000/0.010000/0.070000) aiclass=actor.ai 
+sophia            _cutactor         thingflags=0x20084400 model3d=gen_so.3do collwidth=0.020000 collheight=0.020000 puppet=sophia.pup soundclass=sophia.snd cog=actor_sophia.cog eyeoffset=(0.000000/0.015200/0.069300) voicecolor=(0.745000/0.353000/0.980000/1.000000/0.745000/0.353000/0.980000/1.000000/0.961000/0.843000/1.000000/1.000000/0.961000/0.843000/1.000000/1.000000) 
+_walkstruct       _structure        thingflags=0x40 
+lever             _walkstruct       model3d=gen_lever.3do size=0.060010 movesize=0.060010 collwidth=0.060010 collheight=0.060010 puppet=default.pup 
+indy_sh_actor     _cutactor         thingflags=0x20084400 model3d=gen_in_shirt.3do collwidth=0.020000 collheight=0.020000 puppet=indy_actor.pup soundclass=indy.snd cog=actor_indyactor.cog aiclass=none.ai 
+_sstructwood      _structure        thingflags=0x20C0 
+_humanactor       _actor            thingflags=0x28004000 size=0.040000 movesize=0.040000 collwidth=0.035000 collheight=0.089000 surfdrag=3.000000 airdrag=0.500000 staticdrag=0.005000 maxvel=0.500000 health=100.000000 maxhealth=1000.000000 maxthrust=0.400000 maxrotthrust=50.000000 typeflags=0x8000001 eyeoffset=(0.000000/0.012000/0.071500) 
+_ai_actor_normal  _humanactor       surfdrag=5.000000 maxthrust=0.865000 maxrotthrust=700.000000 
+_ai_tokarev       _ai_actor_normal  thingflags=0x28004400 size=0.037000 movesize=0.037000 puppet=com_1h.pup cog=actor_aitokarev.cog health=200.000000 maxhealth=200.000000 aiclass=com_1h.ai 
+khaki_tokarev4    _ai_tokarev       model3d=com_1h_kaki.3do soundclass=russki4.snd 
+_ai_actor_fast    _humanactor       surfdrag=5.000000 maxthrust=1.000000 maxrotthrust=750.000000 
+_ai_simonov       _ai_actor_fast    thingflags=0x28004400 size=0.037000 movesize=0.037000 puppet=com_2h.pup cog=actor_aisimonov.cog health=250.000000 maxhealth=250.000000 aiclass=com_2h.ai 
+khaki_simonov     _ai_simonov       model3d=com_2h_kaki.3do soundclass=russki1.snd 
+_swingstruct      _structure        thingflags=0x80000080 size=0.100000 movesize=0.100000 
+khaki_tokarev5    _ai_tokarev       model3d=com_1h_kaki.3do soundclass=russki5.snd 
+khaki_tokarev2    _ai_tokarev       model3d=com_1h_kaki.3do soundclass=russki2.snd 
+khaki_tokarev     _ai_tokarev       model3d=com_1h_kaki.3do soundclass=russki1.snd voicecolor=(0.765000/0.608000/0.196000/1.000000/0.765000/0.608000/0.196000/1.000000/0.980000/1.000000/0.922000/1.000000/0.980000/1.000000/0.922000/1.000000) 
+khaki_simonov_actor _cutactor         model3d=com_2h_kaki.3do collwidth=0.020000 collheight=0.020000 puppet=com_2h.pup voicecolor=(0.765000/0.608000/0.196000/1.000000/0.765000/0.608000/0.196000/1.000000/0.980000/1.000000/0.922000/1.000000/0.980000/1.000000/0.922000/1.000000) 
+turner_actor      _cutactor         thingflags=0x20084400 model3d=gen_tu.3do collwidth=0.020000 collheight=0.020000 puppet=turner.pup soundclass=turner.snd cog=actor_turner.cog mass=0.000000 maxrotthrust=90.000000 eyeoffset=(0.000000/0.011000/0.071400) voicecolor=(0.078000/0.471000/1.000000/1.000000/0.078000/0.471000/1.000000/1.000000/0.922000/1.000000/1.000000/1.000000/0.922000/1.000000/1.000000/1.000000) 
+lift_stone        _staticstruct     thingflags=0xC1 light=(0.300000/0.300000/0.300000/0.001000) light=(0.300000/0.300000/0.300000) model3d=bab_lift_stone.3do size=0.400000 movesize=0.100000 collwidth=0.050000 collheight=0.050000 soundclass=bab_turnerdoor.snd 
+_pushstruct2m     _structure        thingflags=0x44000040 
+_decormetal       _decor            thingflags=0x400000 
+_aimstruct        _structure        type=actor health=50.000000 maxhealth=50.000000 typeflags=0x120 voicecolor=(0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000) 
+_boomthingwood    _aimstruct        thingflags=0x400 cog=actor_boomthingwood.cog 
+_explosion        none              type=explosion thingflags=0x1 damageclass=0x4 
+_debris           none              type=weapon collide=1 move=physics timer=1.500000 surfdrag=3.000000 airdrag=1.000000 mass=1.000000 physflags=0x21 vel=(0.000000/1.500000/0.500000) angvel=(100.000000/0.000000/100.000000) damage=5.000000 typeflags=0x80000 damageclass=0x8000000 
+woodshrapa        _debris           model3d=gen_dbre_wodwala.3do size=0.015532 movesize=0.015532 collwidth=0.015532 collheight=0.015532 
+woodshrapb        _debris           model3d=gen_dbre_wodwalb.3do size=0.012500 movesize=0.012500 collwidth=0.012500 collheight=0.012500 
+woodshrapc        _debris           model3d=gen_dbre_wodwalc.3do size=0.013297 movesize=0.013297 collwidth=0.013297 collheight=0.013297 
++gen_exp_wood     _explosion        light=(0.000000/0.000000/0.000000/1.000000) light=(0.000000/0.000000/0.000000) timer=0.500000 sprite=gen_explode3.spr soundclass=gen_explode.snd typeflags=0xB7 damage=1000.000000 blasttime=0.400000 range=0.500000 debris=woodshrapa debris=woodshrapb debris=woodshrapc debris=woodshrapa debris=woodshrapb debris=woodshrapc debris=woodshrapa debris=woodshrapb debris=woodshrapc debris=woodshrapa debris=woodshrapb debris=woodshrapc debris=woodshrapa debris=woodshrapb debris=woodshrapc  
+_climbstruct      _structure        thingflags=0x88 
+ustrutclimb       _climbstruct      model3d=bab_strut_u.3do size=0.040000 movesize=0.040000 collwidth=0.040000 collheight=0.040000 
+_pushstruct1m     _structure        thingflags=0x40001040 
+vol_actor         _cutactor         thingflags=0x20084400 model3d=gen_vo.3do collwidth=0.020000 collheight=0.020000 puppet=volodnikov.pup soundclass=volodnikov.snd cog=actor_volodnikov.cog typeflags=0x8118009 eyeoffset=(0.000000/0.014200/0.070100) voicecolor=(0.314000/0.784000/0.157000/1.000000/0.314000/0.784000/0.157000/1.000000/1.000000/1.000000/0.196000/1.000000/1.000000/1.000000/0.196000/1.000000) 
+_structblock      _structure        thingflags=0x14 
+fadeplat          _structblock      thingflags=0x4 model3d=gen_fadeplate.3do 
+_sstructsnow      _structure        thingflags=0x100C0 
+khaki_tokarev3    _ai_tokarev       model3d=com_1h_kaki.3do soundclass=russki3.snd 
+_hintbase         none              type=hint 
+goldcoins         _item             thingflags=0x401 light=(0.200000/0.200000/0.200000/0.001000) light=(0.200000/0.200000/0.200000) model3d=gen_coins_gold.3do collwidth=0.020000 collheight=0.020000 cog=item_coingold.cog height=0.004356 
+silveringot       _item             thingflags=0x401 light=(0.200000/0.200000/0.200000/0.001000) light=(0.200000/0.200000/0.200000) model3d=gen_ingots_slvr.3do collwidth=0.020000 collheight=0.020000 cog=item_ingotsilver.cog height=0.004100 
+silvercoins       _item             thingflags=0x401 light=(0.200000/0.200000/0.200000/0.001000) light=(0.200000/0.200000/0.200000) model3d=gen_coins_slvr.3do collwidth=0.020000 collheight=0.020000 cog=item_coinsilver.cog height=0.003835 
+goldingot         _item             thingflags=0x401 light=(0.200000/0.200000/0.200000/0.001000) light=(0.200000/0.200000/0.200000) model3d=gen_ingots_gold.3do collwidth=0.020000 collheight=0.020000 cog=item_ingotgold.cog height=0.004100 
+goldidol          _item             thingflags=0x401 light=(0.200000/0.200000/0.200000/0.001000) light=(0.200000/0.200000/0.200000) model3d=gen_idol_gold.3do collwidth=0.020000 collheight=0.020000 cog=item_idolgold.cog height=0.014000 
+gemblu            _item             thingflags=0x401 light=(0.200000/0.200000/0.200000/0.001000) light=(0.200000/0.200000/0.200000) model3d=gen_gem_blue.3do collwidth=0.020000 collheight=0.020000 cog=item_gemblue.cog height=0.007848 
+silveridol        _item             thingflags=0x401 light=(0.200000/0.200000/0.200000/0.001000) light=(0.200000/0.200000/0.200000) model3d=gen_idol_slvr.3do collwidth=0.020000 collheight=0.020000 cog=item_idolsilver.cog height=0.014000 
+_gen_ai_avrg      _actor            thingflags=0x8000000 surfdrag=1.500000 airdrag=2.000000 staticdrag=0.005000 mass=30.000000 health=100.000000 maxhealth=100.000000 maxthrust=0.450000 maxrotthrust=200.000000 
+_weapon           none              type=weapon collide=1 move=physics thingflags=0x20000000 mass=0.000001 buoyancy=0.500000 typeflags=0xD damageclass=0x1 
++bughit           _weapon           vel=(0.000000/3.000000/0.000000) damage=1.000000 damageclass=0x20000000 range=0.150000 
++scorpbite        +bughit           damage=5.000000 damageclass=0x100 
+scorpian          _gen_ai_avrg      thingflags=0x8000400 model3d=gen_sc.3do size=0.050000 movesize=0.050000 collwidth=0.052700 collheight=0.052700 puppet=scorpian.pup soundclass=scorpian.snd cog=actor_scorpian.cog weapon=+scorpbite typeflags=0x80020000 eyeoffset=(0.000000/0.000000/-0.040000) aiclass=scorpion.ai 
++spiderbite       +bughit           damage=2.500000 damageclass=0x100 
+spider            _gen_ai_avrg      thingflags=0x8000400 model3d=gen_sp.3do size=0.032500 movesize=0.032500 collwidth=0.032500 collheight=0.032500 puppet=spider.pup soundclass=spider.snd cog=actor_spider.cog weapon=+spiderbite typeflags=0x80000000 eyeoffset=(0.000000/0.000000/-0.020000) aiclass=spider.ai 
+_itemex           _item             thingflags=0x1 light=(0.250000/0.250000/0.250000/0.001000) light=(0.250000/0.250000/0.250000) movesize=0.003000 surfdrag=0.250000 staticdrag=0.150000 mass=5.000000 physflags=0x51 
+poisonkit         _itemex           thingflags=0x401 model3d=gen_icon_bite.3do movesize=0.002000 collwidth=0.003000 collheight=0.003000 cog=item_poisonkit.cog 
+stnshrpb          _ghostdecor       model3d=gen_dbre_stnwalb.3do size=0.043652 movesize=0.043652 collwidth=0.043652 collheight=0.043652 
+stnshrpbm         _ghostdecor       model3d=gen_dbre_stnwalbm.3do size=0.006250 movesize=0.006250 collwidth=0.006250 collheight=0.006250 
+stnshrpbs         _ghostdecor       model3d=gen_dbre_stnwalbs.3do size=0.003125 movesize=0.003125 collwidth=0.003125 collheight=0.003125 
+stnshrpc          _ghostdecor       model3d=gen_dbre_stnwalc.3do size=0.012601 movesize=0.012601 collwidth=0.012601 collheight=0.012601 
+stnshrpcm         _ghostdecor       model3d=gen_dbre_stnwalcm.3do size=0.006250 movesize=0.006250 collwidth=0.006250 collheight=0.006250 
+stnshrpcs         _ghostdecor       model3d=gen_dbre_stnwalcs.3do size=0.003125 movesize=0.003125 collwidth=0.003125 collheight=0.003125 
+stnshrpam         _ghostdecor       model3d=gen_dbre_stnwalam.3do size=0.007778 movesize=0.007778 collwidth=0.007778 collheight=0.007778 
+stnshrpas         _ghostdecor       model3d=gen_dbre_stnwalas.3do size=0.003867 movesize=0.003867 collwidth=0.003867 collheight=0.003867 
+bksnglra          _sstructwood      model3d=sol_book_snglra.3do size=0.025000 movesize=0.025000 collwidth=0.025000 collheight=0.025000 
+_boomthing        _aimstruct        thingflags=0x400 cog=actor_boomthing.cog 
+metalshrapa       _debris           model3d=gen_dbre_mtlwala.3do size=0.018717 movesize=0.018717 collwidth=0.018717 collheight=0.018717 
+metalshrapb       _debris           model3d=gen_dbre_mtlwalb.3do size=0.012500 movesize=0.012500 collwidth=0.012500 collheight=0.012500 
+metalshrapc       _debris           model3d=gen_dbre_mtlwalc.3do size=0.015166 movesize=0.015166 collwidth=0.015166 collheight=0.015166 
++barrel_exp       _explosion        light=(0.200000/0.150000/0.150000/0.500000) light=(0.200000/0.150000/0.150000) timer=0.750000 sprite=gen_explode2.spr soundclass=gen_explode.snd typeflags=0x17 damage=1000.000000 blasttime=0.699000 range=0.500000 debris=metalshrapa debris=metalshrapb debris=metalshrapc debris=metalshrapa debris=metalshrapb debris=metalshrapc debris=metalshrapa debris=metalshrapb debris=metalshrapc debris=metalshrapa debris=metalshrapb debris=metalshrapc debris=metalshrapa debris=metalshrapb debris=metalshrapc 
+_pstruct1mwood    _structure        thingflags=0x40003040 
+gemgre            _item             thingflags=0x401 light=(0.200000/0.200000/0.200000/0.001000) light=(0.200000/0.200000/0.200000) model3d=gen_gem_green.3do collwidth=0.020000 collheight=0.020000 cog=item_gemgreen.cog height=0.007848 
+gemred            _item             thingflags=0x401 light=(0.200000/0.200000/0.200000/0.001000) light=(0.200000/0.200000/0.200000) model3d=gen_gem_red.3do collwidth=0.020000 collheight=0.020000 cog=item_gemred.cog height=0.007848 
+spider_wall       spider            cog=actor_stickyspider.cog physflags=0x91 typeflags=0x80120000 aiclass=stickyspider.ai 
+invisiplat1m      _structblock      model3d=gen_invisiplate1m.3do size=0.050000 movesize=0.050000 collwidth=0.050000 collheight=0.050000 
+_decorblock       _decor            thingflags=0x14 
+inviscube1m       _decorblock       model3d=gen_box_1minvis.3do size=0.050000 movesize=0.050000 collwidth=0.050000 collheight=0.050000 
+_ai_mauser        _ai_actor_normal  thingflags=0x28004400 size=0.037000 movesize=0.037000 puppet=com_1h.pup cog=actor_aimauser.cog health=200.000000 maxhealth=200.000000 aiclass=com_1h.ai 
+khaki_mauser      _ai_mauser        model3d=com_1h_kaki.3do soundclass=russki1.snd 
+hlthsml           _itemex           thingflags=0x401 model3d=gen_icon_hlthsml.3do collwidth=0.003000 collheight=0.003000 cog=item_healthsml.cog 
+_sstructearth     _structure        thingflags=0x8000C0 
+_structwood       _structure        thingflags=0x2000 
+herbbig           _item             thingflags=0x400 model3d=gen_herb_big.3do collwidth=0.020000 collheight=0.020000 cog=item_yerbisma.cog height=0.020500 
+herbsml           _item             thingflags=0x400 model3d=gen_herb_small.3do collwidth=0.020000 collheight=0.020000 cog=item_yerbita.cog height=0.010276 
+invsbox1x1        _structblock      model3d=gen_box_1minvis_col.3do size=0.050000 movesize=0.050000 collwidth=0.050000 collheight=0.050000 
+torchflame        _decor            thingflags=0x400 model3d=gen_torch_flame.3do size=0.028004 movesize=0.028004 collwidth=0.028004 collheight=0.028004 soundclass=gen_flame.snd cog=class_torch.cog 
+_particle         none              type=particle move=physics timer=1.000000 typeflags=0x11 material=dflt.mat rate=1.000000 
+redsparks         _particle         timer=0.500000 mass=0.500000 physflags=0x201 material=gen_a4sprite_rbblast.mat range=0.020000 rate=18.000000 maxthrust=50.000000 elementsize=0.028000 count=20 
+bluesparks        redsparks         material=gen_a4sprite_flash_purple.mat 
+walkplayer        _indyactor        model3d=gen_in.3do 
++fists_hit        _explosion        timer=0.009000 soundclass=fists.snd 
++fists            _weapon           size=0.030000 movesize=0.030000 mass=1.000000 vel=(0.000000/4.000000/0.000000) explode=+fists_hit damage=50.000000 typeflags=0x200D damageclass=0x8 range=0.075000 
++whip             _weapon           size=0.030000 movesize=0.030000 vel=(0.000000/1.000000/0.000000) damage=15.000000 typeflags=0x200D damageclass=0x10 range=0.450000 
++whip_actor       _actor            collide=0 move=none model3d=gen_wh.3do puppet=whip.pup 
++whipc_actor      _actor            collide=0 move=none model3d=gen_wc.3do size=0.202480 movesize=0.202480 collwidth=0.202480 collheight=0.202480 puppet=whipc.pup 
++pistol_hit       _explosion        timer=0.250000 typeflags=0x31 spritething=+pis_spr_hit spritestart=(0.100000/0.100000/1.000000) spriteend=(0.100000/0.100000/1.000000) 
++pistol           _weapon           timer=5.000000 model3d=gen_tracer.3do size=0.020000 movesize=0.020000 collwidth=0.020000 collheight=0.020000 vel=(0.000000/4.000000/0.000000) explode=+pistol_hit damage=100.000000 mindamage=5.000000 typeflags=0x64C40D rate=150.000000 
++pis_spr_hit      _sprite           timer=0.250000 sprite=pistol_hit.spr 
++pis_spr_smoke1   _sprite           timer=1.500000 sprite=pistol_smoke1.spr 
++pis_spr_smoke2   _sprite           timer=1.500000 sprite=pistol_smoke2.spr 
++pistol_smoke1    _explosion        light=(0.070000/0.070000/0.070000/0.080000) light=(0.070000/0.070000/0.070000) timer=0.349000 typeflags=0x11 spritething=+pis_spr_smoke1 spritestart=(0.010000/0.010000/1.000000) spriteend=(0.170000/0.170000/0.000000) 
++pistol_smoke2    _explosion        light=(0.070000/0.070000/0.070000/0.080000) light=(0.070000/0.070000/0.070000) timer=0.349000 typeflags=0x11 spritething=+pis_spr_smoke2 spritestart=(0.010000/0.010000/1.000000) spriteend=(0.170000/0.170000/0.000000) 
++tokarev          +pistol           timer=6.000000 vel=(0.000000/4.500000/0.000000) damage=125.000000 mindamage=10.000000 rate=100.000000 
++mauser           +pistol           timer=7.000000 vel=(0.000000/5.000000/0.000000) damage=125.000000 mindamage=15.000000 rate=100.000000 
++simonov          +pistol           timer=10.000000 vel=(0.000000/7.000000/0.000000) damage=150.000000 mindamage=20.000000 rate=25.000000 
++machete_hit      _explosion        timer=0.009000 
++machete          _weapon           size=0.065000 movesize=0.065000 vel=(0.000000/0.100000/0.000000) explode=+machete_hit damage=100.000000 typeflags=0x64240D damageclass=0x20 range=0.080000 
++submachine       +pistol           timer=4.000000 mindamage=10.000000 rate=100.000000 
++shotgun          _weapon           timer=3.000000 size=0.020000 movesize=0.020000 vel=(0.000000/3.500000/0.000000) explode=+pistol_hit damage=250.000000 mindamage=5.000000 typeflags=0x65440D rate=250.000000 
++bazooka_exp_smoke _explosion        timer=1.100000 typeflags=0x11 spritething=+baz_spr_exp_smoke spritestart=(0.500000/0.500000/1.000000) spriteend=(1.100000/1.100000/0.000000) 
++bazooka_exp_fire _explosion        timer=0.800000 creatething=+bazooka_exp_smoke typeflags=0x1039 fadetime=0.400000 babytime=0.300000 spritething=+baz_spr_exp_fire spritestart=(0.300000/0.300000/1.000000) spriteend=(0.800000/0.800000/0.000000) 
+xpldshrapa        _debris           model3d=gen_dbre_xplode_a.3do size=0.004550 movesize=0.004550 collwidth=0.004550 collheight=0.004550 
+xpldshrapb        _debris           model3d=gen_dbre_xplode_b.3do size=0.010693 movesize=0.010693 collwidth=0.010693 collheight=0.010693 
++bazooka_exp_debris _explosion        timer=0.400000 creatething=+bazooka_exp_fire typeflags=0x20A blasttime=0.349000 babytime=0.100000 debris=xpldshrapa debris=xpldshrapb debris=xpldshrapa debris=xpldshrapb debris=xpldshrapa debris=xpldshrapb debris=xpldshrapa debris=xpldshrapb debris=xpldshrapa debris=xpldshrapb debris=xpldshrapa debris=xpldshrapb 
+stoneshrapa       _debris           model3d=gen_dbre_stnwala.3do size=0.012500 movesize=0.012500 collwidth=0.012500 collheight=0.012500 
+stoneshrapb       _debris           model3d=gen_dbre_stnwalb.3do size=0.043652 movesize=0.043652 collwidth=0.043652 collheight=0.043652 
+stoneshrapc       _debris           model3d=gen_dbre_stnwalc.3do size=0.012601 movesize=0.012601 collwidth=0.012601 collheight=0.012601 
++bazooka_exp      _explosion        timer=0.300000 soundclass=gen_explode.snd creatething=+bazooka_exp_debris typeflags=0x43F damage=1500.000000 blasttime=0.250000 babytime=0.009000 range=0.500000 debris=stoneshrapa debris=stoneshrapb debris=stoneshrapc debris=stoneshrapa debris=stoneshrapb debris=stoneshrapc debris=stoneshrapa debris=stoneshrapb debris=stoneshrapc spritething=+baz_spr_exp_blast spritestart=(0.075000/0.075000/1.000000) spriteend=(1.000000/1.000000/1.000000) 
++bazooka          _weapon           timer=5.000000 model3d=gen_rckt_bzooka.3do size=0.025318 movesize=0.025318 collwidth=0.025318 collheight=0.025318 puppet=default.pup mass=5.000000 vel=(0.000000/2.000000/0.000000) explode=+bazooka_exp typeflags=0x26450C 
++bazooka_chicken  +bazooka          timer=30.000000 model3d=gen_chicken.3do vel=(0.000000/0.200000/0.000000) 
++baz_spr_exhaust  _sprite           timer=0.349000 sprite=bazooka_exhaust.spr 
++bazooka_exhaust  _explosion        timer=0.500000 typeflags=0x67 damage=1000.000000 blasttime=0.449000 range=0.200000 spritething=+baz_spr_exhaust spritestart=(0.100000/0.100000/1.000000) spriteend=(0.200000/0.200000/0.000000) 
++baz_spr_exp_blast _sprite           timer=0.300000 sprite=bazooka_expblast.spr 
++baz_spr_exp_fire _sprite           timer=0.699000 sprite=bazooka_expfire.spr 
++baz_spr_exp_smoke _sprite           timer=1.000000 sprite=bazooka_expsmoke.spr 
++baz_spr_smoke    _sprite           timer=1.500000 sprite=bazooka_smoke.spr 
++bazooka_smoke    _explosion        timer=0.349000 typeflags=0x31 spritething=+baz_spr_smoke spritestart=(0.010000/0.010000/0.800000) spriteend=(0.450000/0.450000/0.000000) 
++baz_spr_rocket   _sprite           sprite=bazooka_rocket.spr 
++grenade          _weapon           thingflags=0x20000400 timer=4.000000 model3d=weap_grenade_inv.3do size=0.004562 movesize=0.004562 collwidth=0.004562 collheight=0.004562 soundclass=grenade.snd cog=class_grenade.cog surfdrag=3.000000 airdrag=2.000000 mass=1.000000 height=0.004560 physflags=0x221 vel=(0.000000/2.000000/1.000000) explode=+bazooka_exp typeflags=0x280300 
++satchel          _weapon           thingflags=0x20000400 timer=10.000000 model3d=weap_satchel_inv.3do size=0.005761 movesize=0.005761 collwidth=0.005761 collheight=0.005761 soundclass=satchel.snd cog=class_grenade.cog airdrag=0.150000 mass=5.000000 height=0.005761 physflags=0x41 vel=(0.000000/0.000000/-0.001000) buoyancy=0.250000 explode=+bazooka_exp typeflags=0x1380 
++imp1             _weapon           size=0.050000 movesize=0.050000 vel=(0.000000/4.000000/0.000000) damage=10.000000 typeflags=0x20200D damageclass=0x1000 range=0.060000 
++imp1_glow        _sprite           sprite=imp1_glow.spr 
++imp1_spr_fire    _sprite           timer=1.000000 sprite=imp1_fire.spr 
++imp1_fire        _explosion        timer=1.000000 typeflags=0x1 spritething=+imp1_spr_fire spritestart=(0.001000/0.001000/1.000000) spriteend=(0.500000/0.500000/0.000000) 
++imp2_glow        _sprite           sprite=imp2_glow.spr 
++imp2_dust        _particle         orient=(0.000000/0.000000/1.022018) timer=0.250000 typeflags=0x59 material=aet_4sprite_glow_fairy_dust.mat range=0.040000 minsize=0.010000 rate=20.000000 maxthrust=0.500000 elementsize=0.005000 count=50 
++imp2_trail       _particle         timer=0.500000 typeflags=0x19 material=aet_4sprite_glow_fairy_dust.mat range=0.025000 minsize=0.010000 maxthrust=0.500000 elementsize=0.005000 count=7 
++imp3_glow        _sprite           sprite=imp3_glow.spr 
++imp4             _weapon           size=0.050000 movesize=0.050000 vel=(0.000000/4.000000/0.000000) damage=10.000000 typeflags=0x20200D damageclass=0x4000 range=0.020000 
++imp4_glow        _sprite           sprite=imp4_glow.spr 
++imp5             _weapon           size=0.050000 movesize=0.050000 vel=(0.000000/4.000000/0.000000) damage=10.000000 typeflags=0x20200D damageclass=0x5000 range=0.020000 
++imp5_glow        _sprite           sprite=imp5_glow.spr 
++uw_spr_blast     _sprite           timer=0.300000 sprite=aet_expfloater.spr 
++uw_spr_explode   _sprite           timer=0.800000 sprite=uw_explode.spr 
++uw_explode       _explosion        timer=0.800000 typeflags=0x1039 fadetime=0.300000 spritething=+uw_spr_explode spritestart=(0.300000/0.300000/1.000000) spriteend=(1.200000/1.200000/0.000000) 
++uw_blast         _explosion        timer=0.300000 soundclass=gen_explode_uw.snd creatething=+uw_explode typeflags=0x43F damage=1500.000000 blasttime=0.250000 babytime=0.250000 range=0.250000 spritething=+uw_spr_blast spritestart=(0.075000/0.075000/1.000000) spriteend=(1.500000/1.500000/1.000000) 
+zippo_glow        _sprite           thingflags=0x1 light=(0.855000/0.600000/0.400000/0.600000) light=(0.855000/0.600000/0.400000) sprite=zippo.spr 
++exhaust          _sprite           timer=1.000000 sprite=exhaust.spr 
++bubbles          _sprite           timer=4.099000 sprite=bubbles.spr 
++ripples          _sprite           orient=(90.000000/0.000000/0.000000) timer=2.099000 sprite=waterripple.spr 
++spray            _particle         timer=0.750000 mass=1.000000 physflags=0x201 vel=(0.000000/0.000000/0.700000) typeflags=0x10 material=gen_1particle_water_splash.mat range=0.100000 rate=5.000000 maxthrust=10.000000 elementsize=0.002000 count=256 
++bloodsplort      _sprite           timer=0.500000 sprite=gen_bloodsplort.spr 
++vulcansplort     _sprite           timer=0.500000 sprite=gen_vulcansplort.spr 
+lavadeathsparks   _particle         timer=5.000000 airdrag=2.000000 mass=1.000000 physflags=0x201 vel=(0.000000/0.000000/0.005000) typeflags=0x19 material=aet_4sprite_glow_fairy_dust.mat range=0.100000 rate=5.000000 maxthrust=10.000000 elementsize=0.010000 count=50 
+_polyline         none              type=polyline 
++plcog            _polyline         
++plcogend         _polyline         
++laserbeam        _polyline         
++lightning        _polyline         
++whip_ring        _explosion        timer=0.400000 typeflags=0x31 spritething=+whip_spr_ring spritestart=(0.050000/0.050000/1.000000) spriteend=(0.300000/0.300000/0.500000) 
++whip_rays        _explosion        timer=0.400000 creatething=+whip_ring typeflags=0x3B blasttime=0.250000 babytime=0.100000 spritething=+whip_spr_rays spritestart=(0.050000/0.050000/1.000000) spriteend=(0.300000/0.300000/0.500000) 
++whip_flash       _explosion        timer=0.250000 creatething=+whip_rays typeflags=0x7F damage=200.000000 blasttime=0.250000 babytime=0.050000 range=0.250000 spritething=+whip_spr_flash spritestart=(0.050000/0.050000/1.000000) spriteend=(0.600000/0.600000/0.500000) 
++whip_electric    _weapon           timer=0.170000 size=0.030000 movesize=0.030000 vel=(0.000000/3.000000/0.000000) explode=+whip_flash damage=500.000000 typeflags=0x10D damageclass=0x800 
++imp1_long        _weapon           size=0.050000 movesize=0.050000 vel=(0.000000/4.000000/0.000000) damage=10.000000 typeflags=0x20200D damageclass=0x1000 range=0.135000 
++imp4_sparks1     _particle         mass=0.500000 physflags=0x201 material=gen_a4sprite_rbblast.mat range=0.020000 rate=18.000000 maxthrust=50.000000 elementsize=0.010000 count=20 
++imp4_sparks2     +imp4_sparks1     material=gen_a4sprite_flash_purple.mat 
+splashenter       _ghostdecor       thingflags=0x1 light=(0.500000/0.500000/0.500000/0.050000) light=(0.500000/0.500000/0.500000) timer=0.666000 model3d=gen_sfx_splash.3do size=0.025113 movesize=0.025113 collwidth=0.025113 collheight=0.025113 
+tokarev           _itemex           thingflags=0x401 model3d=weap_tokarev_inv.3do movesize=0.002000 collwidth=0.003000 collheight=0.003000 cog=item_tokarev.cog 
+simonov           _itemex           thingflags=0x401 model3d=weap_simonov_inv.3do collwidth=0.003000 collheight=0.003000 cog=item_simonov.cog 
+mauser            _itemex           thingflags=0x401 model3d=weap_mauser_inv.3do movesize=0.002000 collwidth=0.003000 collheight=0.003000 cog=item_mauser.cog 
+
+_debrisnc         _debris           collide=0 
+stoneshrapa_nc    _debrisnc         model3d=gen_dbre_stnwala.3do size=0.012500 movesize=0.012500 collwidth=0.012500 collheight=0.012500 
+stoneshrapam_nc   _debrisnc         model3d=gen_dbre_stnwalam.3do size=0.007778 movesize=0.007778 collwidth=0.007778 collheight=0.007778 
+stoneshrapas_nc   _debrisnc         model3d=gen_dbre_stnwalas.3do size=0.003867 movesize=0.003867 collwidth=0.003867 collheight=0.003867 
+stoneshrapb_nc    _debrisnc         model3d=gen_dbre_stnwalb.3do size=0.043652 movesize=0.043652 collwidth=0.043652 collheight=0.043652 
+stoneshrapbs_nc   _debrisnc         model3d=gen_dbre_stnwalbs.3do size=0.003125 movesize=0.003125 collwidth=0.003125 collheight=0.003125 
+stnshrpa          _ghostdecor       model3d=gen_dbre_stnwala.3do size=0.012500 movesize=0.012500 collwidth=0.012500 collheight=0.012500 
++gen_exp_metal    _explosion        light=(0.000000/0.000000/0.000000/1.000000) light=(0.000000/0.000000/0.000000) timer=0.500000 sprite=gen_explode3.spr soundclass=gen_explode.snd typeflags=0xB7 damage=1000.000000 blasttime=0.400000 range=0.500000 debris=metalshrapa debris=metalshrapb debris=metalshrapc debris=metalshrapa debris=metalshrapb debris=metalshrapc debris=metalshrapa debris=metalshrapb debris=metalshrapc debris=metalshrapa debris=metalshrapb debris=metalshrapc debris=metalshrapa debris=metalshrapb debris=metalshrapc 
++bouldersmoke_spr _sprite           timer=3.000000 sprite=bouldersmoke.spr 
+end
+################################
+
+
+##### Templates information ####
+SECTION: THINGS
+
+World things 2048
+
+# num template:        name:         	X:		Y:		Z:		Pitch:		Yaw:		Roll:		Sector:
+  0: shirtplayer       shirtplayer       	0.00000000	0.00000000	0.50000000	0.00000000	0.00000000	0.00000000	0	voicecolor=(-1.000000/-1.000000/-1.000000/-1.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000) 
+  1: indy_sh_actor     indy_sh_actor     	0.00000000	0.00000000	0.50000000	0.00000000	0.00000000	0.00000000	0	health=500.000000 maxhealth=500.000000 voicecolor=(-1.000000/-1.000000/-1.000000/-1.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000/0.000000) 
+end
+################################
