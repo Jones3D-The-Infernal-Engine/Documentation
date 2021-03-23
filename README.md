@@ -33,7 +33,7 @@ Before starting, I suggest that you make a copy of the installed game directory 
 
 9. You can delete the extracted folders in NDY folder, they are now useless.
 
-10. Download "Jones3D_test_level_ORIG.ndy" provided here, put it in "...\LucasArts\Infernal Machine\Resource\ndy\"
+10. Download "Jones3D_test_level_ORIG.ndy" and "MOD_00_cyn_mod.ndy" provided here, put it in "...\LucasArts\Infernal Machine\Resource\ndy\"
 
 11. Launch Indy3D.exe and start the level: "Jones3D_test_level_ORIG.ndy" and "MOD_00_cyn_mod.ndy", if it works; congratulations. Else retry.
 
