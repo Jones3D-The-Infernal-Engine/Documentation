@@ -35,7 +35,7 @@ Before starting, I suggest that you make a copy of the installed game directory 
 
 10. Download "Jones3D_test_level_ORIG.ndy" provided here, put it in "...\LucasArts\Infernal Machine\Resource\ndy\"
 
-11. Launch Indy3D.exe and start the level: "Jones3D_test_level_ORIG.ndy", if it works; congratulations. Else retry.
+11. Launch Indy3D.exe and start the level: "Jones3D_test_level_ORIG.ndy" and "MOD_00_cyn_mod.ndy", if it works; congratulations. Else retry.
 
 
 You should be able to load any original or custom level now. Note: The .CND file are binary compact level files. The .NDY file are text level files (they can be modded).
