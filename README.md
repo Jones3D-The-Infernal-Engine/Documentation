@@ -1,3 +1,5 @@
+# Prepare the game to accept mods.
+
 Before starting, I suggest that you make a copy of the installed game directory in case you make a mistake in the procedure.
 
 
