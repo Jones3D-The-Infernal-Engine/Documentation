@@ -1,5 +1,6 @@
 Before starting, I suggest that you make a copy of the installed game directory in case you make a mistake in the procedure.
 
+
 # I. Extract main archives. (.GOB)
 
 1. Download tools at: https://github.com/smlu/ProjectMarduk
@@ -32,8 +33,9 @@ Before starting, I suggest that you make a copy of the installed game directory 
 
 9. You can delete the extracted folders in NDY folder, they are now useless.
 
-10. Download "Jones3D_test.ndy" provided here, put it in "...\LucasArts\Infernal Machine\Resource\ndy\"
+10. Download "Jones3D_test_level_ORIG.ndy" provided here, put it in "...\LucasArts\Infernal Machine\Resource\ndy\"
 
-11. Launch Indy3D.exe and start the level: "Jones3D_test.ndy", if it works you are on the if it works you are on the good way. Else retry.
+11. Launch Indy3D.exe and start the level: "Jones3D_test_level_ORIG.ndy", if it works; congratulations. Else retry.
 
-# You should be able to load any original or custom level now.
+
+You should be able to load any original or custom level now. Note: The .CND file are binary compact level files. The .NDY file are text level files (they can be modded).
