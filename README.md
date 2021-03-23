@@ -22,16 +22,18 @@ Before starting, I suggest that you make a copy of the installed game directory 
 
 # III. Extract compact levels files. (.CND)
 
-1. Extract all . CND files in NDY folder using cndext.exe
+5. Extract all . CND files in NDY folder using cndext.exe
 
-2. Always in NDY folder, you must have now several folders with the names of levels.
+6. Always in NDY folder, you must have now several folders with the names of levels.
 
-3. For each of them, move the extracted "key" folders to "...\LucasArts\Infernal Machine\Resource\3do\"
+7. For each of them, move the extracted "key" folders to "...\LucasArts\Infernal Machine\Resource\3do\"
 
-4. For each of them, move the extracted "mat" and "sound folders to "...\LucasArts\Infernal Machine\Resource\"
+8. For each of them, move the extracted "mat" and "sound folders to "...\LucasArts\Infernal Machine\Resource\"
 
-5. You can delete the extracted folders in NDY folder, they are now useless.
+9. You can delete the extracted folders in NDY folder, they are now useless.
 
-4. Download "Jones3D_test.ndy" provided here, put it in "...\LucasArts\Infernal Machine\Resource\ndy\"
+10. Download "Jones3D_test.ndy" provided here, put it in "...\LucasArts\Infernal Machine\Resource\ndy\"
 
-5. Launch Indy3D.exe and start the level: "Jones3D_test.ndy", if it works you are on the if it works you are on the good way. Else retry.
+11. Launch Indy3D.exe and start the level: "Jones3D_test.ndy", if it works you are on the if it works you are on the good way. Else retry.
+
+# You should be able to load any original or custom level now.
