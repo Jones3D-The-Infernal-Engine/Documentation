@@ -17,9 +17,9 @@ Before starting, I suggest that you make a copy of the installed game directory 
 
 2. Search for "HKEY_LOCAL_MACHINE\Software\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0"
 
-3. For "Start Mode" data, change 0x00000000 to 0x00000002
+3. For "Start Mode" data, change 0x00000000 to 0x00000002 https://raw.githubusercontent.com/Jones3D-The-Infernal-Engine/Documentation/main/J3D_docu_regedit.jpg
 
-4. Launch Indy3D.exe located in "Ressource" folder. you must have a menu like this. Try to start a random .CND level, if it works you are on the good way. Else retry.
+4. Launch Indy3D.exe located in "Ressource" folder. you must have a menu like this: https://raw.githubusercontent.com/Jones3D-The-Infernal-Engine/Documentation/main/J3D_docu_devmenu.jpg Try to start a random .CND level, if it works you are on the good way. Else retry.
 
 # III. Extract compact levels files. (.CND)
 
