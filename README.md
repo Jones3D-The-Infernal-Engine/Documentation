@@ -1,43 +1,11 @@
-# Prepare the game to accept mods.
+# Indiana Jones and The Infernal Machine documentation
+This is unofficial and incomplete documentation about the game file structure and modding. Any information not found here please look into [Discussions](https://github.com/Jones3D-The-Infernal-Engine/Documentation/discussions) and post any question there.
 
-Before starting, I suggest that you make a copy of the installed game directory in case you make a mistake in the procedure.
+Before you begin with modding it's good to extract all game resource files.  
+Please follow the instruction in [pre-mod.md](pre-mod.md) for this.
 
-
-# I. Extract main archives. (.GOB)
-
-1. Download tools at: https://github.com/smlu/ProjectMarduk
-
-2. Extract CD1.gob CD2.gob and JONES3D.gob using gobext.exe
-
-3. You must have different new folders (3do, cog...) in the "Ressource" folder.
-
-4. Delete the .GOB files. Then launch your game, if it works you are on the good way. Else retry.
-
-# II. Set the game starting in DEVMODE.
-
-1. On windows search bar, look for "RegEdit.exe" and open it.
-
-2. Search for "HKEY_LOCAL_MACHINE\Software\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0"
-
-3. For "Start Mode" data, change 0x00000000 to 0x00000002 like this: https://raw.githubusercontent.com/Jones3D-The-Infernal-Engine/Documentation/main/J3D_docu_regedit.jpg
-
-4. Launch Indy3D.exe located in "Ressource" folder. you must have a menu like this: https://raw.githubusercontent.com/Jones3D-The-Infernal-Engine/Documentation/main/J3D_docu_devmenu.jpg Try to start a random .CND level, if it works you are on the good way. Else retry.
-
-# III. Extract compact levels files. (.CND)
-
-5. Extract all . CND files in NDY folder using cndext.exe
-
-6. Always in NDY folder, you must have now several folders with the names of levels.
-
-7. For each of them, move the extracted "key" folders to "...\LucasArts\Infernal Machine\Resource\3do\"
-
-8. For each of them, move the extracted "mat" and "sound folders to "...\LucasArts\Infernal Machine\Resource\"
-
-9. You can delete the extracted folders in NDY folder, they are now useless.
-
-10. Download "Jones3D_test_level_ORIG.ndy" and "MOD_00_cyn_mod.ndy" provided here, put them in "...\LucasArts\Infernal Machine\Resource\ndy\"
-
-11. Launch Indy3D.exe and start the two levels: "Jones3D_test_level_ORIG.ndy" and "MOD_00_cyn_mod.ndy", if it works; congratulations. Else retry.
-
-
-You should be able to load any original or custom level now. Note: The .CND file are binary compact level files. The .NDY file are text level files (they can be modded).
+## Game level 
+There are 2 types of level files:
+* [NDY](ndy.md) - text based level format which can be edit in any text editor.  
+The documentation for this file format can be found in [ndy.md](ndy.md)
+* CND - is compact binary level format. The structure of file is similar to NDY file format.
