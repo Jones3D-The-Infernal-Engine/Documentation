@@ -141,9 +141,9 @@ World materials <int> # The max number of material files to be used by the level
                       # This number can be exact number of files in the list,
                       # or greater for 64 elements i.e. num files in the list + 64.
 
-0:	<file1.mat>  # string material file name.
-                 # The engine search for the MAT file in folder Resource/mat
-1:	<file2.mat>
+0: <file1.mat> # string material file name.
+               # The engine search for the MAT file in folder Resource/mat
+1: <file2.mat>
 .
 .
 .
@@ -189,14 +189,14 @@ World texture vertices <int> # The number of texture vertices (UV) in the list t
 World adjoins <int> # The number of adjoints in the list that follows
 
 # num: flags: mirror: dist:
-0: 0x3 22 0.59788090 # adjoint flags,
-                       # the number of mirror adjoin i.e. the opposite sector portal 
-                       # and distance from the adjoin surface to it's sector center
+0: 0x3 22 0.59788090  # adjoint flags,
+                      # the number of mirror adjoin i.e. the opposite sector portal 
+                      # and distance from the adjoin surface to it's sector center
                        
-1: 0x3 4 0.59788090    # mirror is the adjoin num 4
+1: 0x3 4 0.59788090   # mirror is the adjoin num 4
 2: 0x3 495 0.59788090
 3: 0x3 16 0.73713350
-4: 0x3 1 0.72371501    # mirror is the adjoin num 1
+4: 0x3 1 0.72371501   # mirror is the adjoin num 1
 .
 .
 .
@@ -215,17 +215,17 @@ World surfaces <int> # The number of world surfaces in the list that follows
 # intensities = The list of vertex colors. The size of list is the same as vertices list
 
 # Example list:
-0:	-1	0x0	0x0	0	3	3	0		0.00000000	0.00000000	0.00000000	1.00000000		3	0,0	1,1	2,2		0.00000000	0.00000000	0.00000000	0.00000000	0.00000000	0.00000000	0.24224025	0.24224025	0.35932302
-1:	110	0x80007	0x0	4	3	3	-1		0.60000002	0.60000002	0.69999999	1.00000000		6	5,3	4,4	3,5	6,6	7,7	8,8		0.33166137	0.33166137	0.49196434	0.00000000	0.00000000	0.00000000	0.00000000	0.00000000	0.00000000	0.30755568	0.30755568	0.45620757	0.33805838	0.33805838	0.50145322	0.33989805	0.33989805	0.50418210
+0: -1 0x0 0x0 0 3 3 0  0.00000000 0.00000000 0.00000000 1.00000000  3 0,0 1,1 2,2  0.00000000 0.00000000 0.00000000  0.00000000 0.00000000 0.00000000  0.24224025 0.24224025 0.35932302
+1: 110 0x80007 0x0 4 3 3 -1  0.60000002 0.60000002 0.69999999 1.00000000 6 5,3 4,4 3,5 6,6 7,7 8,8  0.33166137 0.33166137 0.49196434  0.00000000 0.00000000 0.00000000  0.00000000 0.00000000 0.00000000  0.30755568 0.30755568 0.45620757  0.33805838 0.33805838 0.50145322  0.33989805 0.33989805 0.50418210
 .
 .
 .
 
 # --- Surface normals ---
 # The list of normals is the same size as surface list
-0:	0.00000000	0.00000000	-1.00000000  # x,y,z
-1:	0.00000000	0.00000000	1.00000000
-2:	-0.61583585	-0.78690195	-0.03913435
+0: 0.00000000 0.00000000 -1.00000000 # x,y,z
+1: 0.00000000 0.00000000 1.00000000
+2: -0.61583585 -0.78690195 -0.03913435
 .
 .
 .
@@ -248,13 +248,13 @@ AMBIENT LIGHT 0.22000000 0.20999999 0.22999999           # Sector RGB ambient li
 EXTRA LIGHT 0.30000001 0.20000000 0.20000000             # Additional sector RGB light. Affects sector surfaces with light mode 2 - Diffuse and Things in sector.
 TINT 0.40000001 0.80000001 1.00000000                    # Optional RGB tint color. Apparently not used.
 AVERAGE LIGHT INTENSITY 0.25000000 0.20000000 0.17000000 # Optional point light RGB color. Affects only things in sector.
-AVERAGE LIGHT POSITION	0.20432100 1.74881899 3.27736902 # Optional point light position. Affects only things in sector.
+AVERAGE LIGHT POSITION 0.20432100 1.74881899 3.27736902  # Optional point light position. Affects only things in sector.
 AVERAGE LIGHT FALLOFF 1.19576180 0.29894045              # Optional point light range. Affects only things in sector.
-BOUNDBOX	-0.08611600	1.82548904	2.71499896	0.69935000	2.54265308	3.26141000 # The sector's bounding box
-COLLIDEBOX	0.81060708	0.50332105	5.31484699	1.00642097	0.65113282	5.60700130 # Optional sector's collision box.
-                                                                                   # If set it will be used for detecting sector
-                                                                                   # surface collision instead of surface collision.
-                                                                                   # Sector flag 0x1000 - HasCollideBox must be set when this param is used.
+BOUNDBOX -0.08611600 1.82548904 2.71499896 0.69935000 2.54265308 3.26141000  # The sector's bounding box
+COLLIDEBOX 0.81060708 0.50332105 5.31484699 1.00642097 0.65113282 5.60700130 # Optional sector's collision box.
+                                                                             # If set it will be used for detecting sector
+                                                                             # surface collision instead of surface collision.
+                                                                             # Sector flag 0x1000 - HasCollideBox must be set when this param is used.
 SOUND gen_canyon_a1.wav 1.000000             # Optional sector sound and sound volume
 THRUST 0.00000000 -0.10000000 0.00000000     # Optional sector force that pushes Things in sector with move=physics in one direction.
 CENTER 0.30661702 2.18407106 2.98820448      # The bounding box center
@@ -279,9 +279,9 @@ SECTION: AICLASS
 World AIClasses <int> # The max number of ai files to be used by the level.
                       # The number is usually greater than the number of files in the list.
 
-0:	<file1.ai>  # string ai file name.
-                # The engine search for the AI file in folder Resource/misc/ai or CD1/CD2.gob
-1:	<file2.ai>
+0: <file1.ai> # string ai file name.
+              # The engine search for the AI file in folder Resource/misc/ai or CD1/CD2.gob
+1: <file2.ai>
 .
 .
 .
@@ -298,9 +298,9 @@ SECTION: MODELS
 World models <int> # The max number of models to be used by the level.
                    # The number is usually greater than the number of files in the list.
 
-0:	<file1.3do> # string model file name.
-                # The engine search for the 3DO file in folder Resource/3do or CD1/CD2.gob
-1:	<file2.3do>
+0: <file1.3do> # string model file name.
+               # The engine search for the 3DO file in folder Resource/3do or CD1/CD2.gob
+1: <file2.3do>
 .
 .
 .
@@ -317,9 +317,9 @@ SECTION: SPRITES
 World sprites <int> # The max number of sprites to be used by the level.
                     # The number is usually greater than the number of files in the list.
 
-0:	<file1.spr>  # string sprite file name.
-                 # The engine search for the SPR file in folder Resource/misc/spr or CD1/CD2.gob
-1:	<file2.spr>
+0: <file1.spr> # string sprite file name.
+               # The engine search for the SPR file in folder Resource/misc/spr or CD1/CD2.gob
+1: <file2.spr>
 .
 .
 .
@@ -336,9 +336,9 @@ SECTION: KEYFRAMES
 World keyframes <int> # The max number of keyframes to be used by the level.
                       # The number is usually greater than the number of files in the list.
 
-0:	<file1.key>  # string animation file name.
-                 # The engine search for the KEY file in folder Resource/3do/key
-1:	<file2.key>
+0: <file1.key> # string animation file name.
+               # The engine search for the KEY file in folder Resource/3do/key
+1: <file2.key>
 .
 .
 .
@@ -355,9 +355,9 @@ SECTION: ANIMCLASS
 World puppets <int> # The max number of puppets to be used by the level.
                     # The number is usually greater than the number of files in the list.
 
-0:	<file1.pup>  # string puppet file name.
-                 # The engine search for the PUP file in folder Resource/misc/pup or CD1/CD2.gob
-1:	<file2.pup>
+0: <file1.pup> # string puppet file name.
+               # The engine search for the PUP file in folder Resource/misc/pup or CD1/CD2.gob
+1: <file2.pup>
 .
 .
 .
@@ -374,9 +374,9 @@ SECTION: Soundclass
 World soundclasses <int> # The max number of sound classes to be used by the level.
                          # The number is usually greater than the number of files in the list.
 
-0:	<file1.snd>  # string sound class file name.
-                 # The engine search for the SND file in folder Resource/misc/snd or CD1/CD2.gob
-1:	<file2.snd>
+0: <file1.snd> # string sound class file name.
+               # The engine search for the SND file in folder Resource/misc/snd or CD1/CD2.gob
+1: <file2.snd>
 .
 .
 .
@@ -393,9 +393,9 @@ SECTION: cogscripts
 World scripts <int> # The max number of cog scripts to be used by the level.
                     # The number is usually greater than the number of files in the list.
 
-0:	<file1.cog>  # string cog script file name.
-                 # The engine search for the COG file in folder Resource/cog or CD1/CD2.gob
-1:	<file2.cog>
+0: <file1.cog> # string cog script file name.
+               # The engine search for the COG file in folder Resource/cog or CD1/CD2.gob
+1: <file2.cog>
 .
 .
 .
@@ -418,8 +418,8 @@ SECTION: cogs
 World cogs <int> # The max number of COGs to be used by the level.
                  # The number is usually greater than the number of entries in the list.
 
-0:	<script1.cog> <param_1> <param_2> .... <param_N>
-1:	<script2.cog>
+0: <script1.cog> <param_1> <param_2> .... <param_N>
+1: <script2.cog>
 .
 .
 .
@@ -428,7 +428,7 @@ end
 
 ### An example of COG entries from 00_cyn.ndy:  
 ```
-0:	gen_MatAnim.cog	gen_a4waterfall.mat 5.000000 
+0: gen_MatAnim.cog gen_a4waterfall.mat 5.000000 
 
 Assigns 'gen_a4waterfall.mat' to variable 'animma' and set variable 'fps' to '5.000000'.  
 
@@ -436,7 +436,7 @@ What this cog does is animate 'gen_a4waterfall.mat' material at 5 frames per sec
 ```
 
 ```
-11:	gen_SectorThrust.cog	(-0.421100/-0.762960/-0.489889) 2.000000 133 118 117 -1 -1 -1 -1 -1
+11: gen_SectorThrust.cog (-0.421100/-0.762960/-0.489889) 2.000000 133 118 117 -1 -1 -1 -1 -1
 
 Assigns vector '(-0.421100/-0.762960/-0.489889)' to variable 'vec0', sets thrust 'speed' to '2.000000'and assigns 'sector0' to sector 133, 'sector1' to sector 118, 'sector2' to sector 118, 'sector3' to sector 117, sector4-7 to -1 (not used).
 
@@ -444,7 +444,7 @@ This COG sets the sector thrust for up to 8 sectors.
 ```
 
 ```
-23:	cyn_snakedelay.cog	173 2107
+23: cyn_snakedelay.cog 173 2107
 
 Assigns thing 173 (snake_rattle) to variable 'snake' and surface 2107 to variable 'triggersurf'.
 You can notice there are more variables in the script but all are defined as 'local', so can't be initialized in NDY file.
@@ -593,13 +593,13 @@ World things <int> # The max number of things to be used by the level.
 # num    template:   name:              X: Y: Z:   Pitch: Yaw: Roll:  Sector:
 <seq_no>: <template_name> <thing_name>  <position>   <orientation>   <sector_no>  <optional_params>
 
-0: shirtplayer       shirtplayer       7.56596994 1.70158172 0.09226999 0.00000000 130.01022339 0.00000000 452
-1: spider            spider            4.68325996 -2.17725992 0.96398002 0.00000000 0.00000000 0.00000000 488 thingflags=0x4C0  health=50.000000 maxhealth=50.000000
+0: shirtplayer  shirtplayer  7.56596994 1.70158172 0.09226999 0.00000000 130.01022339 0.00000000 452
+1: spider       spider       4.68325996 -2.17725992 0.96398002 0.00000000 0.00000000 0.00000000 488 thingflags=0x4C0  health=50.000000 maxhealth=50.000000
 
 end
 
 seq_no - Thing sequence number in list
-template_name - the Template name from which the Thing is created.
+template_name - the name of Template from which the Thing is created.
 thing_name - Thing name. Max 63 characters.
 position - x,y,z position
 orientation - pitch,yaw,roll orientation in degrees
