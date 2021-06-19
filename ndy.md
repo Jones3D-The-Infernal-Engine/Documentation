@@ -233,8 +233,7 @@ World surfaces <int> # The number of world surfaces in the list that follows
 ```
 
 ## Section Sectors
-This section contains the level sectors. A sector is a closed polyhedron defined by vertices and surfaces from GeoResource section. All sectors must be convex. 
- 
+This section contains the level sectors. A sector is a closed polyhedron defined by vertices and surfaces from GeoResource section. All sectors must be convex. The info about sector flags can be found [here](https://github.com/smlu/ProjectMarduk/blob/53e67653e965ee843e9306f59b1927671e328cac/libraries/libim/content/asset/world/sector.h#L18-L32).
 ### Structure
 ```
 SECTION: SECTORS
