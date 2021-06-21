@@ -1,5 +1,5 @@
 # NDY Level file format
-The **NDY** file represents documentation & specifications for **NDY** file (*.ndy) used in **Indiana Jones and the Infernal Machine** game to define game's level. 
+This file describes documentation & specifications for **NDY** file (*.ndy) used in **Indiana Jones and the Infernal Machine** game to define game's level. 
 
 ## Abstract
 The **NDY** file format is text based as opposite to the **CND** file which is in binary format.  
@@ -154,9 +154,9 @@ end
 This section contains the information about level world geometry i.e.: level surfaces, surface vertices, surface texture vertices, surface normals and adjoins. 
 
 The surface adjoin represents a "portal" between level sectors.
-The adjoin entry consists of [adjoin flags](https://github.com/smlu/ProjectMarduk/blob/758c350dceda806d2a71968019d3d3d16410c980/libraries/libim/content/asset/world/surface_adjoin.h#L15-L22), a opposite mirror adjoin number and the distance of the surface from the adjoin surface to the center of surface's sector.
+The adjoin entry consists of [adjoin flags](https://github.com/smlu/ProjectMarduk/blob/36324dacb935e85a198c5fd82eea4ccf73ef30ff/libraries/libim/content/asset/world/surface_adjoin.h#L17-L22), a opposite mirror adjoin number and the distance of the surface from the adjoin surface to the center of surface's sector.
 
-The world surface is n-gon polygon with an optional texture and vertices colors. The surface also has different properties i.e. [surface flags](https://github.com/smlu/ProjectMarduk/blob/758c350dceda806d2a71968019d3d3d16410c980/libraries/libim/content/asset/world/surface.h#L13-L45) (surfflags) and polygon [face flags](https://github.com/smlu/ProjectMarduk/blob/758c350dceda806d2a71968019d3d3d16410c980/libraries/libim/content/asset/primitives/face.h#L20-L26), [geometry mode](https://github.com/smlu/ProjectMarduk/blob/758c350dceda806d2a71968019d3d3d16410c980/libraries/libim/content/asset/primitives/geomode.h), [light_mode](https://github.com/smlu/ProjectMarduk/blob/758c350dceda806d2a71968019d3d3d16410c980/libraries/libim/content/asset/primitives/geomode.h), texture mode (not used), adjoin number and extra surface light color.
+The world surface is n-gon polygon with an optional texture and vertices colors. The surface also has different properties i.e. [surface flags](https://github.com/smlu/ProjectMarduk/blob/36324dacb935e85a198c5fd82eea4ccf73ef30ff/libraries/libim/content/asset/world/surface.h#L15-L46) (surfflags) and polygon [face flags](https://github.com/smlu/ProjectMarduk/blob/36324dacb935e85a198c5fd82eea4ccf73ef30ff/libraries/libim/content/asset/primitives/face.h#L22-L28), [geometry mode](https://github.com/smlu/ProjectMarduk/blob/36324dacb935e85a198c5fd82eea4ccf73ef30ff/libraries/libim/content/asset/primitives/geomode.h#L8-L13), [light_mode](https://github.com/smlu/ProjectMarduk/blob/36324dacb935e85a198c5fd82eea4ccf73ef30ff/libraries/libim/content/asset/primitives/light_mode.h#L8-L13), texture mode (not used), adjoin number and extra surface light color.
 All surfaces must all be convex. 
 
 
@@ -233,7 +233,7 @@ World surfaces <int> # The number of world surfaces in the list that follows
 ```
 
 ## Section Sectors
-This section contains the level sectors. A sector is a closed polyhedron defined by vertices and surfaces from GeoResource section. All sectors must be convex. The info about sector flags can be found [here](https://github.com/smlu/ProjectMarduk/blob/53e67653e965ee843e9306f59b1927671e328cac/libraries/libim/content/asset/world/sector.h#L18-L32).
+This section contains the level sectors. A sector is a closed polyhedron defined by vertices and surfaces from GeoResource section. All sectors must be convex. The info about sector flags can be found [here](https://github.com/smlu/ProjectMarduk/blob/36324dacb935e85a198c5fd82eea4ccf73ef30ff/libraries/libim/content/asset/world/sector.h#L20-L31).
 ### Structure
 ```
 SECTION: SECTORS
