@@ -17,7 +17,17 @@ Before starting, I suggest that you make a copy of the installed game directory 
 
 1. On windows search bar, look for "RegEdit.exe" and open it.
 
-2. Search for: `HKEY_LOCAL_MACHINE\Software\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`
+2. Depending on the type of the game install, in the registry editor search for:  
+    * Original CD install:  
+      `HKEY_LOCAL_MACHINE\Software\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`
+    * Copy the game files from original CD:  
+      `HKEY_LOCAL_MACHINE\Software\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`  
+      or  
+      `HKEY_CURRENT_USER\SOFTWARE\Classes\VirtualStore\MACHINE\SOFTWARE\WOW6432Node\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`
+    * GOG version of the game:  
+      `HKEY_CURRENT_USER\SOFTWARE\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`
+    * STEAM version of the game:  
+      `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine`
 
 3. For "Start Mode" data, change 0x00000000 to 0x00000002 like this:
 ![regedit](resources/images/J3D_docu_regedit.jpg)
