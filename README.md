@@ -1,8 +1,18 @@
 # Indiana Jones and The Infernal Machine documentation
+> :warning: **Work in progress!**
+
 This is unofficial and incomplete documentation about the game file structure and modding. Any information not found here please look into [Discussions](https://github.com/Jones3D-The-Infernal-Engine/Documentation/discussions) and post any question there.
 
 Before you begin with modding it's good to extract all game resource files.  
 Please follow the instruction in [pre-mod.md](pre-mod.md) for this.
+
+## Game Assets
+### [KEY animations](key.md)
+The documentation for KEY animation file can be found in [key.md](key.md).
+
+### [COG script](cog.md)
+ The COG scripts are the heart of game logics. They define the mechanics behind the game, like cute scenes, level goals, unlocking/locking the doors, weapon definition etc...  
+ The documentation on COG scripting can be found in [cog.md](cog.md).
 
 ## Game level 
 There are 2 types of level files:
