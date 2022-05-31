@@ -19,8 +19,8 @@ Required section. It defines basic animation properties:
     | 0x10 | Restart animation if playing. |
     | 0x20 | End animation smoothly (not verified). |
 
- - TYPE  
-  Defines high priority 3DO node types. By default all 3DO joint nodes have low priority assigned in the puppet file (.pup), if the node type is defined here then node will have high priority value assigned. Set this field to `0xFFFF` if all nodes should have assigned high priority.
+ - <a id="key-type"></a> TYPE  
+  Defines [puppet high priority](pup.md#pup-high-pri) 3DO node types. By default all 3DO joint nodes have low priority assigned in the puppet file (.pup), if the node type is defined here then node will have high priority value assigned. Set this field to `0xFFFF` if all nodes should have assigned high priority.
 
  - FRAMES  
   The number of animation frames there are defined in this file aka length of this animation.
@@ -29,7 +29,7 @@ Required section. It defines basic animation properties:
   Frames per second. How many frames  should be played per second.
 
  - JOINTS  
-  The number of mesh joint nodes the associated 3DO model has.
+  The number of mesh joint nodes associated 3DO model has. Max 64.
 
 ## MARKERS
 This sections define frame markers aka frame tags. It's unknown if markers are used in the game but can visual help the animation designer in the editor. There can be max 16 markers. This section is not required and can be omitted.
@@ -66,4 +66,4 @@ ENTRIES <N>          // Number of animation frames in the list
                           0.00000000   0.00000000  -0.00257333   0.00000000   0.00000000  -0.30001831
 
 *Note: The `flags` represents what has changed since previous frame. i.e. 0x00 - Nothing changed, 0x01 - position changed, 0x02 - orientation changed.
-``` 
+```

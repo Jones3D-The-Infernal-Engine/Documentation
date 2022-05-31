@@ -114,7 +114,7 @@ Fog                      <int>   <float> <float> <float> <float> <float> <float>
 ```
 
 ## Section Sounds
-This section defines the list of all sound file names (.wav) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: sounds referenced in sectors, templates, SNDs, COGs and COG scripts.
+This section defines the list of all sound file names (.wav) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: sounds referenced in sectors, templates, SNDs, [COGs](#section-cogs) and [COG scripts](cog.md).
 
 ### Structure
 ```
@@ -131,7 +131,7 @@ end
 ```
 
 ## Section Materials
-This section defines the list of all material file names (.mat) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: materials referenced by world surfaces, templates, SPRs, COGs, COG scripts and 3DO models.
+This section defines the list of all material file names (.mat) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: materials referenced by world surfaces, templates, SPRs, [COGs](#section-cogs), [COG scripts](cog.md) and 3DO models.
 
 ### Structure
 ```
@@ -269,7 +269,7 @@ SURFACES 0 5                                 # The index of the first surface an
 ```
 
 ## Section AiClass
-This section defines the list of all aiclass file names (.ai) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: aiclasses referenced in templates, COGs and COG scripts.
+This section defines the list of all aiclass file names (.ai) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: aiclasses referenced in templates, [COGs](#section-cogs) and [COG scripts](cog.md).
 
 ### Structure
 ```
@@ -288,7 +288,7 @@ end
 ```
 
 ## Section Models
-This section defines the list of all model file names (.3do) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: models referenced in templates, COGs and COG scripts.
+This section defines the list of all model file names (.3do) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: models referenced in templates, [COGs](#section-cogs) and [COG scripts](cog.md).
 
 ### Structure
 ```
@@ -307,7 +307,7 @@ end
 ```
 
 ## Section Sprites
-This section defines the list of all sprite file names (.spr) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: sprites referenced in templates, COGs and COG scripts.
+This section defines the list of all sprite file names (.spr) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: sprites referenced in templates, [COGs](#section-cogs) and [COG scripts](cog.md).
 
 ### Structure
 ```
@@ -326,7 +326,7 @@ end
 ```
 
 ## Section Keyframes
-This section defines the list of all animation file names (.key) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: animations referenced in templates, COGs, COG scripts and puppet files.
+This section defines the list of all [animation file names (.key)](key.md) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: animations referenced in templates, [COGs](#section-cogs), [COG scripts](cog.md) and [puppet files](pup.md).
 
 ### Structure
 ```
@@ -345,7 +345,7 @@ end
 ```
 
 ## Section AnimClass
-This section defines the list of all puppet file names (.pup) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: puppets referenced in templates, COGs and COG scripts.
+This section defines the list of all [puppet files (.pup)](pup.md) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: puppets referenced in templates, [COGs](#section-cogs) and [COG scripts](cog.md).
 
 ### Structure
 ```
@@ -364,7 +364,7 @@ end
 ```
 
 ## Section SoundClass
-This section defines the list of all sound classes file names (.snd) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: snd referenced in templates, COGs and COG scripts.
+This section defines the list of all sound classes file names (.snd) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: snd referenced in templates, [COGs](#section-cogs) and [COG scripts](cog.md).
 
 ### Structure
 ```
@@ -383,7 +383,7 @@ end
 ```
 
 ## Section CogScripts
-This section defines the list of all cog script file names (.cog) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: cog scripts referenced in templates, things and COGs.
+This section defines the list of all [cog script files (.cog)](cog.md) which are used in the level. They are used directly or indirectly by other level sections or game resources. i.e.: [cog scripts](cog.md) referenced in templates, things and [COGs](#section-cogs).
 
 ### Structure
 ```
@@ -402,8 +402,8 @@ end
 ```
 
 ## Section Cogs
-This section defines the list of all COGs which are used in the level. COGs are the level logics "brains". Each entry in the list takes COG script file name followed by the COG script parameters.
-The parameters initialize the variables in the exact order as defined in the symbols section of COG script. The variables in COG script defined as `local` can't be overwritten in NDY. Note that all non-local variables must be initialized or the game won't run.
+This section defines the list of all COGs which are used in the level. COGs are the level logics "brains". Each entry in the list takes [COG script file](cog.md) followed by the COG script parameters.
+The parameters initialize the variables in the exact order as defined in the symbols section of COG script. The variables in [COG script](cog.md) defined as `local` can't be overwritten in NDY. Note that all non-local variables must be initialized or the game won't run.
 
 Parameter types:
 * games asset file name i.e.: sounds, materials, models etc...
@@ -490,9 +490,9 @@ Each Template defined in the list must have type other than Free or the Template
 ### Name convention
 Depending on the use of a template there are a few conventions used in their naming.
 Template name can contain max 63 characters.
-* `_<name>` - names prefixed with underscore i.e. '`_`' are used for base templates that other templates are to be inherited from and not to be used by Thing or COG script.  
+* `_<name>` - names prefixed with underscore i.e. '`_`' are used for base templates that other templates are to be inherited from and not to be used by Thing or [COG script](cog.md).  
 *Note: If Thing is created from the base template the engine logs warning: "Warning -- create object from base-class template <template_name>"*
-* `+<name>` - names prefixed with plus sign i.e. '`+`' are used for templates that are used for special effect e.g. bullet projectile, explosion etc... Other templates can inherit from this template as well. This template can be also used in cog script e.g. mine car sparks particles.
+* `+<name>` - names prefixed with plus sign i.e. '`+`' are used for templates that are used for special effect e.g. bullet projectile, explosion etc... Other templates can inherit from this template as well. This template can be also used in [COG script](cog.md) e.g. mine car sparks particles.
 * `<name>` - non-prefixed names are used for the "end" templates which are used by Things or scripts.
 
 ### The list of parameters
@@ -507,7 +507,7 @@ Below is the table of parameters that can be used by the template and parameter 
 | babytime | float | Explosion | / |The explosion time in sec before the "child" explosion blasts off.<br/>*Note: the engine also sets explosion flag 0x8 - HasChildExplosion.* |
 | blasttime | float | Explosion | / | The explosion Thing blast off time in sec.<br/>*Note: the engine also sets explosion flag 0x2 - `HasBlastPhase`.* |
 | buoyancy | float | * | move=`physics` | The Thing buoyancy (uplift) in the water. |
-| cog | string | * | / | Assigns COG script file to the Thing/Template.<br/>*Note: the engine sets cog flags 0x40 - `Local` | 0x20 to the assigned cog and ThingFlag 0x400 - `CogLinked` to Thing flags.*|
+| cog | string | * | / | Assigns [COG script file](cog.md) to the Thing/Template.<br/>*Note: the engine sets cog flags 0x40 - `Local` | 0x20 to the assigned cog and ThingFlag 0x400 - `CogLinked` to Thing flags.*|
 | collheight | float | * | / | Collision height.|
 | collide | int | * | / | Collision type to be used for Thing/Template object.<br /><br />0 - None<br />1 - Sphere collision<br />3 - Mesh face collision |
 | collwidth | float | * | / | Collision width. |
@@ -555,7 +555,7 @@ Below is the table of parameters that can be used by the template and parameter 
 | perflevel | int | * | / | Thing performance level.<br/>*Note: if Thing performance level is greater than global performance level, the Thing won't be created.* |
 | physflags | hex_int | * | move=`physics` | Sets Thing/Template physics flags.<br/>Available flags can be found [here](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/thing/movement/physicsinfo.h#L12-L36)|
 | pitchrange | float | Particle | / | Pitch range. |
-| puppet | string | * | / | Assigns PUP puppet file to the Thing/Template. |
+| puppet | string | * | / | Assigns [PUP puppet file](pup.md) to the Thing/Template. |
 | range | float | Explosion, Particle, Weapon | Particle: maxthrust | Weapon range<br/><br/>or<br/><br/>Explosion range<br/>*Note: the engine sets explosion flag 0x2 - `HasBlastPhase` in this case.*<br/><br/>or<br/><br/>Particle max growth radius.<br>In this case the param **maxthrust** must be set (growth speed) |
 | rate | float | Particle, Weapon | Weapon: damage<bt/>Particle: count | Weapon: damage decay rate (distance).<br>Particle: num of seconds to destroy particle's elements (**count**) after particle is destroyed (**timer**). |
 | respawn | float | Item | typeflags |= `RespawnSP` | Item respawn time in sec after item is picked-up.<br>The item flag 0x02 - `RespawnSP` must be set to enable respawn for the item Thing. |
