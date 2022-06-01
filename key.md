@@ -9,18 +9,10 @@
 ## HEADER
 Required section. It defines basic animation properties:
  - FLAGS  
-  Defines the animation properties. Known flags:  
-    | Flag      | Description |
-    | ----------- | ----------- |
-    | 0x1 | Pause animation on first frame. |
-    | 0x2 | No animation loop. By default animation will loop indefinitely. |
-    | 0x4 | Pause animation on first frame. |
-    | 0x8 | Pause animation on last frame. |
-    | 0x10 | Restart animation if playing. |
-    | 0x20 | End animation smoothly (not verified). |
+  Defines [puppet track flags](pup.md#pup-flags). Probably not used in the game.
 
  - <a id="key-type"></a> TYPE  
-  Defines [puppet high priority](pup.md#pup-high-pri) 3DO node types. By default all 3DO joint nodes have low priority assigned in the puppet file (.pup), if the node type is defined here then node will have high priority value assigned. Set this field to `0xFFFF` if all nodes should have assigned high priority.
+  Defines [puppet high priority](pup.md#pup-high-pri) 3DO node types. By default all 3DO joint nodes have low priority assigned in the puppet file (.pup), if the node type is defined here then it will have high priority value assigned. Set this field to `0xFFFF` if all nodes should have high priority assigned.
 
  - FRAMES  
   The number of animation frames there are defined in this file aka length of this animation.
