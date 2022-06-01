@@ -21,7 +21,7 @@ Of the 24 base modes internally engine categorizes them into 2 groups:
    * 6 - Weapon 7
    * 7 - Weapon 8
 
-Each Mode contains up to 83 sub-modes aka puppet animation tracks. A puppet track defines specific animation for the puppet base state and sub-state the object is in, e.g.: unarmed-walking, armed-running, armed-walking back, unarmed-died, armed-activated etc... Not all sub-modes has to be defined for specific puppet mode, and each mode can inherit from previous mode (i.e. can be based on previous puppet mode).
+Each Mode contains up to 83 sub-modes aka puppet animation tracks. A puppet track defines specific animation for the puppet base state and sub-state the object is in, e.g.: unarmed-walking, armed-running, armed-walking back, unarmed-died, armed-activate etc... Not all sub-modes has to be defined for specific puppet mode, and each mode can inherit from previous mode (i.e. can be based on previous puppet mode).
 
 Structure:
 ```
@@ -66,10 +66,10 @@ By default any track will loop indefinitely if not specified otherwise by track 
 
 Structure:
 ```
-<sub-mode_name> <keyframe_file>.key  <flags>  <low_pri>  <high_pri>  # Some description
+<sub_mode_name> <keyframe_file>.key  <flags>  <low_pri>  <high_pri>  # Some description
 ```
 
-**state_name**: The text name of the sub-mode puppet state, e.g.: `stand`. See [sub-mode state table](#sub-mode-state-table) for all possible states.
+**sub_mode_name**: The text name of the sub-mode puppet state, e.g.: `stand`. See [sub-mode state table](#sub-mode-state-table) for all possible states.
 
 **keyframe_file**: The animation Keyframe file (.key) which is played when object is in this state.
 
@@ -77,12 +77,12 @@ Structure:
 
 | Hex Value | Name | Description |
 |:-----------|:------|-------------|
-| 0x01 | Use puppet FPS | Keyframe FPS is not used, instead track animation is played based on object movement speed. |
+| 0x01 | Use puppet FPS | Keyframe FPS is not used, instead track animation is played at speed based on the movement of puppet object in the game. |
 | 0x02 | No loop     | Don't loop track and finish playing track after the last animation frame. |
 | 0x04 | Pause on last frame | Pause track on the last animation frame. |
-| 0x08 | Reuse track | Recycle existing track with the same keyframe. Probably useful for tracks with `0x04` flag set. |
-| 0x10 | Disable fade-in | Disable fade-in linear interpolation for the track animation. |
-| 0x20 | Fade-out & No loop | Fade-out linear interpolation for track animation and finish playing track after the last frame.<br>Ignores flags: `0x10` and `0x04`. |
+| 0x08 | Restart active | Restart existing active track with the same keyframe. Probably useful for tracks with `0x04` flag set. |
+| 0x10 | Disable fade-in | Disable linear interpolation fade-in for track animation. |
+| 0x20 | Fade-out & No loop | Linear interpolation fade-out for track animation and finish playing track after the last frame.<br>Ignores flags: `0x10` and `0x04`. |
 | 0x40 | Unknown_40 | Unknown purpose, seen in puppet files. |
 
 **<a id="pup-low-pri"></a> low_pri**: Defines low animation priority value.
