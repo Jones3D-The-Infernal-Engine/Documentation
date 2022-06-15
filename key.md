@@ -25,7 +25,7 @@ Required section. It defines basic animation properties:
 
 ## MARKERS
 This sections define frame markers aka frame tags. It's unknown if markers are used in the game but can visual help the animation designer in the editor. There can be max 16 markers. This section is not required and can be omitted.
-There are 35 known marker types, you can see them [here](https://github.com/smlu/blender-sith/blob/a736befb49f6552281bceaf00657a3eecf669046/sith/key/key.py#L41-L73).
+There are 35 known marker types, you can see them [here](https://github.com/smlu/blender-sith/blob/9f97b85a448ec0468ebb1f35ea65a2dda8ede953/sith/key/key.py#L39-L72).
 
 Example:
 ```

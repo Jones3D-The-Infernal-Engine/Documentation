@@ -81,15 +81,16 @@ Structure:
 | 0x02 | No loop     | Don't loop track and finish playing track after the last animation frame. |
 | 0x04 | Pause on last frame | Pause track on the last animation frame. |
 | 0x08 | Restart active | Restart existing active track with the same keyframe. Probably useful for tracks with `0x04` flag set. |
-| 0x10 | Disable fade-in | Disable linear interpolation fade-in for track animation. |
-| 0x20 | Fade-out & No loop | Linear interpolation fade-out for track animation and finish playing track after the last frame.<br>Ignores flags: `0x10` and `0x04`. |
+| 0x10 | Disable fade-in | Disable linear interpolation fade-in for the track animation. |
+| 0x20 | Fade-out & No loop | Linear interpolation fade-out for the track animation and finish playing track after the last frame.<br>Ignores flags: `0x10` and `0x04`. |
 | 0x40 | Unknown_40 | Unknown purpose, seen in puppet files. |
 
-**<a id="pup-low-pri"></a> low_pri**: Defines low animation priority value.
+**<a id="pup-low-pri"></a> low_pri**: Defines the low animation priority value.
 
-**<a id="pup-high-pri"></a>high_pri**: Defines high animation priority value. The high priority nodes are defined by the [type header property](key.md#key-type) in keyframe file.
+**<a id="pup-high-pri"></a>high_pri**: Defines the high animation priority value. The high priority nodes are defined by the [type header property](key.md#key-type) in the keyframe file.
 
 ### Sub-Mode State Table
+The table defines all possible sub-mode states aka puppet movements with their ID number.
 | Name | Sub-Mode Number |
 |------|-----------------|
 | stand             | 1 |
@@ -195,6 +196,6 @@ Joints
 | 4 | Firing joint 2 |
 | 5 | Aiming joint 1 |
 | 6 | Aiming joint 2 |
-| 7 | Unknown joint 1 - probably custom assignable |
-| 8 | Unknown joint 2 - probably custom assignable |
-| 9 | Unknown joint 3 - probably custom assignable |
+| 7 | Unknown joint 1. *JKDF2 aim pitch (tur1.pup).* |
+| 8 | Unknown joint 2. *JKDF2 aim yaw (tur1.pup).*|
+| 9 | Unknown joint 3. *JKDF2 maybe aim roll.* |

@@ -42,14 +42,14 @@ Makes `track` animation to fade-in.
 ## GetMajorMode
 ```int GetMajorMode(Thing object)```
 
-Returns the [`major mode`](../pup.md#mode) for `object`'s puppet.
+Returns the current [`major mode`](../pup.md#mode) for the `object`'s puppet.
 
 **Parameters**:
  * object  
-  The game object to retrieve major mode. The object has to have model and puppet set.
+  The game object to retrieve the current major mode. The object has to have model and puppet set.
 
  **Return**  
-  On success major mode number is returned. On error -1 is returned.
+  On success current major mode number is returned. On error -1 is returned.
   
 ## IsModePlaying
 ```int IsModePlaying(Thing object, int submode)```
@@ -321,4 +321,4 @@ Waits for puppet [`submode`](../pup.md#pup-move-modes) track to end playing.
   The [puppet submode](../pup.md#sub-mode-state-table) number.
 
  **Return**  
-  If `submode` is playing 1 is returned, otherwise 0. On error -1 is returned
+  If `submode` is playing 1 is returned, otherwise 0. On error -1 is returned.
