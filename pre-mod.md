@@ -13,27 +13,35 @@ Before starting, I suggest that you make a copy of the installed game directory 
 
 4. Delete the .GOB files. Then launch your game, if it works you are on the good way. Else retry.
 
-# II. Set the game starting in DEVMODE.
+# II. Set the game to start in developer mode.
+There are 2 options to run the game in developer mode:
 
-1. On windows search bar, look for "RegEdit.exe" and open it.
+a.) Download and run the [devmode.bat](scripts/devmode.bat) script found in [scripts](scripts) folder.  
+*The script requires administration privileges to make changes under `HKEY_LOCAL_MACHINE` - Steam version and original installation.*
 
-2. Depending on the type of the game install, in the registry editor search for:  
-    * Original CD install:  
-      `HKEY_LOCAL_MACHINE\Software\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`
-    * Copy the game files from original CD:  
-      `HKEY_LOCAL_MACHINE\Software\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`  
-      or  
-      `HKEY_CURRENT_USER\SOFTWARE\Classes\VirtualStore\MACHINE\SOFTWARE\WOW6432Node\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`
-    * GOG version of the game:  
-      `HKEY_CURRENT_USER\SOFTWARE\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`
-    * STEAM version of the game:  
-      `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine`
+b.) Manually change the game config in Windows registry:
+  1. On windows search bar, look for "RegEdit.exe" and open it.
 
-3. For "Start Mode" data, change 0x00000000 to 0x00000002 like this:
-![regedit](resources/images/J3D_docu_regedit.jpg)
-<br/>If it doesn't exist create new DWORD with name "Start Mode".
+  2. Depending on the type of the game install, in the registry editor search for:  
+      * Original CD install:  
+        `HKEY_LOCAL_MACHINE\Software\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`
+        
+      * Copy the game files from original CD:  
+        `HKEY_LOCAL_MACHINE\Software\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`  
+        or  
+        `HKEY_CURRENT_USER\SOFTWARE\Classes\VirtualStore\MACHINE\SOFTWARE\WOW6432Node\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`
+        
+      * GOG version of the game:  
+        `HKEY_CURRENT_USER\SOFTWARE\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine\v1.0`
+        
+      * STEAM version of the game:  
+        `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine`
 
-4. Launch Indy3D.exe located in "Resource" folder. you must have a menu like this: ![regedit](resources/images/J3D_docu_devmenu.jpg)
+  3. Edit the "`Start Mode`" DWORD and set the value to 2 (*0x00000002*):
+  ![regedit](resources/images/J3D_docu_regedit.jpg)  
+  *If it doesn't exist create new DWORD with name "`Start Mode`"*.
+
+After the devmode config is set launch the game (e.g.: Indy3D.exe located in "Resource" folder) and the developer window should pop-up: ![J3D_docu_devmenu.jpg](resources/images/J3D_docu_devmenu.jpg)
 <br/>Try to start a random .CND level, if it works you are on the good way. Else retry.
 
 # III. Extract compact level files. (.CND)
