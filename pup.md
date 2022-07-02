@@ -91,91 +91,91 @@ Structure:
 
 ### Sub-Mode State Table
 The table defines all possible sub-mode states aka puppet movements with their ID number.
-| Name | Sub-Mode Number |
-|------|-----------------|
-| stand             | 1 |
-| walk              | 2 |
-| run               | 3 |
-| walkback          | 4 |
-| hopback           | 5 |
-| hopleft           | 6 |
-| hopright          | 7 |
-| strafeleft        | 8 |
-| straferight       | 9 |
-| turnleft          | 10 |
-| turnright         | 11 |
-| slidedownfwd      | 12 |
-| slidedownback     | 13 |
-| leap              | 14 |
-| jumpready         | 15 |
-| jumpup            | 16 |
-| jumpfwd           | 17 |
-| rising            | 18 |
-| fall              | 19 |
-| death             | 20 |
-| death2            | 21 |
-| fidget            | 22 |
-| fidget2           | 23 |
-| pickup            | 24 |
-| pushpullready     | 25 |
-| pushitem          | 26 |
-| pullitem          | 27 |
-| mountledge        | 28 |
-| grabledge         | 29 |
-| hangledge         | 30 |
-| hangshimleft      | 31 |
-| hangshimright     | 32 |
-| mountwall         | 33 |
-| climbwallidle     | 34 |
-| climbwallup       | 35 |
-| climbwalldown     | 36 |
-| climbwallleft     | 37 |
-| climbwallright    | 38 |
-| climbpullingup    | 39 |
-| whipclimbmount    | 40 |
-| whipclimbidle     | 41 |
-| whipclimbup       | 42 |
-| whipclimbdown     | 43 |
-| whipclimbleft     | 44 |
-| whipclimbright    | 45 |
-| whipclimbdismount | 46 |
-| whipswingmount    | 47 |
-| whipswing         | 48 |
-| mountfromwater    | 49 |
-| divefromsurface   | 50 |
-| mount1mstep       | 51 |
-| mount2mledge      | 52 |
-| jumprollback      | 53 |
-| jumprollfwd       | 54 |
-| land              | 55 |
-| hitheadl          | 56 |
-| hitheadr          | 57 |
-| hitsidel          | 58 |
-| hitsider          | 59 |
-| activate          | 60 |
-| activatehigh      | 61 |
-| drawweapon        | 62 |
-| aimweapon         | 63 |
-| holsterweapon     | 64 |
-| fire              | 65 |
-| fire2             | 66 |
-| fire3             | 67 |
-| fire4             | 68 |
-| stand2walk        | 69 |
-| walk2stand        | 70 |
-| stand2crawl       | 71 |
-| crawl2stand       | 72 |
-| walk2attack       | 73 |
-| victory           | 74 |
-| hit               | 75 |
-| hit2              | 76 |
-| grabarms          | 77 |
-| reserved          | 78 |
-| climbtoclimb      | 79 |
-| climbtohang       | 80 |
-| leapleft          | 81 |
-| leapright         | 82 |
-| fallforward       | 83 |
+| Name | Sub-Mode Number | Additional Info |
+|:------|:-----------------:| --------------- |
+| stand             | 1 | |
+| walk              | 2 | |
+| run               | 3 | |
+| walkback          | 4 | |
+| hopback           | 5 | |
+| hopleft           | 6 | |
+| hopright          | 7 | |
+| strafeleft        | 8 | |
+| straferight       | 9 | |
+| turnleft          | 10 | |
+| turnright         | 11 | |
+| slidedownfwd      | 12 | |
+| slidedownback     | 13 | |
+| leap              | 14 | |
+| jumpready         | 15 | |
+| jumpup            | 16 | |
+| jumpfwd           | 17 | |
+| rising            | 18 | |
+| fall              | 19 | |
+| death             | 20 | |
+| death2            | 21 | |
+| fidget            | 22 | |
+| fidget2           | 23 | |
+| pickup            | 24 | |
+| pushpullready     | 25 | |
+| pushitem          | 26 | |
+| pullitem          | 27 | |
+| mountledge        | 28 | |
+| grabledge         | 29 | |
+| hangledge         | 30 | |
+| hangshimleft      | 31 | |
+| hangshimright     | 32 | |
+| mountwall         | 33 | |
+| climbwallidle     | 34 | |
+| climbwallup       | 35 | |
+| climbwalldown     | 36 | |
+| climbwallleft     | 37 | |
+| climbwallright    | 38 | |
+| climbpullingup    | 39 | |
+| whipclimbmount    | 40 | |
+| whipclimbidle     | 41 | |
+| whipclimbup       | 42 | |
+| whipclimbdown     | 43 | |
+| whipclimbleft     | 44 | |
+| whipclimbright    | 45 | |
+| whipclimbdismount | 46 | |
+| whipswingmount    | 47 | |
+| whipswing         | 48 | |
+| mountfromwater    | 49 | |
+| divefromsurface   | 50 | |
+| mount1mstep       | 51 | |
+| mount2mledge      | 52 | |
+| jumprollback      | 53 | |
+| jumprollfwd       | 54 | |
+| land              | 55 | |
+| hitheadl          | 56 | |
+| hitheadr          | 57 | |
+| hitsidel          | 58 | |
+| hitsider          | 59 | |
+| activate          | 60 | |
+| activatehigh      | 61 | |
+| drawweapon        | 62 | |
+| aimweapon         | 63 | |
+| holsterweapon     | 64 | |
+| fire              | 65 | |
+| fire2             | 66 | |
+| fire3             | 67 | |
+| fire4             | 68 | un-aim weapon |
+| stand2walk        | 69 | |
+| walk2stand        | 70 | |
+| stand2crawl       | 71 | |
+| crawl2stand       | 72 | |
+| walk2attack       | 73 | |
+| victory           | 74 | |
+| hit               | 75 | |
+| hit2              | 76 | |
+| grabarms          | 77 | |
+| reserved          | 78 | |
+| climbtoclimb      | 79 | |
+| climbtohang       | 80 | |
+| leapleft          | 81 | |
+| leapright         | 82 | |
+| fallforward       | 83 | |
 
 # Joints
 This part defines joints for humanoid puppet. It can be omitted for non-humanoid puppets. What it does is assigning puppet joint type to the hierarchy mesh node number of the puppet 3DO model. The engine uses up to 10 joints.
