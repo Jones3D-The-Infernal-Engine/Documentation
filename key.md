@@ -24,8 +24,9 @@ Required section. It defines basic animation properties:
   The number of mesh joint nodes associated 3DO model has. Max 64.
 
 ## MARKERS
-This sections define frame markers aka frame tags. It's unknown if markers are used in the game but can visual help the animation designer in the editor. There can be max 16 markers. This section is not required and can be omitted.
-There are 35 known marker types, you can see them [here](https://github.com/smlu/blender-sith/blob/9f97b85a448ec0468ebb1f35ea65a2dda8ede953/sith/key/key.py#L39-L72).
+This section defines frame markers aka frame types. The frame markers are used to produce special fx when the frame is played. For example, if the player walk animation contains frame marker `1 - LeftFoot` it will produce surface walk sound fx (depending on the type of surface player walk on) when that frame is played. The played marker is also send to the game object's COG script via [callback](cog.md#message-callback) message.  
+There can be ad max 16 markers. There are 35 known marker types you can see them below.   
+This section is not mandatory and can be omitted.
 
 Example:
 ```
@@ -34,6 +35,46 @@ Example:
     7.000000 8 // 7 is frame number; 8 is marker type
     18.000000 9
 ```
+
+### Marker Types
+| Marker Type | Name | Additional Info |
+|-------------|-------|-------------|
+| 0 | Default               | |
+| 1 | LeftFoot              | |
+| 2 | RightFoot             | |
+| 3 | Attack                | |
+| 4 | Swing                 | |
+| 5 | SwingFinish           | |
+| 6 | SwimLeft              | |
+| 7 | Tread                 | water treading |
+| 8 | RunLeftFoot           | |
+| 9 | RunRightFoot          | |
+| 10 | Died                 | |
+| 11 | Jump                 | |
+| 12 | JumpUp               | |
+| 13 | SwimRight            | |
+| 14 | Duck                 | |
+| 15 | Climb                | |
+| 16 | Activate             | |
+| 17 | Crawl                | maybe crouch |
+| 18 | RunJumpLand          | |
+| 19 | ActivateRightArm     | |
+| 20 | ActivateRightArmRest | |
+| 21 | PlaceRightArm        | |
+| 22 | PlaceRightArmRest    | |
+| 23 | ReachRightArm        | |
+| 24 | ReachRightArmRest    | |
+| 25 | Pickup               | |
+| 26 | Drop                 | |
+| 27 | Move                 | |
+| 28 | InventoryPull        | |
+| 29 | InventoryPut         | |
+| 30 | AttackFinish         | |
+| 31 | TurnOff              | |
+| 32 | Unknown_32           | raft |
+| 33 | Unknown_33           | raft |
+| 34 | LeftHand             | indy snd fx climbhandleft |
+| 35 | RightHand            | indy snd fx climbhandright |
 
 ## KEYFRAME NODES
 This section defines animation frames for 3DO joint nodes.
