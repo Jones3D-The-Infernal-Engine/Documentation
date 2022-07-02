@@ -48,17 +48,17 @@ Each message is called with following parameters:
 ### There are 48 predefined COG messages:
  * activate
  * activated
- * aievent params: p0 = aiEventType, p1 = currentState, p2 =   oldState. eg.: aiEventType = 0x100 (aiModeChanged), p1= newMode, p2 = oldMode
+ * aievent params: p0 = aiEventType, p1 = current AI mode, p2 = depends on aiEventType. eg.: aiEventType = 0x100 (aiModeChanged), p1= oldMode, p2 = newMode
  * aim
  * arrived
  * arrivedwpnt
  * blocked
  * boarded
- * callback
+ * [callback](#message-callback)
  * changed
- * [created](#message-initialized)
+ * [created](#message-created)
  * crossed
- * damaged     sender: victim src: perpetrator params: p0 = damageValue p1= damageType
+ * damaged    sender: projectile weapon src: shooter params: p0 = damageValue p1= damageType
  * deactivated
  * deselected
  * entered
@@ -69,7 +69,7 @@ Each message is called with following parameters:
  * killed
  * leave
  * loading
- * missed   sender: victim src: perpetrator params: p0 = damageValue p1= damageType
+ * missed   sender: projectile weapon src: shooter params: p0 = damageValue p1= damageType
  * newplayer
  * pulse
  * [removed](#message-removed)
@@ -95,11 +95,36 @@ Each message is called with following parameters:
  * user6
  * user7
 
+### Message: callback
+| Param   | Value |
+|----------|:-------------|
+| senderType | COG_SYM_REF_THING |
+| sender | Thing object for which the played puppet submode keyframe produced this event message |
+| sourceType | COG_SYM_REF_NONE |
+| source | 0 |
+| Param0 | Played track slot num of puppet submode which produced this event message |
+| Param1 | [Key marker type](key.md#marker-types) which produced this event message |
+| Param2-Param3 | 0 - not used | 
+
+Sent by the engine to the Thing COG script when [puppet submode](pup.md#sub-mode-list) keyframe plays specific frame with [key marker](key.md#markers).  
+This event message is sent for these key marker types when actor is not in push/pull move state:
+  - 16 - Activate          - Note, also sent when activate to board/disembark raft.
+  - 21 - PlaceRightArm     - Note, also sent at the end of disembarking raft animation.
+  - 22 - PlaceRightArmRest - Note, also sent at the end of boarding raft animation.
+  - 23 - ReachRightArm
+  - 24 - ReachRightArmRest
+  - 25 - Pickup
+  - 26 - Drop
+  - 28 - InventoryPull
+  - 29 - InventoryPut
+  - 30 - AttackFinish - Note, also sent at the end of boarding/disembarking raft animation.
+  - 31 - TurnOff
+
 ### Message: created
 | Param   | Value |
-|----------|:-------------:|
+|----------|:-------------|
 | senderType | COG_SYM_REF_THING |
-| sender | Thing that was created |
+| sender | Thing for which the puppet submode is being played |
 | sourceType | COG_SYM_REF_NONE |
 | source | 0 |
 | Param0 ... Param3 | 0 |
@@ -109,7 +134,7 @@ Note, message is sent only when the engine is not in developer mode (debugMode &
 
 ### Message: initialized
 | Param   | Value |
-|----------|:-------------:|
+|----------|:-------------|
 | senderType | COG_SYM_REF_THING |
 | sender | Thing that was initialized |
 | sourceType | COG_SYM_REF_NONE |
@@ -121,7 +146,7 @@ Note, message is sent only when the engine is not in developer mode (debugMode &
 
 ### Message: removed
 | Param   | Value |
-|----------|:-------------:|
+|----------|:-------------|
 | senderType | COG_SYM_REF_THING |
 | sender | Thing which is removed |
 | sourceType | COG_SYM_REF_NONE |
@@ -136,7 +161,7 @@ User defined message no. 0.
 **Sent by the game engine**:
   * Sent to `weap_whip.cog` script by whip Thing object indicating that the whip swing mode has started..
     | Param   | Value |
-    |----------|:-------------:|
+    |----------|:-------------|
     | senderType | COG_SYM_REF_THING |
     | sender | "hip Thing |
     | sourceType | COG_SYM_REF_THING |
@@ -149,7 +174,7 @@ User defined message no. 2.
 **Sent by the game engine**:
   * When COG function [StartCutscene](#startcutscene-int-type-) is called `user2` message is sent to the player Thing. The player is invulnerable during the cutscene.
     | Param   | Value |
-    |----------|:-------------:|
+    |----------|:-------------|
     | senderType | COG_SYM_REF_THING |
     | sender | Player Thing |
     | sourceType | COG_SYM_REF_NONE |
