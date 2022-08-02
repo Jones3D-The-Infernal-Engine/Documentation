@@ -558,7 +558,7 @@ Below is the table of parameters that can be used by the template and parameter 
 | puppet | string | * | / | Assigns [PUP puppet file](pup.md) to the Thing/Template. |
 | range | float | Explosion, Particle, Weapon | Particle: maxthrust | Weapon range<br/><br/>or<br/><br/>Explosion range<br/>*Note: the engine sets explosion flag 0x2 - `HasBlastPhase` in this case.*<br/><br/>or<br/><br/>Particle max growth radius.<br>In this case the param **maxthrust** must be set (growth speed) |
 | rate | float | Particle, Weapon | Weapon: damage<bt/>Particle: count | Weapon: damage decay rate (distance).<br>Particle: num of seconds to destroy particle's elements (**count**) after particle is destroyed (**timer**). |
-| respawn | float | Item | typeflags |= `RespawnSP` | Item respawn time in sec after item is picked-up.<br>The item flag 0x02 - `RespawnSP` must be set to enable respawn for the item Thing. |
+| respawn | float | Item | typeflags = `RespawnSP` | The item respawn time in sec after the item is picked-up.<br>The item flag 0x02 - `RespawnSP` must be set to enable respawn for the item Thing. |
 | size | float | * | / | Specifies the Thing collide size area.<br />*Note: the engine also sets **movesize** to the size.* |
 | soundclass | string | * | / |Assigns SND sound class file to the Thing/Template.<br />Can be `none` i.e. to override the base Template value for the Thing. |
 | sprite | string | * | / | Assigns SPR sprite file to the Thing/Template.<br />Can be `none` i.e. to override the base Template value for the Thing.<br/>In case TemplateThing is explosion this parameter overrides `spritething` param. |
