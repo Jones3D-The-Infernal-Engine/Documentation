@@ -1,15 +1,15 @@
 # NDY Level file format
-This file describes documentation & specifications for **NDY** file (*.ndy) used in **Indiana Jones and the Infernal Machine** game to define game's level. 
+This file describes documentation & specifications for **NDY** file (*.ndy) used in **Indiana Jones and the Infernal Machine** game to define game's level.
 
 ## Abstract
-The **NDY** file format is text based as opposite to the **CND** file which is in binary format.  
+The **NDY** file format is text based as opposite to the **CND** file which is in binary format.
 It is an upgraded version of **JKL** file format used in games based on the *Sith* engine, such as *Star Wars Jedi Knight: Dark Forces II*. The specifications for **JKL** file can be found here: [https://www.massassi.net/jkspecs/](https://www.massassi.net/jkspecs/).
 
 ## Structure
-The level world is a convex mesh divided into sectors. Each sector is connected with another sector through adjoin surface. 
+The level world is a convex mesh divided into sectors. Each sector is connected with another sector through adjoin surface.
 All game objects are defined as *Things* and must be positioned within a sector.
 As in **JKL** file, the **NDY** file is structured into 17 sections.
-The start of each section is tagged with keyword '`SECTION:`' followed by the section name. Section that defines a *list* ends with keyword `end` otherwise the start of new section ends previous.  
+The start of each section is tagged with keyword '`SECTION:`' followed by the section name. Section that defines a *list* ends with keyword `end` otherwise the start of new section ends previous.
 The character '`#`' defines the comment line. All text fallowing after comment char to the end of the line is ignored by the game engine. i.e.: `# This is comment`
 
 NDY Sections:
@@ -30,7 +30,7 @@ NDY Sections:
  - [`TEMPLATES`](#section-templates)
  - [`THINGS`](#section-things)
  - [`PVS`](#section-pvs)
- 
+
  Types:
   * `int` = integer number e.g.: 0, 1, 100
   * `hex_int` = number in hexadecimal integer format. Usually used for flags.
@@ -42,10 +42,10 @@ NDY Sections:
   * `rgb` = vector i.e. (red/green/blue)
   * `rgb_int` = (\<int>/\<int>/\<int>) i.e. (red/green/blue)
   * `rgba` = vector4 i.e. (red/green/blue/alpha)
-  * `path_frame` = (\<float>/\<float>/\<float>:\<float>/\<float>/\<float>) i.e.(position:pyr_orientation) - (x,y,z:pitch/yaw/roll) 
+  * `path_frame` = (\<float>/\<float>/\<float>:\<float>/\<float>/\<float>) i.e.(position:pyr_orientation) - (x,y,z:pitch/yaw/roll)
   * `gradient_color` = (\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>/\<float>) <br/> i.e.: (rgba-top/rgba-middle/rgba-bottom-left/rgba-bottom-right)
   <br>
-  
+
   ## Section Copyright
 This section contains fixed Lucas Arts copyright ASCII art as seen below. It must be included in the NDY file.
 
@@ -93,7 +93,7 @@ SECTION: COPYRIGHT
 
 ## Section Header
 This section contains global world constants and properties e.g. world gravity, fog information etc...
-All below fields must be present in the header section. 
+All below fields must be present in the header section.
 
 ```
 SECTION: HEADER
@@ -151,13 +151,13 @@ end
 ```
 
 ## Section GeoResources
-This section contains the information about level world geometry i.e.: level surfaces, surface vertices, surface texture vertices, surface normals and adjoins. 
+This section contains the information about level world geometry i.e.: level surfaces, surface vertices, surface texture vertices, surface normals and adjoins.
 
 The surface adjoin represents a "portal" between level sectors.
 The adjoin entry consists of [adjoin flags](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/world/surface_adjoin.h#L17-L23), a opposite mirror adjoin number and the distance of the surface from the adjoin surface to the center of surface's sector.
 
 The world surface is n-gon polygon with an optional texture and vertices colors. The surface also has different properties i.e. [surface flags](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/world/surface.h#L15-L66) (surfflags) and polygon [face flags](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/primitives/face.h#L22-L37), [geometry mode](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/primitives/geomode.h#L8-L13), [light mode](https://github.com/smlu/ProjectMarduk/blob/7e1798517e8e28375e0a77b1def754a7da452786/libraries/libim/content/asset/primitives/light_mode.h#L8-L11), texture mode (not used), adjoin number and extra surface light color.
-All surfaces must all be convex. 
+All surfaces must all be convex.
 
 
 
@@ -190,9 +190,9 @@ World adjoins <int> # The number of adjoints in the list that follows
 
 # num: flags: mirror: dist:
 0: 0x3 22 0.59788090  # adjoint flags,
-                      # the number of mirror adjoin i.e. the opposite sector portal 
+                      # the number of mirror adjoin i.e. the opposite sector portal
                       # and distance from the adjoin surface to it's sector center
-                       
+
 1: 0x3 4 0.59788090   # mirror is the adjoin num 4
 2: 0x3 495 0.59788090
 3: 0x3 16 0.73713350
@@ -205,9 +205,9 @@ World adjoins <int> # The number of adjoints in the list that follows
 World surfaces <int> # The number of world surfaces in the list that follows
 
 # num: mat: surfflags: faceflags: geo: light: tex: adjoin: extralight: nverts: vertices: intensities:
-<int>: <int> <hex_int> <hex_int> <int> <int> <int> <int>     <rgba>     <int>  <int>,<int>[nverts]  <rgb>[nverts] 
+<int>: <int> <hex_int> <hex_int> <int> <int> <int> <int>     <rgba>     <int>  <int>,<int>[nverts]  <rgb>[nverts]
 
-# mat         = Material number in the materials section to be used for surface texture. 
+# mat         = Material number in the materials section to be used for surface texture.
                 If -1, no material is set.
 # adjoin      = Adjoin number in the adjoin list. If -1, surface doesn't have adjoin.
 # nverts      = The size of vertices list that follows
@@ -401,14 +401,30 @@ World scripts <int> # The max number of cog scripts to be used by the level.
 end
 ```
 
-## Section Cogs
-This section defines the list of all COGs which are used in the level. COGs are the level logics "brains". Each entry in the list takes [COG script file](cog.md) followed by the COG script parameters.
+## Section COGs
+This section defines the list of level's logic entities know as COG. They are the level "brains" which control the game flow and the level's logic. 
+Each entry in the list takes [COG script file](cog.md) name followed by initial values for all non-local variables (symbols) defined in the script.
 The parameters initialize the variables in the exact order as defined in the symbols section of COG script. The variables in [COG script](cog.md) defined as `local` can't be overwritten in NDY. Note that all non-local variables must be initialized or the game won't run.
 
-Parameter types:
-* games asset file name i.e.: sounds, materials, models etc...
-* index number in the level's georesource list, template list, thing list or sector number. The `-1` == null i.e. not used
-* vector
+The symbol values:
+ | Symbol type | Value |
+  | --- | --- |
+  | ai | AI filename |
+  | cog | COG index in the COG list |
+  | float/flex | decimal number |
+  | int | integer number |
+  | keyframe | KEY filename |
+  | material | MAT filename |
+  | model | 3DO filename |
+  | sector | sector number in sector list |
+  | sound | WAV filename |
+  | sprite | SPR filename |
+  | surface | surface number in surface list   |
+  | vector | vector value i.e.: `(x/y/z)` |
+  | template | template name |
+  | thing | thing index number in thing's list |
+  
+ *Note, if index is `-1` aka null, it means not initialized.*
 
 ### Structure
 ```
@@ -425,11 +441,11 @@ World cogs <int> # The max number of COGs to be used by the level.
 end
 ```
 
-### An example of COG entries from 00_cyn.ndy:  
+### An example of COG entries from 00_cyn.ndy:
 ```
-0: gen_MatAnim.cog gen_a4waterfall.mat 5.000000 
+0: gen_MatAnim.cog gen_a4waterfall.mat 5.000000
 
-Assigns 'gen_a4waterfall.mat' to variable 'animma' and set variable 'fps' to '5.000000'.  
+Assigns 'gen_a4waterfall.mat' to variable 'animma' and set variable 'fps' to '5.000000'.
 
 What this cog does is animate 'gen_a4waterfall.mat' material at 5 frames per second, i.e.: waterfall water animation.
 ```
@@ -468,29 +484,34 @@ end
 ```
 
 Each template has to have a unique name. If the template doesn't inherit from base template, the base parameter is `none`.
-The child template inherits all parameters from the base template and can overrides only specific parameters or none. Child templates can also inherit from other child templates. The order of declared templates is important i.e. the base template must be defined before child template.<br/><br/>There are 15 different Template types:
-* Free - empty Template, used for the engine purpose
-* Camera
-* Actor - enemy, civilian, cutscene actors (indy)
-* Weapon - weapon properties e.g.: weapon projectile
-* Debris
-* Item - pickup items e.g.: weapons, ammo, health kit, keys ect...
-* Explosion
-* Cog - level decorative objects e.g.: whip climb branch, wall ruins, wheelbarrow etc ... 
-* Ghost - usually the invisible objects e.g.: camera position object, camera focus object etc...
-* Corpse - dead Thing
-* Player
-* Particle - effects e.g.: waterfall droplets, sparks etc ...
-* Hint - map hint
-* Sprite - sprite object
-* Polyline
+The child template inherits all parameters from the base template and can overrides only specific parameters or none. Child templates can also inherit from other child templates. The order of declared templates is important i.e. the base template must be defined before child template.<br/>
 
-Each Template defined in the list must have type other than Free or the Template is ignored.
+### Thing type
+There are 15 different template/thing types:
+| type | value | description |
+| --- | ---: |--- |
+| Free | 0 | Empty template, used for the engine purpose |
+| Camera | 1 | Camera template. Mostly not used. |
+| Actor | 2 | Enemy, civilian, cutscene actors (indy) etc.. |
+| Weapon | 3 | Weapon properties e.g.: weapon projectile |
+| Debris | 4 | Debris template |
+| Item | 5 | Pickup items e.g.: weapons, ammo, health kit, keys ect... |
+| Explosion | 6 | Explosion template |
+| Cog | 7 | Level decorative objects e.g.: whip climb branch, wall ruins, wheelbarrow etc... |
+| Ghost | 8 | Usually the invisible objects e.g.: camera position object, camera focus object etc... |
+| Corpse | 9 | Dead Thing |
+| Player | 10 | Player template |
+| Particle | 11 | Effects e.g.: waterfall droplets, sparks etc ... |
+| Hint | 12 | Map hint |
+| Sprite | 13 | Sprite object |
+| Polyline | 14 | Polyline object |
 
-### Name convention
+Each Template defined in the list must have type other than `Free` or the Template is ignored. The type value is internal representation of the Template type and is used by the engine.
+
+### Naming convention
 Depending on the use of a template there are a few conventions used in their naming.
 Template name can contain max 63 characters.
-* `_<name>` - names prefixed with underscore i.e. '`_`' are used for base templates that other templates are to be inherited from and not to be used by Thing or [COG script](cog.md).  
+* `_<name>` - names prefixed with underscore i.e. '`_`' are used for base templates that other templates are to be inherited from and not to be used by Thing or [COG script](cog.md).
 *Note: If Thing is created from the base template the engine logs warning: "Warning -- create object from base-class template <template_name>"*
 * `+<name>` - names prefixed with plus sign i.e. '`+`' are used for templates that are used for special effect e.g. bullet projectile, explosion etc... Other templates can inherit from this template as well. This template can be also used in [COG script](cog.md) e.g. mine car sparks particles.
 * `<name>` - non-prefixed names are used for the "end" templates which are used by Things or scripts.
@@ -585,7 +606,7 @@ This section defines list of game objects in level known as Things. Each Thing i
 SECTION: THINGS
 
 World things <int> # The max number of things to be used by the level.
-                   # The number is usually the greater as the number of entries in the list 
+                   # The number is usually the greater as the number of entries in the list
                    # as it must also take into the account the Things that are created indirectly
                    # e.g. Thing created via `creatething` param.
 
