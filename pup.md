@@ -77,13 +77,13 @@ Structure:
 
 | Hex Value | Name | Description |
 |:-----------|:------|-------------|
-| 0x01 | Use puppet FPS | Keyframe FPS is not used, instead track animation is played at speed based on the movement of puppet object in the game. |
+| 0x01 | Puppet controlled | Animation is controlled by movement of puppet game object, and played at speed of the puppet movement. Keyframe's FPS is not used. |
 | 0x02 | No loop     | Don't loop track and finish playing track after the last animation frame. |
 | 0x04 | Pause on last frame | Pause track on the last animation frame. |
 | 0x08 | Restart active | Restart existing active track with the same keyframe. Probably useful for tracks with `0x04` flag set. |
 | 0x10 | Disable fade-in | Disable linear interpolation fade-in for the track animation. |
 | 0x20 | Fade-out & No loop | Linear interpolation fade-out for the track animation and finish playing track after the last frame.<br>Ignores flags: `0x10` and `0x04`. |
-| 0x40 | Unknown_40 | Unknown purpose, seen in puppet files. |
+| 0x40 | Set position to last frame position | When animation finish playing the new position of the animated game object will be set to the location of the last animation frame. Required for all animations to be used for force move. |
 
 **<a id="pup-low-pri"></a> low_pri**: Defines the low animation priority value.
 
