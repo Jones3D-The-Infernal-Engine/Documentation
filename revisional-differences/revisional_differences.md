@@ -421,7 +421,7 @@ TODO: check if this hypothesis is correct effectively - in particular does the `
 
 #### pru_hints.cog
 
-Additional `if` statement has been added to the *Indy lit the torch* hint: don't solve the hint if holding a lighter.
+Additional `if` statement has been added to the *Indy lit the torch* hint: don't solve the hint if holding something else than the lighter.
 
 #### pru_rollingboulder.cog
 
