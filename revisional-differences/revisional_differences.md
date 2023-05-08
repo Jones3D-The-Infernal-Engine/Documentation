@@ -294,8 +294,7 @@ There are also additional lines supposed to reset the camera FOV. Are these effe
 The sailor guarding the door in the starting room is being made invulnerable during the cutscene when knocking on the door. He stays invulnerable, this addition was most likely added to make sure the script doesn't break in case the sailor dies. He can be killed in 1.0 by typing the weapons cheat and shooting him with a bazooka, for example. Then, when exiting the room, the script breaks on `PlayVoice(sailor, sl_haltyou, 1.0, 0);` with an unhandled assertion:
 
 ```
-ASSERT: sithVoice.c(368):  (pThing->type == SITH_THING_PLAYER) || (pThing->type 
-== SITH_THING_ACTOR)
+ASSERT: sithVoice.c(368):  (pThing->type == SITH_THING_PLAYER) || (pThing->type == SITH_THING_ACTOR)
 ```
 
 #### 10_sea_vol_frets.cog
