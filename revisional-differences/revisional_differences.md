@@ -178,7 +178,7 @@ Please keep in mind that in this context it's assumed that any difference relate
 The following sections will focus on theoretical as well as effective differences related to the game. Reading the scripts may result in a hypothesis but it's vital that the in-game practical outcome be proven.  
 *This is especially important since the game sometimes works in mysterious ways ;-)*
 
-Also, not every change within the scripts will be discussed, like function calls moved to a different place, while practically it may not be visible in-game. Study the differences withing the [cogs_1.0_vs_1.2.diff](./cogs_1.0_vs_1.2.diff) file on your own to witness all theoretical changes.
+Also, not every change within the scripts will be discussed, like function calls moved to a different place, while practically it may not be visible in-game. Study the differences within the [cogs_1.0_vs_1.2.diff](./cogs_1.0_vs_1.2.diff) file on your own to witness all theoretical changes.
 
 ### Generic differences
 
