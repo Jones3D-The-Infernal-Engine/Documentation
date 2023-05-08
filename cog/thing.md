@@ -2,6 +2,7 @@
 > :warning: **Work in progress!**
 
 Incomplete list of COG functions for game object.
+- [DamageThing](#damagething)
 - [FadeInTrack](#fadeintrack)
 - [GetMajorMode](#getmajormode)
 - [IsModePlaying](#ismodeplaying)
@@ -20,6 +21,25 @@ Incomplete list of COG functions for game object.
 - [TrackToMode](#tracktomode)
 - [WaitMode](#waitmode)
 
+## DamageThing
+```float DamageThing(Thing victim, float damage, int damageclass, Thing source)```
+Damages `victim` game object.
+
+**Parameters**:
+ * victim  
+  The game object to damage.
+
+ * damage  
+  The amount of damage to apply to `victim`.
+
+ * damageclass  
+  The [damage class type](../flags.md#damage-class-flags) to use for damage.
+
+ * source  
+  The game object that inflicted the damage.
+
+ **Return**  
+  Returns the amount of actual damage applied to `victim`.
 
 ## FadeInTrack
 ```int FadeInTrack(Thing object, int track, float fadeTime)```

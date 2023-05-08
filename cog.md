@@ -77,20 +77,20 @@ The variable type can be one of the following:
 Internal value of each symbol type is defined as fixed number. This number is retrieved in the script code for example by calling `GetSenderType` or `GetSourceType`. The following table defines the type values:
 | Type   | Value |
 |----------|-------------:|
-| COG_SYM_REF_NONE | 0x0 |
-| COG_SYM_REF_INT | 0x1 |
-| COG_SYM_REF_FLEX | 0x2 |
-| COG_SYM_REF_THING |0x3 |
-| COG_SYM_REF_TEMPLATE | 0x4 |
-| COG_SYM_REF_SECTOR  | 0x5 |
-| COG_SYM_REF_SURFACE | 0x6
-| COG_SYM_REF_KEYFRAME| 0x7 |
-| COG_SYM_REF_SOUND  | 0x8 |
-| COG_SYM_REF_COG | 0x9 |
-| COG_SYM_REF_MATERIAL | 0xA |
-| COG_SYM_REF_VECTOR | 0xB |
-| COG_SYM_REF_MODEL | 0xC |
-| COG_SYM_REF_AICLASS | 0xD |
+| COG_SYM_REF_NONE | 0 |
+| COG_SYM_REF_INT | 1 |
+| COG_SYM_REF_FLEX | 2 |
+| COG_SYM_REF_THING | 3 |
+| COG_SYM_REF_TEMPLATE | 4 |
+| COG_SYM_REF_SECTOR  | 5 |
+| COG_SYM_REF_SURFACE | 6
+| COG_SYM_REF_KEYFRAME| 7 |
+| COG_SYM_REF_SOUND  | 8 |
+| COG_SYM_REF_COG | 9 |
+| COG_SYM_REF_MATERIAL | 10 |
+| COG_SYM_REF_VECTOR | 11 |
+| COG_SYM_REF_MODEL | 12 |
+| COG_SYM_REF_AICLASS | 13 |
 
 #### COG Symbol Attributes
 All attributes are optional and can be omitted when defining the variable. The attribute can't be set for the `message` type.
@@ -141,7 +141,7 @@ Each message is called with following parameters:
  * changed
  * [created](#message-created)
  * crossed
- * damaged    sender: projectile weapon src: shooter params: p0 = damageValue p1= damageType
+ * [damaged](#message-damaged)
  * deactivated
  * deselected
  * entered
@@ -178,7 +178,25 @@ Each message is called with following parameters:
  * user6
  * user7
 
+### Message: damaged
+Message is received when sender is damaged.
+
+| Param   | Value |
+|----------|:-------------|
+| senderType | COG_SYM_REF_SECTOR \| COG_SYM_REF_SURFACE \| COG_SYM_REF_THING |
+| sender | Victim Thing object or damaged surface/sector |
+| sourceType | COG_SYM_REF_THING |
+| source | Source thing object that caused the damage |
+| Param0 | The amount of damage to be inflicted |
+| Param1 | The [damage class type](flags.md#damage-class-flags)|
+| Param2-Param3 | 0 - not used |
+|Return (Optional) | In case victim is thing object, the return value can be set to override the damage amount to be actually inflicted. In this case if return value is 0 or less, no damage is inflicted. |
+
+Note, in some cases the sender and source thing objects can be the same object, e.g.: Object hitting floor surface or object from height, actor drowning, raft actor punctured leak damage, IM part damage, etc.
+
 ### Message: callback
+Message is sent by game engine to Thing COG script when [puppet submode](pup.md#sub-mode-list) keyframe plays specific frame with [key marker](key.md#markers).
+
 | Param   | Value |
 |----------|:-------------|
 | senderType | COG_SYM_REF_THING |
@@ -189,7 +207,7 @@ Each message is called with following parameters:
 | Param1 | [Key marker type](key.md#marker-types) which produced this event message |
 | Param2-Param3 | 0 - not used | 
 
-Sent by the engine to the Thing COG script when [puppet submode](pup.md#sub-mode-list) keyframe plays specific frame with [key marker](key.md#markers).  
+
 This event message is sent for these key marker types when actor is not in push/pull move state:
   - 16 - Activate          - Note, also sent when activate to board/disembark raft.
   - 21 - PlaceRightArm     - Note, also sent at the end of disembarking raft animation.
@@ -204,6 +222,8 @@ This event message is sent for these key marker types when actor is not in push/
   - 31 - TurnOff
 
 ### Message: created
+Message is sent by game engine to Thing COG script after Thing object was created.
+
 | Param   | Value |
 |----------|:-------------|
 | senderType | COG_SYM_REF_THING |
@@ -212,10 +232,11 @@ This event message is sent for these key marker types when actor is not in push/
 | source | 0 |
 | Param0 ... Param3 | 0 |
 
-Sent by the engine to the Thing COG script after Thing was created from the Template.  
-Note, message is sent only when the engine is not in developer mode (debugMode & 0x100 [dev] == 0).
+Note, message is sent only when the engine is not in developer mode (debugMode & 0x100 [INEDITOR] == 0).
 
 ### Message: initialized
+Message is sent by  game engine to Thing COG script after Thing object was initialized.
+
 | Param   | Value |
 |----------|:-------------|
 | senderType | COG_SYM_REF_THING |
@@ -224,10 +245,11 @@ Note, message is sent only when the engine is not in developer mode (debugMode &
 | source | 0 |
 | Param0 ... Param3 | 0 |
 
-Sent by the engine to the Thing COG script after Thing was initialized.  
-Note, message is sent only when the engine is not in developer mode (debugMode & 0x100 [dev] == 0).
+Note, message is sent only when the engine is not in developer mode (debugMode & 0x100 [INEDITOR] == 0).
 
 ### Message: removed
+Message is sent by game engine to Thing COG script and COG script which captured Thing when the Thing object is removed from the game.
+
 | Param   | Value |
 |----------|:-------------|
 | senderType | COG_SYM_REF_THING |
@@ -236,20 +258,18 @@ Note, message is sent only when the engine is not in developer mode (debugMode &
 | source | 0 |
 | Param0 ... Param3 | 0 |
 
-Sent to COG script of the Thing being removed from the game and to the COG script that captured the Thing by the game engine when the Thing is destroyed/killed.
-
 ### Message: user0
 User defined message no. 0.
 
 **Sent by the game engine**:
   * Sent to `weap_whip.cog` script by whip Thing object indicating that the whip swing mode has started..
-    | Param   | Value |
-    |----------|:-------------|
-    | senderType | COG_SYM_REF_THING |
-    | sender | "hip Thing |
-    | sourceType | COG_SYM_REF_THING |
-    | source | Player Thing |
-    | Param0 ... Param3 | 0 |
+| Param   | Value |
+|----------|:-------------|
+| senderType | COG_SYM_REF_THING |
+| sender | Whip Thing |
+| sourceType | COG_SYM_REF_THING |
+| source | Player Thing |
+| Param0 ... Param3 | 0 |
 
 ### Message: user2
 User defined message no. 2.
@@ -263,7 +283,6 @@ User defined message no. 2.
     | sourceType | COG_SYM_REF_NONE |
     | source | 0 |
     | Param0 ... Param3 | 0 |
-
 
 ## COG Host Functions
 ## System Cog functions
