@@ -1,0 +1,3160 @@
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/00_cyn_opening.cog cogs-1.2/00_CYN_Opening.cog
+--- cogs-1.0/00_cyn_opening.cog	2023-04-29 11:44:42.964000000 +0200
++++ cogs-1.2/00_CYN_Opening.cog	2023-04-29 12:16:35.518000000 +0200
+@@ -140,6 +140,8 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	# Prep titles...
+ 	SetThingAlpha(fadeplate, 1.0);
+ 	SetThingAlpha(fadeplate1, 1.0);
+@@ -166,14 +168,23 @@
+ 
+     player = GetLocalPlayerThing();
+ 
++	# Prep titles...
++	SetThingAlpha(fadeplate, 1.0);
++	SetThingAlpha(fadeplate1, 1.0);
++	SetThingAlpha(fadeplate2, 1.0);
++	SetThingAlpha(maintitle, 0.0);
++	SetThingAlpha(placetime, 0.0);
++
+ 	# Start on black...
+ 	SetCameraLookInterp(2, 0);
+ 	SetCameraPosInterp(2, 0);
+     SetCameraFocus(2, cam_1);
++	SetCurrentCamera(2); # moved HB
++	SetCameraFOV(25, 0, 0); # moved HB
+ 	
+ 	# a frame looking at the base of the canyon to force texture load
+ 	SetCameraSecondaryFocus(2, dummytarget);
+-	Sleep(0.1);
++	#### Sleep(0.01);
+ 
+ 	# hide all the 3dos
+ 	for (i_hide3d0 = 0; i_hide3d0 <= 47; i_hide3d0 = i_hide3d0 + 1) 
+@@ -181,9 +192,8 @@
+ 		SetThingFlags(object0[i_hide3d0], 0x80000);
+ 	}
+ 
++	Sleep(0.01); # new HB
+ 	SetCameraSecondaryFocus(2, ct_1);
+-	SetCurrentCamera(2);
+-	SetCameraFOV(25, 0, 0);
+ 	pl_colltype = GetCollideType(player);
+ 	SetCollideType(player, 0);
+ 	SetActorFlags(player, 0x200000);
+@@ -193,7 +203,7 @@
+ 	SetMaterialCel(topMat, 1);
+ 	SetMaterialCel(botMat, 1);
+ 
+-	Sleep(0.5); # Let engine generate a frame now
++	Sleep(0.01); # Let engine generate a frame now (was 0.5 HB)
+ 
+ 	StartCutScene(2);
+ 
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/01_bab_cinematic_4.cog cogs-1.2/01_BAB_Cinematic_4.cog
+--- cogs-1.0/01_bab_cinematic_4.cog	2023-04-29 11:44:42.979000000 +0200
++++ cogs-1.2/01_BAB_Cinematic_4.cog	2023-04-29 12:16:35.519000000 +0200
+@@ -660,11 +660,12 @@
+ 	# Give & take Marduk statuette...
+ 	StopKey(indy, in_keyTrack1, 0.0);
+ 	PlayKey(indy, in_giveMarduk, 4, 0x12, 0);       # 1.37 sec
+-	PlayKey(turner, trn_getMarduk, 4, 0x12, 0);     # 1.37 sec
++	trn_keyTrack2 = PlayKey(turner, trn_getMarduk, 4, 0x12, 0);     # 1.37 sec
+     sleep(0.685);
+     SetThingMesh(turner, 5, tuhand_mdkstat, 0);      
+     SetThingMesh(indy, 15, tu_hand, 0);
+-    sleep(0.685);
++    Sleep(0.65);
++	StopKey(turner, trn_keyTrack2, 0.0);
+ 	PlayKey(turner, trn_stowMarduk, 4, 0x12, 0);    # 2.23 sec
+ 	StopKey(indy, in_keyTrack1, 0.5); # Indy relaxes from giving statue
+     sleep(1.12);
+@@ -808,7 +809,7 @@
+     StopSound(jeeprevrs_chan, 0);
+     jeepshift_chan = PlaySoundThing(jeep_actor, jeep_shift_wav, 1, 10, 20, 0x0080);
+     WaitForSound(jeepshift_chan);
+-    StopSound(jeepshift_chan, 0);
++    #### StopSound(jeepshift_chan, 0);
+     in_keyTrack1 = PlayKey(jeep_actor, jeep_runforward, 2, 0x00, 0);
+     PlaySoundThing(jeep_fwd_wav, jeep_actor, 1, 10, 20, 0x0081);
+ 	AISetMoveSpeed(jeep_actor, 2.0);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/06_vol_opening.cog cogs-1.2/06_VOL_Opening.cog
+--- cogs-1.0/06_vol_opening.cog	2023-04-29 11:44:42.997000000 +0200
++++ cogs-1.2/06_VOL_Opening.cog	2023-04-29 12:16:35.521000000 +0200
+@@ -58,6 +58,8 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++ 	if (bSeen) return; # new HB
++
+     # fadeplate is solid
+ 	SetThingAlpha(fadeplate, 1.0);
+ 
+@@ -78,6 +80,8 @@
+ 	if (bSeen) return; # RT
+ 	bSeen = 1;
+ 
++	SetThingAlpha(fadeplate, 1.0); # new HB
++
+ 	player = GetLocalPlayerThing();
+ 
+     SetCameraLookInterp(2, 0);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/10_sea_vol_frets.cog cogs-1.2/10_SEA_Vol_Frets.cog
+--- cogs-1.0/10_sea_vol_frets.cog	2023-04-29 11:44:43.006000000 +0200
++++ cogs-1.2/10_SEA_Vol_Frets.cog	2023-04-29 12:16:35.523000000 +0200
+@@ -98,8 +98,8 @@
+ 	
+ # ............................... VARIABLES ....................................
+ 	
+-	vector		v_closedDoorPYR							local
+-	vector		v_closedDoorPosition					local
++	#### vector		v_closedDoorPYR							local
++	#### vector		v_closedDoorPosition					local
+ 
+ 	flex		in_rotRate								local
+ 	flex		vo_rotRate								local
+@@ -148,8 +148,8 @@
+ 	vo_rotRate = GetThingMaxRotVel(volod);
+ 	vo_headRate = GetThingMaxHeadVel(volod);
+ 
+-	v_closedDoorPYR = GetThingLVecPYR(bridgedoor);
+-	v_closedDoorPosition = GetThingPos(bridgedoor);
++	#### v_closedDoorPYR = GetThingLVecPYR(bridgedoor);
++	#### v_closedDoorPosition = GetThingPos(bridgedoor);
+ 	closedDoorSector = GetThingSector(bridgedoor);
+ 
+ 	return;
+@@ -431,7 +431,8 @@
+ 
+ opendoor:
+ 
+-	Rotate(bridgedoor, 90, 1, 0.1);
++	SetThingFlags(bridgedoor, 0x80000);
++	#### Rotate(bridgedoor, 90, 1, 0.1);
+ 	MoveToFrame(bridgeswitch, 1, 1.0);
+ 
+ 	return;
+@@ -439,15 +440,17 @@
+ # ...................................................................
+ 
+ closedoor:
++
+ 	SetCollideType(bridgedoor, 0);
+-	Rotate(bridgedoor, -90, 1, duration);
++	#### Rotate(bridgedoor, -90, 1, duration);
++	ClearThingFlags(bridgedoor, 0x80000);
+ 	Sleep(0.5);
+ 	PlaySoundThing(dr_close, bridgedoor, 1, 5, 10, 0);
+ 	MoveToFrame(bridgeswitch, 0, 1.0);
+ 
+ 	# Slam it closed...
+-	SetThingLVecPYR(bridgedoor, v_closedDoorPYR);
+-	SetThingPosEx(bridgedoor, v_closedDoorPosition, closedDoorSector);
++	#### SetThingLVecPYR(bridgedoor, v_closedDoorPYR);
++	#### SetThingPosEx(bridgedoor, v_closedDoorPosition, closedDoorSector);
+ 
+ 	return;
+ 
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/14_inf_cinematic_exit.cog cogs-1.2/14_INF_Cinematic_Exit.cog
+--- cogs-1.0/14_inf_cinematic_exit.cog	2023-04-29 11:44:43.018000000 +0200
++++ cogs-1.2/14_INF_Cinematic_Exit.cog	2023-04-29 12:16:35.524000000 +0200
+@@ -349,19 +349,20 @@
+ 	    SetCollideType(cage, 0);
+ 	    SetCollideType(sophia, 0);
+ 	    SetCollideType(controlunit, 0);
+-        Sleep(1);
++        #### Sleep(1);
++		Sleep(0.2);
+         
+         # Cut to Shot of Marduk Robot opening wings and locking in clamps
+         SetCameraFocus(2, mrdk_cam0);
+         SetCameraSecondaryFocus(2, mrdk_tgt0);
+         SetCurrentCamera(2);
+         SetCameraFOV(110, 0, 0);
+-        SetCameraFOV(80, 1, 4);
++        SetCameraFOV(60, 1, 4); # was 80
+ 
+ #Turning on Camera interps        
+         SetCameraLookInterp(2, 1);
+ 	    SetCameraPosInterp(2, 1);
+-        SetCameraInterpSpeed(2, 4);
++        SetCameraInterpSpeed(2, 7.0);
+         Sleep(0.001);
+         
+         // Shut off collisions to clamp and robot
+@@ -379,20 +380,21 @@
+         clampchanl=PlaySoundThing(clampsoundstart, robot_clamp, 1, 10, 20, 0x0080);     // 3.936 sec                              // 2.87  sec
+         Sleep(2.87);
+         PlaySoundThing(clampsoundstop, robot_clamp, 1, 10, 20, 0x0080);                 // 1.921 sec
+-        WaitForSound(clampchanl);
++        #### WaitForSound(clampchanl);
+         
+         // Lightning and Thunder
+         SetMaterialCel(botmat, 1);
+         headchannel=PlaySoundThing(horse_headopen, marduk_robot, 0.75, 10, 20, 0x0080);
+         //headkey=PlayKey(marduk_robot, head_on_anim, 1, 0x14, 0);
+         PlaySoundLocal(chargeup, 1, 0, 0, 0);
+-        Sleep(2);
++        Sleep(1.0); # was 2.0
+         lightningon=1;
+         SetTimer(0.2);
+         zapcycleint = PlaySoundThing(zapcycle, marduk_robot, 1, 10, 20, 0x0081);
+         //ThingLightAnim(marduk_robot, '0.0 0.5 0.9', 0.65, '0.0 0.9 0.9', 0.65, 1);
+-        SetCameraFOV(70, 1, 3);
+-        Sleep(3);
++        #### SetCameraFOV(70, 1, 3);
++        #### Sleep(3);
++		Sleep(2.0);
+         
+         // Shut off Camera Interps
+         SetCameraLookInterp(2, 0);
+@@ -531,22 +533,24 @@
+ 	    // Cut to Marduk statue...
+ 	    SetCameraFocus(2, cam_27);
+ 	    SetCameraSecondaryFocus(2, ct_28);
+-	    SetCameraFOV(80, 0, 0.0);
++	    SetCameraFOV(60, 0, 0.0); # was 80
+ 	    Sleep(0.01);
+-	    SetCameraFOV(60, 1, 5.0); # a suggestion only
++	    SetCameraFOV(35, 1, 5.0); # was 60
+ 	    shake = 1; # light
+ 	    Sleep(1.0);
+         
+ 	    // TO DO: maybe change how this sound is played once Marduk statue is in place...
+-        # lightningon = 0;
++        lightningon = 0;
+         SetTimer(0.1);
+-        cursound = PlayVoice(marduk_robot, md_marduksatisfied, 1, 0);
++		SetPulse(0.0);
++		StopSound(rumblsound, 0);
++        cursound = PlayVoice(marduk_robot, md_marduksatisfied, 1, 0); # 3.9
+         voiceflag=1;
+         WaitForSound(cursound);
+         voiceflag=0;
+-        SetMaterialCel(botmat, 1);
+-	    SetPulse(0.0);
+-	    Sleep(2.0);
++        SetMaterialCel(botmat, 0); # was 1
++	    #### SetPulse(0.0);
++	    Sleep(1.0); # was 2.0
+         
+ 	    // TO DO:  fade out and end level!
+         AttachThingToThing(fadeplane, cam_27);
+@@ -559,7 +563,7 @@
+         allpartsplaced = 3;
+         partisplaced = 2;
+         lightningon = 0;
+-        StopSound(rumblsound, 0);
++        #### StopSound(rumblsound, 0);
+         StopSound(zapcycleint, 0);
+         finalcamsect=GetThingSector(cam_27);
+         SectorSound(finalcamsect, zapcycle, 0);
+@@ -735,7 +739,7 @@
+ # ..............................................................................
+ timer:
+ 
+-    if (lightningon == 1)
++	if (lightningon == 1)
+     {
+         lightning_strike=CreatePolylineThing(zapsource, zaptarget, '0 0 0', lightningmat0[RandBetween(0, 3)], 0.05, 0.05, 0.05);
+         lightning_strike1=CreatePolylineThing(zapsource1, zaptarget, '0 0 0', lightningmat0[RandBetween(0, 3)], 0.05, 0.05, 0.05);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/14_inf_cinematic_trap.cog cogs-1.2/14_INF_Cinematic_Trap.cog
+--- cogs-1.0/14_inf_cinematic_trap.cog	2023-04-29 11:44:43.020000000 +0200
++++ cogs-1.2/14_INF_Cinematic_Trap.cog	2023-04-29 12:16:35.526000000 +0200
+@@ -460,7 +460,7 @@
+     	swapevent = 1;
+     	PlayKey(turner, tu_placeimp, 4, 0x12, 0);
+         sleep(1);
+-    
++		
+     	# IMP2 turns on...
+     	#SetThingFlags(imp2, 0x80000);
+     	#ClearThingFlags(imp2_on, 0x80000);
+@@ -474,13 +474,14 @@
+         SetThingModel(curpart, imp2_invis_on);
+         WaitForSound(placechan);
+         loopchan = PlaySoundThing(imppart2loop, curpart, 1, 4, 10, 1);
+-    	Sleep(0.5);
++    	#### Sleep(0.5);
+     
+     	# Turner's hand pulls lever...
+-        fx_channel=PlaySoundThing(leverpull, controlunit, 1, 10, 20, 1);
+     	PlayKey(controlunit, lv_leverpullL, 4, 0x12, 0);
+     	PlayKey(turner, tu_leverpull, 4, 0x12, 0);
+-        Sleep(2.5);
++		Sleep(0.3); # new HB
++        fx_channel=PlaySoundThing(leverpull, controlunit, 1, 10, 20, 1);
++	    Sleep(2.5);
+         StopSound(fx_channel, 0);
+     
+     	# Cut to zoom up-shot of cage...
+@@ -718,22 +719,9 @@
+     	
+     	# Turner: "In the name of freedom, man!  We're in a war!"
+     	curSound = PlayVoice(turner, tu_namefreedom, 1.0, 0);
+-    	StopKey(turner, tu_keyTrack1, 0.5);if ((GetCurItem(player) != 0) && (GetSenderID() == 1))
+-        {
+-            StopThing(player);
+-            StartCutscene(1);
+-            SetActorFlags(player, 0x200000);
+-            currand = RandBetween(0, 5);
+-            While (lastrand == currand)
+-            {
+-                currand = RandBetween(0, 5);
+-            }
+-            PlayVoice(player, indylineb0[currand], 1, 1);
+-            lastrand = currand;
+-            EndCutscene();
+-            ClearActorFlags(player, 0x200000);
+-        }
++    	StopKey(turner, tu_keyTrack1, 0.5);		
+     	Sleep(0.5);
++
+     	PlayKey(turner, tu_botharmsup, 4, 0x12, 0);
+     	WaitForSound(curSound);
+     
+@@ -1033,11 +1021,10 @@
+ 	if (swapevent == 2)
+ 	{
+ 		# Indy pulls revolver...
+-        ResetHolsterModel(indy, 2);
++        ResetHolsterModel(player, 2);
++		SetWeaponModel(player, GetLastPistol(player));
++    	CopyPlayerHolsters(player, indy);
+ 		PlaySoundThing(pull, indy, 1, -1, -1, 0x80);
+-		SetWeaponModel(indy, GetLastPistol(player));
+-		#in_swapItem1 = SetThingMesh(indy, 15, mod_in_gun, 0);
+-        #print("DONT FORGET TO COMMENT THIS OUT RANDYS FIX !!!!!");
+ 		swapevent = 0;
+ 	}
+ 	
+@@ -1052,9 +1039,10 @@
+ 	if (swapevent == 4)
+ 	{
+ 		# Indy holsters revolver...
+-        SetHolsterModel(indy, GetLastPistol(player), 17);
++        SetHolsterModel(player, GetLastPistol(player), 17);
++		ResetWeaponModel(player);
++    	CopyPlayerHolsters(player, indy);
+ 		PlaySoundThing(put, indy, 1, -1, -1, 0x80);
+-		ResetWeaponModel(indy);
+ 		swapevent = 0;
+ 	}
+ 		
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/actor_aiturner.cog cogs-1.2/actor_AITurner.cog
+--- cogs-1.0/actor_aiturner.cog	2023-04-29 11:44:43.057000000 +0200
++++ cogs-1.2/actor_AITurner.cog	2023-04-29 12:16:35.527000000 +0200
+@@ -27,6 +27,8 @@
+ vector		randVec						local
+ vector		dirVec						local
+ 
++template    imp2template=imp2           local # new HB
++
+ end
+ 
+ # ===================================================================
+@@ -62,6 +64,10 @@
+ 	dirVec = VectorRotate(dirVec, '0 45 0');
+ 	SetThingVel(t_powerup, dirVec);
+ 
++	t_powerup = CreateThing(imp2template, t_turner);				# create imp powerup (new HB!)
++	dirVec = VectorRotate(dirVec, '0 45 0');
++	SetThingVel(t_powerup, dirVec);
++
+ 	return;
+ 
+ 
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/aet_escape.cog cogs-1.2/aet_Escape.cog
+--- cogs-1.0/aet_escape.cog	2023-04-29 11:44:43.189000000 +0200
++++ cogs-1.2/aet_Escape.cog	2023-04-29 12:16:35.529000000 +0200
+@@ -291,13 +291,20 @@
+     Sleep(4.0);
+     SendMessage(debrisCogJ, user1);
+     SetPulse(0.0);
+-    
++
+ 	Sleep(1.0);
+ 
+ 	PlaySoundLocal(musicB, 1.0, 0, 0x0, 0);
+-    SetTimer(15.0); # rumbleWait Code.
++    ######## SetTimer(15.0); # rumbleWait Code.
+ 	}
+ 
++if ((GetSenderRef() == trigger8) && (goodToGo == 11))
++{
++	StopSound(rumbleChannel, 0.5); # rumbleWait Code.
++    SetPulse(0.0); # rumbleWait Code.
++	goodToGo = 10;
++}
++
+ return;
+     
+ # ........................................................................................
+@@ -398,6 +405,15 @@
+ 	SetTimer(0); # rumbleWait Code.
+ 	}
+ 
++if ((GetSenderRef() == trigger7) && (goodToGo == 10))
++{
++	Sleep((2.5 * Rand()) + 0.5);
++	SetPulse(0.1); # rumbleWait Code.
++	rumbleChannel = PlaySoundLocal(sndFalling, 1.0, 0, 0x1, 0);
++	goodToGo = 11;
++}
++
++
+ return;
+     
+ # ........................................................................................
+@@ -426,6 +442,8 @@
+ # ........................................................................................
+ timer:
+ 
++if (goodToGo > 9) return; # new HB
++
+ SetPulse(0.1);
+ rumbleChannel = PlaySoundLocal(sndFalling, 1.0, 0, 0x1, 0);
+ 
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/aet_opencut.cog cogs-1.2/aet_OpenCut.cog
+--- cogs-1.0/aet_opencut.cog	2023-04-29 11:44:43.238000000 +0200
++++ cogs-1.2/aet_OpenCut.cog	2023-04-29 12:16:35.530000000 +0200
+@@ -86,6 +86,8 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	# Start on black...
+ 	SetCameraLookInterp(2, 0);
+ 	SetCameraPosInterp(2, 0);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/bab_introscene.cog cogs-1.2/BAB_Introscene.cog
+--- cogs-1.0/bab_introscene.cog	2023-04-29 11:44:43.305000000 +0200
++++ cogs-1.2/BAB_Introscene.cog	2023-04-29 12:16:35.532000000 +0200
+@@ -72,6 +72,8 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	SetThingAlpha(fadeplane, 1.0); #make sure it's opaque
+ 	
+     # Start on black ...
+@@ -91,6 +93,8 @@
+ 	if (bSeen) return; # RT
+ 	bSeen = 1;
+ 
++	SetThingAlpha(fadeplane, 1.0); # new HB
++
+ 	# fadein ...
+ 	SetCameraLookInterp(2, 0); //no pan, no tilt
+     SetCameraPosInterp(2, 0); //no dolly
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/inf_elevcall.cog cogs-1.2/INF_ElevCall.cog
+--- cogs-1.0/inf_elevcall.cog	2023-04-29 11:44:43.681000000 +0200
++++ cogs-1.2/INF_ElevCall.cog	2023-04-29 12:16:35.533000000 +0200
+@@ -172,6 +172,7 @@
+                 DeselectWeapon(player);
+             }
+             PlayMode(player, 60, 0); 
++			Sleep(0.35);
+             PlaySoundThing(offbuttonsound, switch, 1, 10, 20, 0x0080);   	                    // changed from 58
+             MoveToFrame(callbutton, 1, butspeed);
+             WaitForStop(callbutton);
+@@ -212,6 +213,7 @@
+                 DeselectWeapon(player);
+             }
+             PlayMode(player, 60, 0);              // changed from 58
++			Sleep(0.35);
+             PlaySoundThing(offbuttonsound, switch, 1, 10, 20, 0x0080);
+             MoveToFrame(upbutton, 1, butspeed);
+             WaitForStop(upbutton);
+@@ -255,6 +257,7 @@
+                
+             }
+             PlayMode(player, 60, 0);			// changed from 58
++			Sleep(0.35);
+             PlaySoundThing(offbuttonsound, switch, 1, 10, 20, 0x0080);
+             MoveToFrame(dnbutton, 1, butspeed);
+             WaitForStop(dnbutton);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/inf_flyingrobot.cog cogs-1.2/INF_FlyingRobot.cog
+--- cogs-1.0/inf_flyingrobot.cog	2023-04-29 11:44:43.694000000 +0200
++++ cogs-1.2/INF_FlyingRobot.cog	2023-04-29 12:16:35.535000000 +0200
+@@ -171,25 +171,29 @@
+     //prep cameras
+     SetCameraLookInterp(2, 0);
+     SetCameraPosInterp(2, 0);
+-    SetCameraInterpSpeed(2, 0);
+-    Sleep(0.001);
++    #### SetCameraInterpSpeed(2, 0);
++    #### Sleep(0.001);
+     
+     //cut around to front pointing at head slightly below bot
+     SetCameraSecondaryFocus(2, robo_tgt0);
+     SetCameraFocus(2, robo_cam0);
+     SetCurrentCamera(2);
+     SetCameraFOV(40, 0, 0);
++    DestroyThing(marduk_leggs);
++    DestroyThing(impstand);
++	ClearThingFlags(horseman, 0x80000);
++
+     sleep(0.01);
+     SetCameraFOV(30, 1, 8);
+ 	PlaySoundLocal(horsemusic, 0.65, 0, 0x0, 0);
+     
+-    //destroy the old static marduk
+-    DestroyThing(marduk_leggs);
+-    DestroyThing(impstand);
++    #### //destroy the old static marduk
++    #### DestroyThing(marduk_leggs);
++    #### DestroyThing(impstand);
+     
+     //reveal the actor marduk
+     SetThingLight(horseman, '1 1 1', 0.02, 0);
+-    ClearThingFlags(horseman, 0x80000);
++    #### ClearThingFlags(horseman, 0x80000);
+     AISetCutsceneMode(horseman);
+     AttachThingtoThing(robo_tgt0, horseman);
+     PlaySoundThing(horse_headopen, horseman, 1, 10, 20, 0x0080);
+@@ -200,7 +204,8 @@
+     PlayVoice(m_voiceactor, mardukline, 1, 1);
+     voiceflag=1;
+     SetMaterialCel(botmat, 1);
+-    Sleep(1);
++    #### Sleep(1);
++	Sleep(0.2);
+     
+     //start the horseman walking
+     AISetMoveSpeed(horseman, 1);
+@@ -213,22 +218,25 @@
+     SetCurrentCamera(2);
+     SetCameraFOV(70, 0, 0);
+     AttachThingtoThing(robo_cam1, horseman);
+-    
++
+     //doors opening
+     SectorAdjoins(doorsector, 1);
+     doorchan=PlaySoundThing(doorslide, bigdoor0, 0.75, 30, 50, 0x0081);
+     MoveToFrame(bigdoor0, 1, 1);
+     MoveToFrame(bigdoor1, 1, 1);
+     Sleep(1);
++
++	SetCameraFOV(60, 1, 4.0); # new
++    
+     AIWaitForStop(horseman);
+-    Sleep(1);
+-    SetCameraFocus(2, robo_cam2);
+-    SetCurrentCamera(2);
+-    SetCameraFOV(40, 0, 0);
+-    Sleep(1);
++    #### Sleep(1);
++    #### SetCameraFocus(2, robo_cam2);
++    #### SetCurrentCamera(2);
++    #### SetCameraFOV(40, 0, 0);
++    #### Sleep(1);
+     //StopKey(horseman, headkey, 1);
+-    headchannel = PlaySoundThing(horse_headopen, horseman, 1, 10, 20, 0x0080);
+-    WaitForSound(headchannel);
++    #### headchannel = PlaySoundThing(horse_headopen, horseman, 1, 10, 20, 0x0080);
++    #### WaitForSound(headchannel);
+     SetMaterialCel(botmat, 0);
+     Sleep(0.5);
+                                         
+@@ -287,7 +295,8 @@
+     ClearAdjoinFlags(safeface1, 0x2);
+     ClearAdjoinFlags(safeface2, 0x2);
+     SetPulse(2);
+-    Sleep(5);
++    #### Sleep(5);
++	Sleep(3.0);
+     
+     CopyOrientAndPos(actorindy, player);
+     SetThingFlags(actorindy, 0x80000);
+@@ -305,7 +314,7 @@
+ user2:
+ 
+     if (levitatorin != 1) return;
+-    Sleep(1);
++    Sleep(1.0); # was 1.0 HB
+     levitatorin = 0;
+     StartCutscene(1);
+     //print("hit startcutscene");
+@@ -339,12 +348,14 @@
+     strutchan=PlaySoundThing(strutrotate, whipstrut, 1, 30, 50, 0x0081);
+     Rotate(whipstrut, 90, 2, 3);
+     Rotate(whipstrut1, 90, 2, 3);
+-    Sleep(3.5);
++    #### Sleep(3.5);
++	Sleep(3.1);
+     StopSound(strutchan, 0);
+     PlaySoundThing(strutstop, whipstrut, 1, 30, 50, 0x0080);
+     
+     SetPulse(0);
+-    Sleep(4);
++    #### Sleep(4);
++	Sleep(1.0); # does this work?
+     
+     CopyOrientAndPos(actorindy, player);
+     SetThingFlags(actorindy, 0x80000);
+@@ -354,7 +365,7 @@
+     SetCurrentCamera(1);
+     SetCameraFOV(90, 0, 0);
+     EndCutscene();
+-        
++  
+ return;
+ 
+ #........................................................................................
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/inf_imp1_pistons.cog cogs-1.2/INF_IMP1_Pistons.cog
+--- cogs-1.0/inf_imp1_pistons.cog	2023-04-29 11:44:43.701000000 +0200
++++ cogs-1.2/INF_IMP1_Pistons.cog	2023-04-29 12:16:35.537000000 +0200
+@@ -130,8 +130,8 @@
+     SetCameraFocus(2, camera_pos0);
+     SetCameraSecondaryFocus(2, camera_tgt0);
+     SetCurrentCamera(2);
+-    SetCameraFOV(110, 0, 0);
+-    Sleep(5);
++    SetCameraFOV(100, 0, 0);
++    Sleep(5.0);
+     SetCameraFOV(90, 0, 0);
+     
+     // return control to the player
+@@ -161,9 +161,9 @@
+     SetCameraFocus(2, camera_pos0);
+     SetCameraSecondaryFocus(2, camera_tgt0);
+     SetCurrentCamera(2);
+-    SetCameraFOV(110, 0, 0);
++    SetCameraFOV(100, 0, 0);
+     //play power up noise
+-    Sleep(4);
++    Sleep(3.0); # was 4.0
+     SetCameraFOV(90, 0, 0);
+     
+     // return control to the player
+@@ -192,14 +192,14 @@
+     SetCameraFocus(2, camera_pos0);
+     SetCameraSecondaryFocus(2, camera_tgt0);
+     SetCurrentCamera(2);
+-    SetCameraFOV(110, 0, 0);
++    SetCameraFOV(100, 0, 0); # was 110
+     //play power down noise
+     CreateThing(sparks, piston4);
+     sleep(0.5);
+     CreateThing(sparks, piston4);
+-    PlaySoundLocal(zapdown, 1, 0, 0, 1);
++    PlaySoundLocal(zapdown, 1, 0, 0, 0); # used to wait
+     //PlaySoundLocal(powerdwn, 1, 0, 0, 1);
+-    Sleep(2);
++    Sleep(2.0);
+     SetCameraFOV(90, 0, 0);
+     
+     // return control to the player
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/inf_impswitcher.cog cogs-1.2/INF_IMPswitcher.cog
+--- cogs-1.0/inf_impswitcher.cog	2023-04-29 11:44:43.703000000 +0200
++++ cogs-1.2/INF_IMPswitcher.cog	2023-04-29 12:16:35.538000000 +0200
+@@ -4,7 +4,7 @@
+ #
+ # Switches out imp_parts
+ #
+-# [SXC]
++# [SXC & HB]
+ #
+ # 6/15/99 SXC
+ #
+@@ -94,13 +94,19 @@
+     int         firstturnertime=0                       local
+     int         safetyflag                              local
+     int         horsestand=0                
+-    
++
+     flex        informlines                             local
+     flex        null_playerarmed                        local
+     flex        null_activ                              local
+     flex        full_playernull                         local
+     flex        do_it_baybee                            local
+-    flex        sorry_no_cigar                          local        
++    flex        sorry_no_cigar                          local 
++	
++	keyframe	in_rtarmup=0in_armsout_1_1.key			local # already in cnd HB
++	keyframe	in_botharmsup=0in_armsup_1_1.key		local # already in cnd HB 
++
++	int			in_track0=0								local # new HB
++	int			amtalking=0								local # new HB      
+     
+ end
+ 
+@@ -199,8 +205,17 @@
+         SetActorFlags(player, 0x200000);
+         MakeMeStop(player);
+         StartCutscene(0);
++		if (RandBetween(0, 1))
++		{
++			SetExtCamOffset('0.03 -0.12 0.16'); # interp cam up HB
++		}
++		else
++		{
++			SetExtCamOffset('-0.03 -0.12 0.16');
++		}
+         PlayVoice(player, notbudgeline, 1, 1);
+-        Sleep(0.5);
++        Sleep(0.3); # was 0.5 HB
++		RestoreExtCam(); # new HB
+         EndCutscene();
+         ClearActorFlags(player, 0x200000);
+         return;
+@@ -215,6 +230,7 @@
+     //full or empty stand no current weapon or item or holding something
+     if (screen == 0)
+         {
++			Print("null_activ");
+             screen = 1;
+             StopThing(player);
+             SetActorFlags(player, 0x200000);
+@@ -233,7 +249,7 @@
+             PlayVoice(player, indylineb0[currand], 1, 1);
+             lastrand = currand;
+             
+-            Sleep(1);
++            #### Sleep(1);
+             ClearActorFlags(player, 0x200000);
+             EndCutscene();
+             RestoreExtCam();
+@@ -248,6 +264,7 @@
+     //empty stand and the player is activating with an item or weapon
+     if (screen == 0)
+         {
++			Print("null_playerarmed");
+             screen = 1;
+             MakeMeStop(player);
+             StartCutscene(1);
+@@ -266,13 +283,15 @@
+             SetCollideType(curpart, 0);
+             TeleportThing(player, safepos);
+             ClearThingFlags(actorindy, 0x80000);
+-            DeselectWeaponWait(player);
+-            SetThingFlags(player, 0x80000);
++            #### DeselectWeaponWait(player);
++            #### SetThingFlags(player, 0x80000);
++			DeselectWeapon(player); # this is the way HB
+             
+ //create that part on the stand
+ // rumbler part
+             if (curthing_player == 14)
+             {
++				Print("placing the rumbler!");
+                 if (horsestand == 1)
+                 {
+                     PlayKey(actorindy, in_placelow, 4, 0x12, 0);            
+@@ -525,6 +544,7 @@
+     //stand has an item and player is activating with no current weapon or item
+     if (screen == 0)
+     {
++		Print("full_playernull");
+         screen = 1;
+         imp_placed = 0;
+         SetActorFlags(player, 0x200000);
+@@ -541,7 +561,7 @@
+         }
+         SetExtCamOffsetToThing(swingpos);
+         Sleep(0.35);
+-        
++					        
+         //destroy the part on the stand
+         DestroyThing(curpart);
+         
+@@ -554,7 +574,14 @@
+         EndCutscene();
+         RestoreExtCam();
+         screen = 0;
+-        SendMessage(targetcog, user2);
++		if (num_correctpart != 14)
++		{
++	        SendMessage(targetcog, user2);
++		}
++		if ((num_correctpart == 14) && (curpart_itemnum == 17))
++		{ 
++	        SendMessage(targetcog, user2);
++		}
+         ClearActorFlags(player, 0x200000);
+     }
+         
+@@ -564,7 +591,8 @@
+ 
+ do_it_baybee:
+ 
+-    if (curthing_player == 14)
++    Print("do_it_baybee");
++	if (curthing_player == 14)
+     {
+         MoveToFrame(curpart, 1, 1);
+         WaitForStop(curpart);
+@@ -574,7 +602,7 @@
+         safetyflag = 1;
+         WaitForSound(placechan);
+         PlaySoundThing(imppart1loop, curpart, 1, 4, 10, 1);
+-        Sleep(0.5);
++        #### Sleep(0.5);
+         SendMessage(targetcog, user0);
+     }
+     
+@@ -589,7 +617,7 @@
+         safetyflag = 1;
+         WaitForSound(placechan);
+         PlaySoundThing(imppart2loop, curpart, 1, 4, 10, 1);
+-        Sleep(0.5);
++        #### Sleep(0.5);
+         SendMessage(targetcog, user0);
+     }
+     
+@@ -604,7 +632,7 @@
+         safetyflag = 1;
+         WaitForSound(placechan);
+         PlaySoundThing(imppart3loop, curpart, 1, 4, 10, 1);
+-        Sleep(0.5);
++        #### Sleep(0.5);
+         SendMessage(targetcog, user0);
+     }
+     
+@@ -619,7 +647,7 @@
+         safetyflag = 1;
+         WaitForSound(placechan);
+         PlaySoundThing(imppart4loop, curpart, 1, 4, 10, 1);
+-        Sleep(0.5);
++        #### Sleep(0.5);
+         SendMessage(targetcog, user0);
+     }
+     
+@@ -641,16 +669,18 @@
+ # ========================================================================================
+ 
+ sorry_no_cigar:
++	
++	Print("sorry_no_cigar");
+ 
+     PlaySoundThing(imppartwrong, curpart, 1, 10, 20, 0);
+-    Sleep(1);
++    #### Sleep(1);
+     
+     currand = RandBetween(0, 5);
+     While (lastrand == currand)
+     {
+         currand = RandBetween(0, 5);
+     }
+-    PlayVoice(player, indylineb0[currand], 1, 1);
++    PlayVoice(actorindy, indylineb0[currand], 1, 1); # was player HB
+     lastrand = currand;
+ 
+ return;
+@@ -659,6 +689,12 @@
+ 
+ informlines:
+ 
++	Print("informlines");
++	PrintInt(firsttime);
++
++	if (amtalking != 0) return; # new HB
++	amtalking = 1; # new HB
++
+     SetActorFlags(player, 0x200000);
+     StopThing(player);
+     MakeMeStop(player);
+@@ -671,83 +707,96 @@
+     //handling with saylines
+     if ((firsttime == 0) && (num_correctpart == 14)) 
+     {
+-       PlayVoice(player, indyfirstline2, 1, 1);
+-       PlayVoice(player, indy_impline1, 1, 1);
+-       PlayVoice(player, indyfirstline0, 1, 1);
+-       Sleep(0.5);
+-       call full_playernull;
++		PlayVoice(player, indyfirstline2, 1, 1);
++		in_track0 = PlayKey(player, in_rtarmup, 4, 0x12, 0);
++		PlayVoice(player, indy_impline1, 1, 1);
++		StopKey(player, in_track0, 0.5);
++		PlayKey(player, in_botharmsup, 4, 0x02, 0);
++		PlayVoice(player, indyfirstline0, 1, 1);
++		call full_playernull;
+     }
+     
+     if ((firsttime == 0) && (num_correctpart == 15))
+     {
+-       PlayVoice(player, indyfirstline2, 1, 1);
+-       PlayVoice(player, indy_impline2, 1, 1);
+-       PlayVoice(player, indyfirstline0, 1, 1);
+-       Sleep(0.5);
+-       call full_playernull;
++		PlayVoice(player, indyfirstline2, 1, 1);
++		in_track0 = PlayKey(player, in_rtarmup, 4, 0x12, 0);
++		PlayVoice(player, indy_impline2, 1, 1);
++		StopKey(player, in_track0, 0.5);
++		PlayKey(player, in_botharmsup, 4, 0x02, 0);
++		PlayVoice(player, indyfirstline0, 1, 1);
++		call full_playernull;
+     }
+     
+     if ((firsttime == 0) && (num_correctpart == 16))
+     {
+-       PlayVoice(player, indyfirstline2, 1, 1);
+-       PlayVoice(player, indy_impline3, 1, 1);
+-       PlayVoice(player, indyfirstline0, 1, 1);
+-       Sleep(0.5);
+-       call full_playernull;
++		PlayVoice(player, indyfirstline2, 1, 1);
++		in_track0 = PlayKey(player, in_rtarmup, 4, 0x12, 0);
++		PlayVoice(player, indy_impline3, 1, 1);
++		StopKey(player, in_track0, 0.5);
++		PlayKey(player, in_botharmsup, 4, 0x02, 0);		
++		PlayVoice(player, indyfirstline1, 1, 1);
++		call full_playernull;
+     }
+     
+     if ((firsttime == 0) && (num_correctpart == 17))
+     {
+-       PlayVoice(player, indyfirstline2, 1, 1);
+-       PlayVoice(player, indy_impline4, 1, 1);
+-       PlayVoice(player, indyfirstline0, 1, 1);
+-       Sleep(0.5);
+-       call full_playernull;
+-    }
+-    
+-    if ((firsttime == 0) && (num_correctpart == 112))
+-    {
+-        //PlayVoice(player, indyfirstline2, 1, 1);
+-        PlayVoice(player, indy_impline5, 1, 1);
+-        PlayVoice(player, indyfirstline0, 1, 1);
+-        Sleep(0.5);
+-        call full_playernull;
++		PlayVoice(player, indyfirstline2, 1, 1);
++		in_track0 = PlayKey(player, in_rtarmup, 4, 0x12, 0);
++		PlayVoice(player, indy_impline4, 1, 1);
++		StopKey(player, in_track0, 0.5);
++		PlayKey(player, in_botharmsup, 4, 0x02, 0);
++		PlayVoice(player, indyfirstline1, 1, 1);
++		call full_playernull;
++    }
++    
++	if ((firsttime == 0) && (num_correctpart == 112))
++	{
++		in_track0 = PlayKey(player, in_rtarmup, 4, 0x12, 0);
++		PlayVoice(player, indy_impline5, 1, 1);
++		StopKey(player, in_track0, 0.5);
++		PlayKey(player, in_botharmsup, 4, 0x02, 0);
++		PlayVoice(player, indyfirstline0, 1, 1);
++		call full_playernull;
+     }
+     
+     //second time through
+     if ((firsttime == 1) && (num_correctpart == 14)) 
+     {
+-       PlayVoice(player, indyfirstline2, 1, 1);
+-       PlayVoice(player, indy_impline1, 1, 1);
+-       Sleep(0.5);
++		PlayVoice(player, indyfirstline2, 1, 1);
++		in_track0 = PlayKey(player, in_rtarmup, 4, 0x12, 0);
++		PlayVoice(player, indy_impline1, 1, 1);
++		Sleep(0.2);
+     }
+     
+     if ((firsttime == 1) && (num_correctpart == 15))
+     {
+-       PlayVoice(player, indyfirstline2, 1, 1);
+-       PlayVoice(player, indy_impline2, 1, 1);
+-       Sleep(0.5);
++		PlayVoice(player, indyfirstline2, 1, 1);
++		in_track0 = PlayKey(player, in_rtarmup, 4, 0x12, 0);
++		PlayVoice(player, indy_impline2, 1, 1);
++		Sleep(0.2);
+     }
+     
+     if ((firsttime == 1) && (num_correctpart == 16))
+     {
+-       PlayVoice(player, indyfirstline2, 1, 1);
+-       PlayVoice(player, indy_impline3, 1, 1);
+-       Sleep(0.5);
++		PlayVoice(player, indyfirstline2, 1, 1);
++		in_track0 = PlayKey(player, in_rtarmup, 4, 0x12, 0);
++		PlayVoice(player, indy_impline3, 1, 1);
++		Sleep(0.2);
+     }
+     
+     if ((firsttime == 1) && (num_correctpart == 17))
+     {
+-       PlayVoice(player, indyfirstline2, 1, 1);
+-       PlayVoice(player, indy_impline4, 1, 1);
+-       Sleep(0.5);
++		PlayVoice(player, indyfirstline2, 1, 1);
++		in_track0 = PlayKey(player, in_rtarmup, 4, 0x12, 0);
++		PlayVoice(player, indy_impline4, 1, 1);
++		Sleep(0.2);
+     }
+     
+     if ((firsttime == 1) && (num_correctpart == 112))
+     {
+-        //PlayVoice(player, indyfirstline2, 1, 1);
++		in_track0 = PlayKey(player, in_rtarmup, 4, 0x12, 0);
+         PlayVoice(player, indy_impline5, 1, 1);
+-        Sleep(0.5);
++		Sleep(0.2);
+     }
+     
+     if (firstturnertime == 0)
+@@ -760,6 +809,7 @@
+     ClearActorFlags(player, 0x200000);
+     EndCutscene();
+     RestoreExtCam();
++	amtalking = 0;
+     
+ return;
+ 
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/inf_introscene.cog cogs-1.2/INF_Introscene.cog
+--- cogs-1.0/inf_introscene.cog	2023-04-29 11:44:43.707000000 +0200
++++ cogs-1.2/INF_Introscene.cog	2023-04-29 12:16:35.540000000 +0200
+@@ -47,6 +47,8 @@
+     int         scenechek=0                         local
+ 
+ 	int			bSeen=0								local
++
++	int			in_track1							local # new HB
+     
+ end
+ 
+@@ -60,13 +62,15 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	# Start on black...
+ 	SetCameraLookInterp(2, 0);
+ 	SetCameraPosInterp(2, 0);
+ 	SetCameraFocus(2, cam0);
+-    SetCameraSecondaryFocus(2, cam0_tgt0);
+-    SetCurrentCamera(2);
+-    SetCameraFOV(80, 0, 0);
++	SetCameraSecondaryFocus(2, cam0_tgt0);
++	SetCurrentCamera(2);
++	SetCameraFOV(80, 0, 0);
+ 
+ 	return;
+ 
+@@ -116,7 +120,7 @@
+     //start to move Camera in
+     SetCameraLookInterp(2, 1);
+     SetCameraPosInterp(2, 1);
+-    SetCameraInterpSpeed(2, 3);
++    SetCameraInterpSpeed(2, 4.0); # was 3.0
+     Sleep(0.01);
+     SetCameraFocus(2, cam1);
+     SetCameraSecondaryFocus(2, cam1_tgt0);
+@@ -128,18 +132,27 @@
+     SetCameraFOV(90, 1, 3);
+     in_track0 = PlayKey(indyactor, in_stand4, 2, 0x00, 0);
+     PlayKey(indyactor, in_SideToHips, 4, 0x12, 1);
+-    Sleep(1);
+-    PlayVoice(indyactor, indyline0, 1, 1);
+-    PlayVoice(indyactor, indyline1, 1, 0);
+-    PlayKey(indyactor, in_thinking, 4, 0x12, 1);
+-    StopKey(indyactor, in_track0, 0.25);
++    #### Sleep(1);
++    #### PlayVoice(indyactor, indyline0, 1, 1);
++    #### PlayVoice(indyactor, indyline1, 1, 0);
++
++    #### PlayKey(indyactor, in_thinking, 4, 0x12, 1);
++    #### StopKey(indyactor, in_track0, 0.25);
++
++	in_track1 = PlayKey(indyactor, in_thinking, 4, 0x12, 0);
++    PlayVoice(indyactor, indyline0, 1.0, 1);
++	DebugPrint("sophia? turner?");
++    PlayVoice(indyactor, indyline1, 1.0, 0);
++	Sleep(2.0);
++	StopKey(indyactor, in_track0, 0.5);
++	StopKey(indyactor, in_track1, 0.5);
+     Sleep(0.5);
+     
+     //Restore Everything
+     CopyOrientAndPos(indyactor, player);
+     SetCameraLookInterp(2, 0);
+     SetCameraPosInterp(2, 0);
+-    SetCameraInterpSpeed(2, 0);
++    #### SetCameraInterpSpeed(2, 0);
+     Sleep(0.01);
+     SetCameraPosition(1, GetThingPos(finalcampos));
+     ClearThingFlags(player, 0x80000);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/inf_spinnerbots.cog cogs-1.2/INF_SpinnerBots.cog
+--- cogs-1.0/inf_spinnerbots.cog	2023-04-29 11:44:43.726000000 +0200
++++ cogs-1.2/INF_SpinnerBots.cog	2023-04-29 12:16:35.541000000 +0200
+@@ -59,22 +59,46 @@
+     if ((GetSenderRef() == tripsector) && (GetSourceRef() == player))
+     {
+         enterflag = 1;
+-        AIClearCutsceneMode(spinbot0);
+-        AIClearCutsceneMode(spinbot1);
++        if (spinbot0 != -1)
++		{
++			AIClearCutsceneMode(spinbot0);
++		}
++		if (spinbot1 != -1)
++		{
++			AIClearCutsceneMode(spinbot1);
++		}
+     }
+     
+     if ((GetSenderRef() == hallsector) && (GetSourceRef() == player))
+     {
+-        AISetCutsceneMode(spinbot0);
+-        AISetCutsceneMode(spinbot1);
+-        AISetCutsceneMode(spinbot2);
++        if (spinbot0 != -1)
++		{
++			AISetCutsceneMode(spinbot0);
++		}
++		if (spinbot1 != -1)
++		{
++			AISetCutsceneMode(spinbot1);
++		}
++		if (spinbot2 != -1)
++		{
++			AISetCutsceneMode(spinbot2);
++		}
+     }
+     
+     if ((GetSenderRef() == restartsector) && (GetSourceRef() == player))
+     {
+-        AIClearCutsceneMode(spinbot0);
+-        AIClearCutsceneMode(spinbot1);
+-        AIClearCutsceneMode(spinbot2);
++        if (spinbot0 != -1)
++		{
++			AIClearCutsceneMode(spinbot0);
++		}
++		if (spinbot1 != -1)
++		{
++			AIClearCutsceneMode(spinbot1);
++		}
++		if (spinbot2 != -1)
++		{
++			AIClearCutsceneMode(spinbot2);
++		}
+     }
+     
+ return;
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/inf_turnerhunt.cog cogs-1.2/INF_TurnerHunt.cog
+--- cogs-1.0/inf_turnerhunt.cog	2023-04-29 11:44:43.730000000 +0200
++++ cogs-1.2/INF_TurnerHunt.cog	2023-04-29 12:16:35.543000000 +0200
+@@ -358,7 +358,7 @@
+ 	PlaySoundLocal(deadturner, 1, 0, 0x0, 0);
+     
+     //create the imp2part where he falls
+-    CreateThing(imp2template, turner);
++    #### CreateThing(imp2template, turner); # try this in AI cog (new HB)
+     start = 0;
+     
+ return;
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/inf_turnerslast.cog cogs-1.2/INF_TurnersLast.cog
+--- cogs-1.0/inf_turnerslast.cog	2023-04-29 11:44:43.734000000 +0200
++++ cogs-1.2/INF_TurnersLast.cog	2023-04-29 12:16:35.544000000 +0200
+@@ -150,7 +150,7 @@
+     AISetMoveSpeed(turner, 2.0);
+ 	AISetMoveThing(turner, turner_mk_1, 1);
+ 	AISetLookThing(turner, turner_sight_1);
+-    AIWaitForStop(turner);
++    #### AIWaitForStop(turner);
+     tu_keyTrack1 = PlayKey(turner, trn_handships, 2, 0x10, 0);
+     PlayKey(turner, tu_rthand_1_1, 4, 0x12, 0);
+     WaitForSound(curline);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/jep_intro.cog cogs-1.2/jep_intro.cog
+--- cogs-1.0/jep_intro.cog	2023-04-29 11:44:43.966000000 +0200
++++ cogs-1.2/jep_intro.cog	2023-04-29 12:16:35.546000000 +0200
+@@ -51,12 +51,15 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	# Start on black...
+ 	SetCameraLookInterp(2, 0);
+ 	SetCameraPosInterp(2, 0);
+ 	SetCameraFocus(2, campos_lo);
+ 	SetCameraSecondaryFocus(2, camtarg);
+ 	SetCurrentCamera(2);
++	ResetCameraFOV(0, 0.0); # new HB
+ 
+ 	return;
+ 
+@@ -73,6 +76,7 @@
+ 	SetCameraFocus(2, campos_lo);
+ 	SetCameraSecondaryFocus(2, camtarg);
+ 	SetCurrentCamera(2);
++	ResetCameraFOV(0, 0.0); # new HB
+ 
+     # RT: Set up jeep materials
+ 	SetMaterialCel(topMat, 2);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/lag_intro.cog cogs-1.2/lag_intro.cog
+--- cogs-1.0/lag_intro.cog	2023-04-29 11:44:43.995000000 +0200
++++ cogs-1.2/lag_intro.cog	2023-04-29 12:16:35.547000000 +0200
+@@ -46,6 +46,8 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+     SetThingAlpha(fader, 1.0);
+ 
+     # Start on black...
+@@ -54,6 +56,7 @@
+ 	SetCameraPosInterp(2, 0);
+ 	SetCameraLookInterp(2, 0);
+ 	SetCurrentCamera(2);
++	ResetCameraFOV(0, 0.0); # new HB
+ 
+ 	return;
+ 
+@@ -64,12 +67,15 @@
+ 	if (bSeen) return; # RT
+ 	bSeen = 1;
+ 
++	SetThingAlpha(fader, 1.0); # new HB
++
+ #   if you're going to switch the camera to start your level cutscene, do it first before anything else!
+ 	SetCameraFocus(2, campos);
+ 	SetCameraSecondaryFocus(2, player);
+ 	SetCameraPosInterp(2, 0);
+ 	SetCameraLookInterp(2, 0);
+ 	SetCurrentCamera(2);
++	ResetCameraFOV(0, 0.0); # new HB
+ 
+ #   cutscene camera is set up and set as current, now sleep for 0.01 to let the engine generate a frame
+ 	sleep(0.01);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/nub_bullbutt.cog cogs-1.2/nub_BullButt.cog
+--- cogs-1.0/nub_bullbutt.cog	2023-04-29 11:44:44.046000000 +0200
++++ cogs-1.2/nub_BullButt.cog	2023-04-29 12:16:35.549000000 +0200
+@@ -76,9 +76,9 @@
+ #........................................................................................
+ activated:
+ 
+-if (begun == 1)	return;
+-begun = 1;
+ if (GetSenderRef() != lever) return;
++if (begun == 1)	return; # proper order HB
++begun = 1; # proper order HB
+ 	
+ AttachThingToThing(bubbleGhost0, rotateGhost0);
+ AttachThingToThing(bubbleGhost1, rotateGhost1);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/nub_catchvolodnikov.cog cogs-1.2/nub_CatchVolodnikov.cog
+--- cogs-1.0/nub_catchvolodnikov.cog	2023-04-29 11:44:44.047000000 +0200
++++ cogs-1.2/nub_CatchVolodnikov.cog	2023-04-29 12:16:35.550000000 +0200
+@@ -116,6 +116,9 @@
+ 	cog			cutcog
+ 	model		mod_vo_gearhand=hand_vo_turtgear.3do	local	#GGJ
+ 
++	int			push1_Blocking		local
++	int			push2_Blocking		local
++
+ 	
+ end
+ 
+@@ -282,24 +285,67 @@
+ 		return;
+ 	}
+ 															#---- Track push blocks
+-	if ( t_source == tPushBlock1 || t_source == tPushBlock2 )
++	if ( t_source == tPushBlock1 )
++	{
++#		DEBUGPRINT("Push Block ENTERED MSG");
++		if ( n_ID == 3 )										# Push Block + 1st floor wpnt blocker surfaces?
++		{
++			if ( t_sender == srfBlocksWPNT0 )
++			{
++#				DEBUGPRINT("Waypoint 25 Blocked");
++				push1_Blocking = 25;
++				AISetWpntFlags(25, 0x100);						# set AIWPNT_DISABLED
++			}
++			else if ( t_sender == srfBlocksWPNT5 )
++			{
++#				DEBUGPRINT("Waypoint 5 Blocked");
++				push1_Blocking = 23;
++				AISetWpntFlags(23, 0x100);						# set AIWPNT_DISABLED
++			}
++			else if ( t_sender == srfBlocksWPNT6 )
++			{
++#				DEBUGPRINT("Waypoint 6 Blocked");
++				b_DisabledWpnt6 = 1;
++				push1_Blocking = 6;
++				AISetWpntFlags(6, 0x100);						# set AIWPNT_DISABLED
++				AISetWpntFlags(16, 0x100);
++				AISetWpntFlags(23, 0x100);
++				AISetWpntFlags(24, 0x100);
++				AISetWpntFlags(25, 0x100);
++			}
++			else if ( t_sender == srfBlocksWPNT7 )
++			{
++#				DEBUGPRINT("Waypoint 7 Blocked");
++				push1_Blocking = 24;
++				AISetWpntFlags(24, 0x100);						# set AIWPNT_DISABLED
++			}
++		}
++
++		return;
++	}
++
++	if ( t_source == tPushBlock2 )
+ 	{
++#		DEBUGPRINT("Push Block ENTERED MSG");
+ 		if ( n_ID == 3 )										# Push Block + 1st floor wpnt blocker surfaces?
+ 		{
+ 			if ( t_sender == srfBlocksWPNT0 )
+ 			{
+ #				DEBUGPRINT("Waypoint 25 Blocked");
++				push2_Blocking = 25;
+ 				AISetWpntFlags(25, 0x100);						# set AIWPNT_DISABLED
+ 			}
+ 			else if ( t_sender == srfBlocksWPNT5 )
+ 			{
+ #				DEBUGPRINT("Waypoint 5 Blocked");
++				push2_Blocking = 23;
+ 				AISetWpntFlags(23, 0x100);						# set AIWPNT_DISABLED
+ 			}
+ 			else if ( t_sender == srfBlocksWPNT6 )
+ 			{
+ #				DEBUGPRINT("Waypoint 6 Blocked");
+ 				b_DisabledWpnt6 = 1;
++				push2_Blocking = 6;
+ 				AISetWpntFlags(6, 0x100);						# set AIWPNT_DISABLED
+ 				AISetWpntFlags(16, 0x100);
+ 				AISetWpntFlags(23, 0x100);
+@@ -309,6 +355,7 @@
+ 			else if ( t_sender == srfBlocksWPNT7 )
+ 			{
+ #				DEBUGPRINT("Waypoint 7 Blocked");
++				push2_Blocking = 24;
+ 				AISetWpntFlags(24, 0x100);						# set AIWPNT_DISABLED
+ 			}
+ 		}
+@@ -368,8 +415,9 @@
+ 		}
+ 	}
+ 															#---- Track push blocks
+-	if ( t_source == tPushBlock1 || t_source == tPushBlock2 )	
++	if ( t_source == tPushBlock1 )	
+ 	{
++#		DEBUGPRINT("Push Block ENTERED MSG");
+ 		if ( n_ID == 3 )										# Push Block + 1st floor wpnt blocker surfaces?
+ 		{
+ 			if ( t_sender == srfBlocksWPNT0 )
+@@ -388,15 +436,66 @@
+ 				b_DisabledWpnt6 = 0;
+ 				AIClearWpntFlags(6, 0x100);						# Clear AIWPNT_DISABLED
+ 				AIClearWpntFlags(16, 0x100);
+-				AIClearWpntFlags(23, 0x100);
+-				AIClearWpntFlags(24, 0x100);
+-				AIClearWpntFlags(25, 0x100);
++
++				if ( push2_Blocking != 6 )
++				{
++					if ( push2_Blocking != 23 )
++						AIClearWpntFlags(23, 0x100);
++					if ( push2_Blocking != 24 )
++						AIClearWpntFlags(24, 0x100);
++					if ( push2_Blocking != 25 )
++						AIClearWpntFlags(25, 0x100);
++				}
+ 			}
+ 			else if ( t_sender == srfBlocksWPNT7 )
+ 			{
+ #				DEBUGPRINT("Waypoint 7 Unblocked");
+ 				AIClearWpntFlags(24, 0x100);					# Clear AIWPNT_DISABLED
+ 			}
++
++			push1_Blocking = -1;
++		}
++	}
++															#---- Track push blocks
++	if ( t_source == tPushBlock2 )	
++	{
++#		DEBUGPRINT("Push Block ENTERED MSG");
++		if ( n_ID == 3 )										# Push Block + 1st floor wpnt blocker surfaces?
++		{
++			if ( t_sender == srfBlocksWPNT0 )
++			{
++#				DEBUGPRINT("Waypoint 25 Unblocked");
++				AIClearWpntFlags(25, 0x100);					# Clear AIWPNT_DISABLED
++			}
++			else if ( t_sender == srfBlocksWPNT5 )
++			{
++#				DEBUGPRINT("Waypoint 5 Unblocked");
++				AIClearWpntFlags(23, 0x100);					# Clear AIWPNT_DISABLED
++			}
++			else if ( t_sender == srfBlocksWPNT6 )
++			{
++#				DEBUGPRINT("Waypoint 6 Unblocked");
++				b_DisabledWpnt6 = 0;
++				AIClearWpntFlags(6, 0x100);						# Clear AIWPNT_DISABLED
++				AIClearWpntFlags(16, 0x100);
++
++				if ( push1_Blocking != 6 )
++				{
++					if ( push1_Blocking != 23 )
++						AIClearWpntFlags(23, 0x100);
++					if ( push1_Blocking != 24 )
++						AIClearWpntFlags(24, 0x100);
++					if ( push1_Blocking != 25 )
++						AIClearWpntFlags(25, 0x100);
++				}
++			}
++			else if ( t_sender == srfBlocksWPNT7 )
++			{
++#				DEBUGPRINT("Waypoint 7 Unblocked");
++				AIClearWpntFlags(24, 0x100);					# Clear AIWPNT_DISABLED
++			}
++
++			push2_Blocking = -1;
+ 		}
+ 	}
+ 
+@@ -475,6 +574,9 @@
+ 		n_crntWpnt		= 0;
+ 		n_plyrWpnt		= -1;
+ 
++		push1_Blocking	= -1;
++		push2_Blocking	= -1;
++
+ 		b_noEscape		= 0;										# Set constants
+ 		f_distDanger	= 0.80;
+ 		f_distZDanger	= 0.20;
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/nub_elevgear.cog cogs-1.2/nub_ElevGear.cog
+--- cogs-1.0/nub_elevgear.cog	2023-04-29 11:44:44.066000000 +0200
++++ cogs-1.2/nub_ElevGear.cog	2023-04-29 12:16:35.552000000 +0200
+@@ -2,7 +2,7 @@
+ #
+ # nub_ElevGear.cog
+ #
+-# [TL] [GGJ]
++# [TL] [GGJ] [HB]
+ #
+ # (C) 1999 LucasArts Entertainment Co. All Rights Reserved
+ #
+@@ -58,6 +58,7 @@
+ sector		weightSector
+ 
+ template    actortpl=indy_sh_actor					local
++
+ keyframe	fallKey=in_die_fall.key					local
+ keyframe	unlock=in_activate_medium.key			local
+ keyframe	kneel=0in_stand6.key			   		local
+@@ -123,9 +124,31 @@
+ int			kneeltrack								local
+ int			bridgemoving=0							local
+ 
+-#sound		blocked0=nub_weight_stop_c.wav			local
+-#thing		trapcharger
+-#keyframe 	crawl
++#........added by HB.........
++
++message		touched
++message		pulse
++
++sound		nomorepull=inxj036.wav					local # new HB
++
++thing		elevcamtarg								local # new HB
++
++template	ghost_tpl=ghost							local # new HB
++
++sector		targetsector							local # new HB
++
++#### surface	bridgeface								mask=0x480 # new HB
++#### surface	elevpreface								mask=0x480 # new HB
++
++vector		v_blockpos								local # new HB
++
++flex		blk_x									local # new HB
++flex		blk_y									local # new HB
++flex		blk_z									local # new HB
++
++int			onvator=0								local # new HB
++int			onetime=0								local # new HB
++int			noslam=0								local # new HB
+ 
+ end
+ 
+@@ -216,6 +239,7 @@
+ # elevator button code for going up and down
+ if ((GetSenderRef() == eyebutton1) && (charged == 0))
+ {
++	if (onvator == 0) return;
+ 	MakeMeStop();
+ 	DeselectWeaponWait(player);
+ 	StartCutscene(1);
+@@ -223,11 +247,14 @@
+ 	SetThingFlags(player, 0x80000);
+ 	ClearThingFlags(buttonActor, 0x80000);
+ 	ResetThing(player);
+-    CopyOrientandPos(buttonActor, player);
++    #### CopyOrientandPos(buttonActor, player);
++	TeleportThing(buttonActor, player);
+ 	
+-	SetCameraFocus(2, elevCam);
+-	SetCameraSecondaryFocus(2, elevTarg);
+-	SetCurrentCamera(2);
++	#### SetCameraFocus(2, elevCam);
++	#### SetCameraSecondaryFocus(2, elevTarg);
++	#### SetCurrentCamera(2);
++	#### SetCameraFOV(90, 0, 0.0);
++	SetExtCamOffsetToThing(1, elevCam); # new HB
+ 	PlayKey(buttonActor, unlock, 4, 0x12, 0);
+     Sleep(0.5);
+ 	PlayVoice(buttonActor, stuck, 1.0, 0);
+@@ -238,17 +265,20 @@
+ 	ClearThingFlags(player, 0x80000);
+     
+ 	SetCameraPosition(1, GetThingPos(elevCam));
+-	SetCurrentCamera(1);
++	#### SetCurrentCamera(1);
++	RestoreExtCam();
+ 	EndCutscene();
+     
+ }
+ if ((GetSenderRef() == eyebutton0) && (charged == 0))
+ 	{
++	if (onvator == 0) return;
+     PlayVoice(player, nope0[randbetween(0, 2)], 1.0, 1);
+ 	PlayMode(player, 60, 0);
+ 	}
+ if ((GetSenderRef() == eyebutton0) && (charged == 1) && (trapopen == 1))
+ {
++	if (onvator == 0) return;
+     if (going0 == 1) return;
+     SetCollideType(block, 0);
+ 	MakeMeStop();
+@@ -264,6 +294,7 @@
+ }
+ if ((GetSenderRef() == eyebutton1) && (charged == 1))
+ {
++	if (onvator == 0) return;
+ 	if (going0 == 1) return;
+     SetCollideType(block, 0);
+ 	MakeMeStop();
+@@ -279,6 +310,7 @@
+ }
+ if ((GetSenderRef() == eyebutton2) && (charged == 1))
+ {
++	if (onvator == 0) return;
+ 	if (going0 == 1) return;
+ 	SetCollideType(block, 0);
+ 	MakeMeStop();
+@@ -297,20 +329,17 @@
+ 
+ # ........................................................................................
+ entered:
+-Print("entered");
+-Print("GetSenderRef is");
+-Printint(GetSenderRef());
+-Print("elevfacebott is");
+-PrintInt(elevfacebott);
+-
+-
+-Print("GetSourceRef is");
+-Printint(GetSourceRef());
+-Print("Block is");
+-PrintInt(block);
+-Print("player is");
+-PrintInt(player);
+ 
++if ((GetSenderRef() == elev) || (GetSenderRef() == elevface))
++{
++	if (GetSourceRef() == player)
++	{
++		onvator = 1;
++		Print("onvator == 1");
++		SetCollideType(eyebutton0, 3);
++		SetCollideType(eyebutton1, 3);
++	}
++}
+ 
+ if ((GetSenderRef() == elev) && (jumping == 1) && (charged == 0))
+ {
+@@ -336,6 +365,7 @@
+ if ((GetSourceRef() == block) && (GetSenderRef() == elevface) && (placed == 0))
+ 	{
+ 	PlayVoice(player, stuck, 1.0, 1);
++	Sleep(0.1); # new HB
+ 	PlayVoice(player, missing, 1.0, 1);
+ 	}
+ 
+@@ -374,6 +404,7 @@
+     SetCameraFocus(2, cam0);
+ 	SetCameraSecondaryFocus(2, openingGhost);
+     SetCurrentCamera(2);
++	SetCameraFOV(90, 0, 0.0); # new HB
+ 	return;
+ }
+ if ((GetSenderRef() == topSector) && (GetSourceRef() == weight) && (placed == 1) && (done0 == 0))
+@@ -427,9 +458,10 @@
+ 	PlayMode(player, 1, 0);
+ 	
+ 	SetCurrentCamera(2);
++	SetCameraFOV(90, 0, 0.0); # new HB
+ 	SetCameraFocus(2, cam1);
+ 	SetCameraSecondaryFocus(2, weight);
+-	Sleep(7.0);
++	Sleep(4.0); # was 7.0 (new HB)
+ 
+ 	SetCurrentCamera(curcam);
+ 	SetCameraFocus(curcam, player);
+@@ -444,21 +476,16 @@
+ 
+ # ........................................................................................
+ exited:
+-Print("exited");
+-Print("cur frame of weight =");
+-PrintInt(GetCurframe(weight));
+-
+-Print("sourceRef =");
+-PrintInt(getsourceref());
+-Print("player =");
+-PrintInt(player);
+-
+-
+-Print("senderRef =");
+-PrintInt(getsenderref());
+-Print("weightsector = ");
+-PrintInt(weightsector);
+ 
++if ((GetSenderRef() == elev) || (GetSenderRef() == elevface))
++{
++	if (GetSourceRef() == player)
++	{
++		onvator = 0;
++		SetCollideType(eyebutton0, 0);
++		SetCollideType(eyebutton1, 0);
++	}
++}
+ 
+ if ((GetSenderRef() == elev) && (block0 == 1))
+ {
+@@ -485,7 +512,6 @@
+ 
+ # ........................................................................................
+ arrived:
+-PRINT("arrived");	
+ if (GetSenderRef() == bridge)
+ {
+     PlaySoundThing(bridgeStopSnd, bridge, 1.0, 20, 50, 0);
+@@ -496,7 +522,6 @@
+ 
+ if ((GetSenderRef() == weight) && (block0 == 1))
+ {
+-	Print("at bottom");
+ 	#ResetThing(player);
+ 	ClearActorFlags(player, 0x200000);
+ 	EndCutscene();
+@@ -554,12 +579,10 @@
+ 
+ # ........................................................................................
+ damaged:
+-Print("damaged");
+ 
+ # if player activates charger WITH IMP #4 and elevator is up
+ if ((GetSenderRef() == charger) && (GetCurFrame(elev) == 1) && (GetParam(1) == 0x4000))
+ 	{
+-	Print("charging elevator");
+ 	if (charged == 1) return;
+ 	charged = 1;
+ 	SetCollideType(elev, 3);
+@@ -574,16 +597,27 @@
+ 	SetThingLight(eyebutton1, '0.5 0.5 0.5', 0.5, 1.0);
+ 	SetThingLight(eyebutton2, '0.5 0.5 0.5', 0.5, 1.0);
+ 
+-	Sleep(1.0);
++	SetActorFlags(player, 0x200000);
++	#### Sleep(1.0);
++	Sleep(0.2);
+ 	StartCutscene(1);
+ 	curcam = GetCurrentCamera();
+ 	StopThing(player);
+-	SetActorFlags(player, 0x200000);
+ 	PlayMode(player, 1, 0);
+ 	
++	SetCameraLookInterp(2, 0);
++	SetCameraPosInterp(2, 0);
+ 	SetCurrentCamera(2);
++	SetCameraFOV(80, 0, 0.0);
+ 	SetCameraFocus(2, cam1);
+-	SetCameraSecondaryFocus(2, trapdoor);
++	
++	v_targetpos = VectorAdd(VectorTransformToOrient(player, '-0.15 -0.02 0.0'), GetThingPos(player));
++	targetsector = FindNewSectorFromThing(player, v_targetpos);
++	elevcamtarg = CreateThingAtPos(ghost_tpl, targetsector, v_targetpos, '0 0 0');
++	CaptureThing(elevcamtarg);
++	
++	#### SetCameraSecondaryFocus(2, trapdoor);
++	SetCameraSecondaryFocus(2, elevcamtarg);
+ 	SetCollideType(trapdoor, 0);
+ 	Rotate(trapdoor, -90, 0, 1.0);
+     PlaySoundThing(grateSnd, trapdoor, 1.0, -1, -1, 0x80);
+@@ -592,14 +626,19 @@
+ 	PlaySoundThing(chargedSnd, charger, 0.5, -1, -1, 0x81);
+ 	Sleep(3.0);
+ 	
++	SetCameraPosition(1, GetThingPos(cam1));
+ 	SetCurrentCamera(curcam);
+-	SetCameraFocus(curcam, player);
+-	SetCameraFOV(90, 0, 0.0);
++	#### SetCameraFocus(curcam, player);
++	#### SetCameraFOV(90, 0, 0.0);
++	#### SetCameraFocus(curcam);
++	ResetCameraFOV(0, 0.0);
++	DestroyThing(elevcamtarg);
+ 	ClearActorFlags(player, 0x200000);
+ 	EndCutScene();
+ 	#Print("That seems to have powered the elevator...!");
+ 	SetCollideType(trapdoor, 3);
+ 	}
++
+ # if player activates the charger WITH IMP #4 if elevator is down
+ if ((GetSenderRef() == charger) && (GetCurFrame(elev) == 0) && (GetParam(1) == 0x4000))
+ 	{
+@@ -613,16 +652,27 @@
+ 	SetThingLight(eyebutton1, '0.5 0.5 0.5', 0.5, 1.0);
+ 	SetThingLight(eyebutton2, '0.5 0.5 0.5', 0.5, 1.0);
+ 
+-	Sleep(1.0);
++	SetActorFlags(player, 0x200000);
++	#### Sleep(1.0);
++	Sleep(0.2);
+ 	StartCutscene(1);
+ 	curcam = GetCurrentCamera();
+ 	StopThing(player);
+-	SetActorFlags(player, 0x200000);
+ 	PlayMode(player, 1, 0);
+ 	
++	SetCameraLookInterp(2, 0);
++	SetCameraPosInterp(2, 0);
+ 	SetCurrentCamera(2);
++	SetCameraFOV(80, 0, 0.0);
+ 	SetCameraFocus(2, cam1);
+-	SetCameraSecondaryFocus(2, trapdoor);
++
++	v_targetpos = VectorAdd(VectorTransformToOrient(player, '-0.15 -0.02 0.0'), GetThingPos(player));
++	targetsector = FindNewSectorFromThing(player, v_targetpos);
++	elevcamtarg = CreateThingAtPos(ghost_tpl, targetsector, v_targetpos, '0 0 0');
++	CaptureThing(elevcamtarg);	
++
++	#### SetCameraSecondaryFocus(2, trapdoor);
++	SetCameraSecondaryFocus(2, elevcamtarg);
+ 	SetCollideType(trapdoor, 0);
+ 	Rotate(trapdoor, -90, 0, 1.0);
+     PlaySoundThing(grateSnd, trapdoor, 1.0, -1, -1, 0x80);
+@@ -631,9 +681,13 @@
+     PlaySoundThing(chargedSnd, charger, 0.5, -1, -1, 0x81);
+ 	Sleep(3.0);
+ 	
++	SetCameraPosition(1, GetThingPos(cam1));
+ 	SetCurrentCamera(curcam);
+-	SetCameraFocus(curcam, player);
+-	SetCameraFOV(90, 0, 0.0);
++	#### SetCameraFocus(curcam, player);
++	#### SetCameraFOV(90, 0, 0.0);
++	#### SetCameraFocus(curcam);
++	ResetCameraFOV(0, 0.0);
++	DestroyThing(elevcamtarg);
+ 	ClearActorFlags(player, 0x200000);
+ 	EndCutScene();
+ 	Print("That seems to have powered the elevator...!");
+@@ -647,10 +701,12 @@
+ 		StopThing(player);
+ 		StartCutscene(1);
+ 		curCam = GetCurrentCamera();
+-        SetCameraPosInterp(2, 0);
++        SetCameraLookInterp(2, 0); # new HB
++		SetCameraPosInterp(2, 0);
+ 		SetCameraFocus(2, buttonCam);
+ 		SetCameraSecondaryFocus(2, button);
+ 		SetCurrentCamera(2);
++		SetCameraFOV(90, 0, 0.0); # new HB
+ 		Sleep(1.5);
+         SetCameraPosInterp(2, 1);
+ 		SetCameraInterpSpeed(2, 2.0);
+@@ -715,6 +771,70 @@
+ }
+ 
+ return;
++
++# ........................................................................................
++
++touched:
++
++if (GetSenderRef() == block)
++{
++	SetPulse(1.0);
++}
++
++return;
++
++# ........................................................................................
++
++pulse:
++
++if (onetime != 0)
++{
++	SetPulse(0.0);
++	return;
++}
++
++v_blockpos = GetThingPos(block);
++blk_x = VectorX(v_blockpos);
++blk_z = VectorZ(v_blockpos);
++
++if ((blk_x < 11.5) && (blk_z < 0.0) && (onetime == 0))
++{
++	# Move block no more...HB
++	ClearThingFlags(block, 0x40000000);
++	onetime = 1;
++	Print("block is frozen!");
++	SetPulse(0.0);
++	WaitMode(player, 26);
++	WaitMode(player, 27);
++	PlayVoice(player, nomorepull, 1.0, 0);
++}
++
++if ((blk_x > 11.75) && (blk_z > 0.0))
++{
++	noslam = 0;
++}
++if ((blk_x < 11.55) && (blk_z > 0.0))
++{
++	noslam = 0;
++}
++
++if ((noslam == 0) && (blk_x > 11.55) && (blk_x < 11.75) && (blk_z > 0.0))
++{
++	# Snap block to measured position outside elev...HB
++	noslam = 1;
++	WaitMode(player, 26);
++	WaitMode(player, 27);
++	v_blockpos = GetThingPos(block);
++	blk_z = VectorZ(v_blockpos);
++	blk_x = 11.56600;
++	blk_y = -0.945900;
++	v_blockpos = VectorSet(blk_x, blk_y, blk_z);
++	targetsector = FindNewSectorFromThing(player, v_blockpos);
++	SetThingPosEx(block, v_blockpos, targetsector);
++	Print("slam x & y!");
++}
++
++return;
+ 
+ # ........................................................................................
+ end
+\ No newline at end of file
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/nub_hint2.cog cogs-1.2/NUB_hint2.cog
+--- cogs-1.0/nub_hint2.cog	2023-04-29 11:44:44.081000000 +0200
++++ cogs-1.2/NUB_hint2.cog	2023-04-29 12:16:35.554000000 +0200
+@@ -397,6 +397,12 @@
+ }
+ if (GetSenderRef() == ballSwitch)
+ {
++	
++	if (GetCurFrame(ballSwitch) == 1) 
++	{
++		return; # bulletproofing new HB & GGJ
++	}
++		
+ 	ballup = (1 - ballup);
+ 	if (ballup == 0)
+ 	{
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/nub_opencutscene.cog cogs-1.2/nub_OpenCutScene.cog
+--- cogs-1.0/nub_opencutscene.cog	2023-04-29 11:44:44.103000000 +0200
++++ cogs-1.2/nub_OpenCutScene.cog	2023-04-29 12:16:35.555000000 +0200
+@@ -65,6 +65,7 @@
+ 	SetCameraFocus(2, startCam);
+ 	SetCameraSecondaryFocus(2, startGhost);
+ 	SetCurrentCamera(2);
++	ResetCameraFOV(0, 0.0); # new HB
+ 
+ 	SetCollideType(fadePlate, 0);
+ 	ThingFadeAnim(fadePlate, 1, 0, 2.0, 0);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/nub_volcutscene.cog cogs-1.2/nub_VolCutScene.cog
+--- cogs-1.0/nub_volcutscene.cog	2023-04-29 11:44:44.132000000 +0200
++++ cogs-1.2/nub_VolCutScene.cog	2023-04-29 12:16:35.556000000 +0200
+@@ -410,10 +410,8 @@
+ 	vo_swapItem2 = SetThingMesh(vol2, 8, mod_vo_gearhand, 0);
+ 	AISetLookThingEyeLevel(indyactor, indymark);
+ 
+-	# TO DO: Randy!  Indy should pull current 1h weap...
+-
+ 	swapevent = 3;
+-	in_keyTrack1 = PlayKey(indyactor, in_gunout, 0, 0x14, 0); # see callback
++	in_keyTrack1 = PlayKeyEx(indyactor, in_gunout, 0, 4, 0x14, 0); # see callback
+ 
+ 	# Cut to V & Indy...
+ 	SetCameraLookInterp(2, 0);
+@@ -481,7 +479,6 @@
+ 	swapevent = 4;
+ 	StopKey(indyactor, in_keyTrack1, 0.0);
+ 	PlayKey(indyactor, in_gunaway, 4, 0x12, 1);
+-	#RestoreThingMesh(indyactor, in_swapItem1);
+ 
+ 	# Indy picks up gear...
+ 	AISetMoveThing(indyactor, grabmark, 1);
+@@ -570,19 +567,19 @@
+ 
+ 	if (swapevent == 3)
+ 	{
+-		ResetHolsterModel(indyactor, 2);
++		ResetHolsterModel(player, 2);
++		SetWeaponModel(player, GetLastPistol(player));
++    	CopyPlayerHolsters(player, indyactor);
+ 		PlaySoundThing(pull, indyactor, 1, -1, -1, 0x80);
+-		SetWeaponModel(indyactor, GetLastPistol(player));
+-		Print("pull gun");
+-		#in_swapItem1 = SetThingMesh(indyactor, 15, mod_in_revolver, 0);
+ 		swapevent = 0; # reset
+ 	}
+ 	if (swapevent == 4)
+ 	{
+         # Indy holsters revolver...
+-        SetHolsterModel(indyactor, GetLastPistol(player), 17);
++        SetHolsterModel(player, GetLastPistol(player), 17);
++		ResetWeaponModel(player);
++    	CopyPlayerHolsters(player, indyactor);
+ 		PlaySoundThing(put, indyactor, 1, -1, -1, 0x80);
+-		ResetWeaponModel(indyactor);
+ 		swapevent = 0;
+ 	}
+ 
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/olv_intro.cog cogs-1.2/olv_intro.cog
+--- cogs-1.0/olv_intro.cog	2023-04-29 11:44:44.179000000 +0200
++++ cogs-1.2/olv_intro.cog	2023-04-29 12:16:35.558000000 +0200
+@@ -40,12 +40,15 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	# Start on black...
+ 	SetCameraFocus(2, campos);
+ 	SetCameraSecondaryFocus(2, trackpos);
+ 	SetCameraPosInterp(2, 0);
+ 	SetCameraLookInterp(2, 0);
+ 	SetCurrentCamera(2);
++	ResetCameraFOV(0, 0.0); # new HB
+ 
+ 	return;
+ 
+@@ -65,6 +68,7 @@
+ 	SetCameraPosInterp(2, 0);
+ 	SetCameraLookInterp(2, 0);
+ 	SetCurrentCamera(2);
++	ResetCameraFOV(0, 0.0); # new HB
+ 
+ #   cutscene camera is set up and set as current,
+ #   now sleep for 0.01 to let the engine generate a frame
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/pru_arrivalcs.cog cogs-1.2/PRU_arrivalCS.cog
+--- cogs-1.0/pru_arrivalcs.cog	2023-04-29 11:44:44.233000000 +0200
++++ cogs-1.2/PRU_arrivalCS.cog	2023-04-29 12:16:35.560000000 +0200
+@@ -64,6 +64,8 @@
+ 
+ int		bSeen=0				local
+ 
++int		in_keytrack			local # new HB
++
+ end
+ 
+ # ========================================================================================
+@@ -75,6 +77,8 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	SetCameraFocus(2, CScamera0);
+ 	SetCameraSecondaryFocus(2, CSTarget0);
+ 	SetCameraLookInterp(2, 0);
+@@ -140,7 +144,7 @@
+ 	PlaySoundLocal(CSMus, 1.0, 0.0, 0x0, 0);
+ 	
+ 	StopThing(jeep);
+-	Sleep(1.0);
++	Sleep(0.5); # was 1.0 HB
+ 	jeepActor = CreateThing(jeepActortpl, jeep);
+ 	CaptureThing(jeepActor);
+ 	
+@@ -185,8 +189,11 @@
+ 
+     PlayVoice(actor, peru, 1, 0);
+     PlayKey(actor, transition1, 4, 0x12, 1);
+-	PlayKey(actor, reflect, 4, 0x12, 1);
+-	PlayKey(actor, transition2, 4, 0x12, 0);
++	#### PlayKey(actor, reflect, 4, 0x12, 1);
++	#### PlayKey(actor, transition2, 4, 0x12, 0);
++	in_keytrack = PlayKey(actor, reflect, 4, 0x12, 0); # new HB
++	Sleep(1.5); # new HB
++	StopKey(actor, in_keytrack, 0.5); # new HB
+ 
+ 	Sleep(0.5);
+ 
+@@ -194,7 +201,7 @@
+ 	
+     SendMessage(watersounds, user6);
+ 	
+-	Sleep(2.0);
++	Sleep(0.5); # was 2.0
+     
+     CopyOrientandPos(actor, player);
+ 	SetThingFlags(actor, 0x80000);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/pru_fallingdebris.cog cogs-1.2/PRU_FallingDebris.cog
+--- cogs-1.0/pru_fallingdebris.cog	2023-04-29 11:44:44.253000000 +0200
++++ cogs-1.2/PRU_FallingDebris.cog	2023-04-29 12:16:35.561000000 +0200
+@@ -37,7 +37,7 @@
+     vector      rocksVel            local
+     
+     int         deb                 local
+-    int         sound1              local
++    int         sound1=-1           local
+ 
+     flex        xVal                # x = width of room
+     flex        yVal                # y = length of room
+@@ -51,7 +51,10 @@
+ user0:
+ 
+     SetPulse(pulseTime);
+-	sound1 = PlaySoundThing(sndFalling, debris, 1.0, -1, -1, 0x880);
++	if (sound1 == -1)
++	{
++		sound1 = PlaySoundThing(sndFalling, debris, 1.0, -1, -1, 0x880);
++	}
+     return;
+     
+ # ========================================================================================
+@@ -59,7 +62,11 @@
+ user1:
+ 
+     SetPulse(0.0);
+-    StopSound(sound1, 0.0);
++	if (sound1 != -1)
++	{
++	    StopSound(sound1, 0.0);
++		sound1 = -1;
++	}
+     return;
+ 
+ # ========================================================================================
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/pru_hints.cog cogs-1.2/PRU_hints.cog
+--- cogs-1.0/pru_hints.cog	2023-04-29 11:44:44.262000000 +0200
++++ cogs-1.2/PRU_hints.cog	2023-04-29 12:16:35.563000000 +0200
+@@ -203,6 +203,7 @@
+ #(5) Indy lit the torch.
+ if (GetSenderRef() == torch)
+ {
++	if (GetCurWeapon(GetLocalPlayerThing()) != 13) return;   #added for rev GGJ 
+     SetHintSolved(hint5);
+ }
+ return;
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/pru_rollingboulder.cog cogs-1.2/PRU_rollingboulder.cog
+--- cogs-1.0/pru_rollingboulder.cog	2023-04-29 11:44:44.290000000 +0200
++++ cogs-1.2/PRU_rollingboulder.cog	2023-04-29 12:16:35.564000000 +0200
+@@ -180,8 +180,8 @@
+ int			climbing=0			local
+ int			safe=0				local
+ int			hanging=0			local
+-int			in_keyTrack1		local
+-int			in_keyTrack2		local
++int			in_keyTrack1=0		local
++int			in_keyTrack2=0		local
+ int			collision			local
+ int			musOnce=0			local
+ int			indyUp=0			local
+@@ -208,6 +208,9 @@
+ maxMultiplier=(1/maxDistance);
+ collision = GetCollideType(boulder);
+ ThingFadeAnim(fadePlate, 1, 0, 0.1, 0);
++
++ClearSurfaceFlags(hangLedge0, 0x1000000);			#Changed for Rev.  Can't hang here.
++
+ return;
+ # .................................................................................	
+ 
+@@ -259,6 +262,7 @@
+ 		return;
+ 	}
+ 	
++	ClearThingFlags(branch, 0x80000000);					#changed for rev
+ 	landed = 1;
+ 	SetCurrentCamera(curCam);
+ 	#SetCameraFocus(curCam, player);
+@@ -380,19 +384,21 @@
+   
+ 	#position of boulder along ghost objects.
+ 	nPos = nPos + 1;
+-	
+-    
+-	MoveThingToPos(boulder, GetThingPos(ghost0[nPos]), rollspeed0[nPos]);
++    MoveThingToPos(boulder, GetThingPos(ghost0[nPos]), rollspeed0[nPos]);
+ 		
+ 		#User messages cause debris to fall.
+ 		if (nPos == 1)
+ 		{
+ 			SendMessage(fallingDebris0, user0);
++			return;
+ 		}
++
+ 		if (nPos == 3)
+-		{
++		{        
+ 			SendMessage(fallingDebris0, user1);
+ 			SendMessage(fallingDebris1, user0);
++			SetInvDisabled(player, 2, 1); # new for rev HB GGJ RT
++			return;
+ 		}
+ 		
+ 		#Boulder passes over the last chunk of floor, causing it to start to fall.
+@@ -408,12 +414,12 @@
+                 StartCutscene(0);
+                 MakeMeStop();
+ 				Sleep(0.5);
+-                if (GetCurItem(player) != 2)
+-				{
+-					DeselectWeaponWait(player);
+-				}
+-                
+-				
++                #if (GetCurWeapon(player) != 2)
++                #### if (GetCurItem(player) != 2)
++				#{
++				#	DeselectWeaponWait(player);
++				#}
++                	
+ 				actor = CreateThing(actorTpl, player);
+ 				CaptureThing(actor);
+                 
+@@ -421,7 +427,7 @@
+ 				SetThingFlags(player, 0x80000);
+ 				SetActorFlags(player, 0x200000);
+ 				ClearThingFlags(actor, 0x80000);
+-				ResetThing(player);
++				## ResetThing(player);		## removed for Rev GGJ
+ 			
+ 				curCam = GetCurrentCamera();
+ 				SetCameraLookInterp(2, 0);
+@@ -437,6 +443,7 @@
+ 				call steamRoller;
+ 				return;
+ 			}
++			return;
+ 		}
+ 		
+ 		#return the camera.
+@@ -456,6 +463,8 @@
+ 			PlaySoundThing(floorfall, floor7, 1.0, -1.0, -1.0, 0x0);
+ 			SetTimer(2.5);
+ 			EndCutscene();
++			SetInvDisabled(player, 2, 0); # new for rev HB GGJ RT
++			return;
+ 		}
+         
+ 		if (nPos == 8)
+@@ -463,12 +472,13 @@
+ 			// Rotate boulder 180 degrees
+ 			SetThingLook( boulder, VectorSub('0 0 0', GetThingLVec(boulder)) );
+ 			ChangeSoundVol(boulderSound, 1, 1.0);
+-			
+-	
++			return;
+ 		}
++
+ 		if (nPos == 10)
+ 		{
+ 			SendMessage(fallingDebris2, user0);
++			return;
+ 		}
+ 		
+ 		if (nPos == 11)
+@@ -483,11 +493,13 @@
+ 			{
+ 				Call SteamRoller;
+ 			}
++			return;
+ 		}
+ 		if (nPos == 12)
+ 		{
+ 			SendMessage(fallingDebris2, user1);
+ 			SendMessage(fallingDebris1, user0);
++			return;
+         }
+         
+     	
+@@ -495,39 +507,51 @@
+ 		{
+ 			SendMessage(fallingDebris1, user1);
+ 			SendMessage(fallingDebris0, user0);
++			return;
+         }
+ 			
+ 		if (nPos == 15)
+ 		{
+ 			SendMessage(fallingDebris0, user1);
+ 			SendMessage(fallingDebris3, user0);
++			return;
+         }
+-        
++        		
+ 		if (nPos == 18)
+ 		{
+ 			SendMessage(fallingDebris3, user1);
+ 			SendMessage(fallingDebris4, user0);
+-				
++			
++			if (hanging == 1)
++			{
++				Print("hanging--remove control");
++				SetActorFlags(player, 0x200000); # no climb no more new HB
++			}
++
+ 			Sleep(1.0);
++
+             if (swinging == 1)
+ 			{
+-                call SteamRoller;
++				in_keyTrack2 == -2; # new HB
++				#### call SteamRoller;
+ 			}
+-			Sleep(0.5);
++            
++#			Sleep(0.5);										#removed for Rev
+ 
+ 			SendMessage(fallingDebris4, user1);
+ 			SendMessage(fallingDebris5, user0);
+ 			
+ 			
+ 			
+-			Sleep(1.5);
+-			SendMessage(fallingDebris5, user1);
++#			Sleep(1.5);										#removed for Rev
+ 			SendMessage(fallingDebris6, user0);
++			return;
+ 		}
+             
+         #Boulder crashes through the wall.
+ 		if (nPos == 19)
+ 		{
++            SendMessage(fallingDebris5, user1);				#moved from above for Rev
+ 			SendMessage(fallingDebris6, user1);
+ 			SendMessage(adjoinSettings, user0);
+ 			DestroyThing(block0);
+@@ -543,7 +567,8 @@
+ 				
+ 			if (indyup != 1)
+ 			{
+-	            Sleep(1.0);
++	            call steamroller;								#changed for rev
++				#####Sleep(1.0);
+ 			}
+             
+ 			SetCollideType(boulder, 0);
+@@ -567,6 +592,7 @@
+ 				SetThingVel(fragment, VectorScale(VectorAdd(RandVec(), '-0.5 -0.5 0.05'), 2.0));
+ 				SetThingRotVel(fragment, VectorScale(VectorAdd(RandVec(), '0.0 0.0 0.0'), 900.0));
+             }
++			return;
+         }
+ 		
+ 		if (nPos == 21)
+@@ -576,6 +602,7 @@
+ 			bitSet(bldrFlags, 0x1);
+ 			SetPhysicsFlags(boulder, bldrFlags);
+             MoveToFrame(wallBreakCam, 1, 2.5);
++			return;
+ 		}
+ 		
+ }										 
+@@ -610,7 +637,10 @@
+ # .................................................................................	
+ 
+ damaged:
+-#Damage must be caused by whip.	
++#Damage must be caused by whip.
++
++if (GetSenderRef() == boulder) return; # new HB
++
+ if (GetParam(1) != 0x10) return;
+     
+ #Cut to other camera if Indy whipswings across gap.
+@@ -651,15 +681,25 @@
+ #Find the distance between the player and the boulder.
+ distanceFlex=VectorDist(GetThingPos(boulder), GetThingPos(player));
+ 
+-if (hanging == 1) 
++# new HB GGJ RT
++if (hanging > -1)
+ {
+     #If Indy is hanging when the player passes overhead, he falls.
+-	if (distanceFlex < .4)
++	if (distanceFlex < 0.4)
+ 	{
+-		SetActorFlags(player, 0x200000);
+-		DetachThing(player);
+-		hanging == 0;
+-		Print("     You thought you were smart, didn't you?");
++		if ((nPos > 5) && (indyUp != 1))
++		{
++			if (hanging != 1)
++			{
++				call SteamRoller;
++			}
++			else
++			{
++				SetActorFlags(player, 0x200000);
++				DetachThing(player);
++			}
++			hanging = -1;
++		}		
+ 	}
+ }
+ 
+@@ -704,8 +744,8 @@
+ //VectorAdd(killCamUp, '0.0 0.0 1.0');
+ //SetThingPos(killCam, killCamUp);
+ 
++Sleep(0.4);		# Changed from 0.1 HB
+ DamageThing(player, 1000.0, 0x1, victim);
+-Sleep(0.1);
+ if (swinging == 0)
+ {
+     PlaySoundLocal(sndDie, 1.0, 0.0, 0x0, 0);
+@@ -715,17 +755,18 @@
+ 	swingKill = 1;
+ 	call SwingDeath;
+ }
+-#SetThingFlags(player, 0x80000);
+-#deadIndy = CreateThing(tempRef, player);
+-#CaptureThing(deadIndy);
+ 
+-#ClearThingFlags(deadindy, 0x80000);
++# actor rev GGJ
++SetThingFlags(player, 0x80000);
++deadIndy = CreateThing(tempRef, player);
++CaptureThing(deadIndy);
++ClearThingFlags(deadindy, 0x80000);
+ 
+ SetCameraFocus(2, killCam);
+ SetCameraSecondaryFocus(2, player);
+ SetCurrentCamera(2);
+ 
+-#PlayKey(deadindy, smashed, 4, 0x14, 0);
++PlayKey(deadindy, smashed, 4, 0x14, 0);
+ Sleep(0.75);
+ SetCollideType(boulder, 0);
+ StopSound(boulderSound, 3.0);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/pyr_bucketpuzzle.cog cogs-1.2/pyr_bucketpuzzle.cog
+--- cogs-1.0/pyr_bucketpuzzle.cog	2023-04-29 11:44:44.373000000 +0200
++++ cogs-1.2/pyr_bucketpuzzle.cog	2023-04-29 12:16:35.566000000 +0200
+@@ -106,6 +106,7 @@
+ flex	changecam=0.0		local
+ flex	startmachine=0.0	local
+ flex	bucketlines=0.0		local
++
+ end
+ 
+ 
+@@ -138,6 +139,9 @@
+ 	SetFaceGeoMode(waterface7, 0);
+ 
+ 	player = GetLocalPlayerThing();
++
++	SetThingCollideSize(bucket, 0.07); # new HB
++
+ 	
+ 	return;
+ 
+@@ -166,6 +170,7 @@
+ 	sleep(.5);
+ 	nullvalue = PlaySoundThing(bucketon, sumpdump, 1, 1, 10, 0);
+ 	ClearThingFlags(bucket, 0x10);
++	SetCollideType(bucket, 0); # new HB
+ 	
+ 	# take bucket out of inventory, pause
+ 	ChangeInv(player, 117, -1);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/pyr_hint.cog cogs-1.2/pyr_hint.cog
+--- cogs-1.0/pyr_hint.cog	2023-04-29 11:44:44.417000000 +0200
++++ cogs-1.2/pyr_hint.cog	2023-04-29 12:16:35.567000000 +0200
+@@ -4,7 +4,7 @@
+ #
+ # Solves hints
+ #
+-# [SXC] + [RKD]
++# [SXC] + [RKD] + [HB]
+ #
+ # (C) 1998 LucasArts Entertainment Co. All Rights Reserved
+ # ========================================================================================
+@@ -211,12 +211,16 @@
+ 	# player activates gemeye on monojackal 1 with gemeye as current item
+ 	if ((GetSenderRef() == hint19gem) && (GetCurItem(player) == 65))
+ 	{
++		SetHintSolved(hint13);
++		SetHintSolved(hint17);
+ 		SetHintSolved(hint19);
+ 	}
+ 
+ 	# player activates gemeye on monojackal 1 with gemeye as current item
+ 	if ((GetSenderRef() == hint32gem) && (GetCurItem(player) == 65))
+ 	{
++		SetHintSolved(hint13);
++		SetHintSolved(hint17);
+ 		SetHintSolved(hint32);
+ 	}
+ 
+@@ -235,12 +239,16 @@
+ 	# player activates gemeye on monojackal 1 with gemeye as current item
+ 	if ((GetSenderRef() == hint44gem) && (GetCurItem(player) == 65))
+ 	{
++		SetHintSolved(hint13);
++		SetHintSolved(hint17);
+ 		SetHintSolved(hint44);
+ 	}
+ 
+ 	# player activates gemeye on monojackal 1 with gemeye as current item
+ 	if ((GetSenderRef() == hint55gem) && (GetCurItem(player) == 65))
+ 	{
++		SetHintSolved(hint13);
++		SetHintSolved(hint17);
+ 		SetHintSolved(hint55);
+ 	}
+ 
+@@ -309,9 +317,17 @@
+ 		SetHintSolved(hint13);
+ 	}
+ 
++	# if player enters kid-trigger face with gemeye
++	if ((GetSenderRef() == hint17face) && (GetInv(player, 65) == 1))
++	{
++		SetHintSolved(hint13);
++		SetHintSolved(hint17);
++	}
++
+ 	# if player enters kid-trigger face with watch in hand and all hyenas are dead
+ 	if ((GetSenderRef() == hint17face) && (GetInv(player, 100) == 1) && (global8 == 11))
+ 	{
++		SetHintSolved(hint13);
+ 		SetHintSolved(hint17);
+ 	}
+ 
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/pyr_openingcutscene.cog cogs-1.2/pyr_openingcutscene.cog
+--- cogs-1.0/pyr_openingcutscene.cog	2023-04-29 11:44:44.460000000 +0200
++++ cogs-1.2/pyr_openingcutscene.cog	2023-04-29 12:16:35.569000000 +0200
+@@ -139,12 +139,15 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	# Start on black...
+ 	SetCameraLookInterp(2, 0);
+ 	SetCameraPosInterp(2, 0);
+ 	SetCameraFocus(2, startcam);
+ 	SetCameraSecondaryFocus(2, startcamlook);
+ 	SetCurrentCamera(2);
++	ResetCameraFOV(0, 0.0); # new HB
+ 
+ 	return;
+ 
+@@ -163,6 +166,7 @@
+ 	SetCameraFocus(2, startcam);
+ 	SetCameraSecondaryFocus(2, startcamlook);
+ 	SetCurrentCamera(2);
++	ResetCameraFOV(0, 0.0); # new HB
+ 
+     # hide stuff, mainly to prevent immediate texture cache-in
+ 	SetThingFlags(block1, 0x10);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/riv_parachute.cog cogs-1.2/Riv_Parachute.cog
+--- cogs-1.0/riv_parachute.cog	2023-04-29 11:44:44.633000000 +0200
++++ cogs-1.2/Riv_Parachute.cog	2023-04-29 12:16:35.570000000 +0200
+@@ -72,6 +72,8 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	# switch to cam1
+ 	SetCameraLookInterp(2, 0);
+ 	SetCameraPosInterp(2, 0);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/sea_brigdoor.cog cogs-1.2/sea_BrigDoor.cog
+--- cogs-1.0/sea_brigdoor.cog	2023-04-29 11:44:44.665000000 +0200
++++ cogs-1.2/sea_BrigDoor.cog	2023-04-29 12:16:35.572000000 +0200
+@@ -336,6 +336,7 @@
+ 		sailorexists = 1;
+ 		SetWeaponModel(sailor, 4); # Tokarev pistol
+ 		ClearThingFlags(sailor, 0x80000);
++		SetActorFlags(sailor, 0x8); # invulnerable HB
+ 		
+ 		# Establish a camera target near sailor...
+ 		if (sailtargexists != 0)
+@@ -825,8 +826,6 @@
+ 	
+ 	# Prep...
+ 	brig_ct_repeat = CreateThing(ghost_tpl, brig_ct_1);
+-	ClearThingFlags(fader2, 0x80000);
+-	SetThingAlpha(fader2, 1.0);
+ 
+ 	# Cut to the brig...
+ 	SetCameraPosInterp(2, 0);
+@@ -835,6 +834,9 @@
+ 	SetCameraSecondaryFocus(2, brig_ct_repeat);
+ 	SetCurrentCamera(2);
+ 	SetCameraFOV(61, 0, 0.0);
++	ClearThingFlags(fader2, 0x80000);
++	SetThingAlpha(fader2, 1.0);
++
+ 
+ 	# Make sure brig door is closed...
+ 	if (caughtinbrig == 1)
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/sea_intro.cog cogs-1.2/sea_intro.cog
+--- cogs-1.0/sea_intro.cog	2023-04-29 11:44:44.708000000 +0200
++++ cogs-1.2/sea_intro.cog	2023-04-29 12:16:35.574000000 +0200
+@@ -57,12 +57,15 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	# Start on black...
+ 	SetCameraFocus(2, cam_1);
+ 	SetCameraSecondaryFocus(2, ct_1);
+ 	SetCameraPosInterp(2, 0);
+ 	SetCameraLookInterp(2, 0);
+ 	SetCurrentCamera(2);
++	ResetCameraFOV(0, 0.0); # new HB
+ 
+ 	return;
+ 
+@@ -80,6 +83,7 @@
+ 	SetCameraPosInterp(2, 0);
+ 	SetCameraLookInterp(2, 0);
+ 	SetCurrentCamera(2);
++	ResetCameraFOV(0, 0.0);
+ 
+ #   cutscene camera is set up and set as current,
+ #	now sleep for 0.01 to let the engine generate a frame
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/shs_dlog_cistern.cog cogs-1.2/shs_dlog_cistern.cog
+--- cogs-1.0/shs_dlog_cistern.cog	2023-04-29 11:44:44.789000000 +0200
++++ cogs-1.2/shs_dlog_cistern.cog	2023-04-29 12:16:35.576000000 +0200
+@@ -29,6 +29,7 @@
+ int			plantbulb=104 	local
+ int			spoken=0		local # becomes 1 after 1st line, 2 after second 
+ int			triggered=0		local  
++
+ end
+ 
+ # ========================================================================================
+@@ -41,13 +42,20 @@
+ 	player = GetLocalPlayerThing();
+     return;
+ 
+-
+ entered:
+-	
++
+ 	if ((GetSenderRef() == trigger0) && (spoken == 0)) 
+ 	{
+-        if(IsThingVisible(statue) != 1) return;	# makes sure Indy is looking in right direction
+-
++		if ((VectorY(GetThingLVecPYR(statue)) > 45.0))
++		{
++			if (GetInv(player, plantbulb) != 1)
++			{
++				return;
++			}
++		}
++		
++		if(IsThingVisible(statue) != 1) return;	# makes sure Indy is looking in right direction
++	
+ 		MakeMeStop();
+ 		StartCutscene(1);
+ 		
+@@ -62,8 +70,7 @@
+ 			
+ 		# check if have bulb
+ 		if(GetInv(player, plantbulb) == 1)
+-		{
+-			
++		{		
+ 			# "...just the spot to water that bulb."
+ 			PlayVoice(player, in_spot, 1.0, 1);
+ 			spoken=2;
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/shs_intro.cog cogs-1.2/shs_intro.cog
+--- cogs-1.0/shs_intro.cog	2023-04-29 11:44:44.836000000 +0200
++++ cogs-1.2/shs_intro.cog	2023-04-29 12:16:35.577000000 +0200
+@@ -51,6 +51,8 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	# Start on black...
+ 	SetCameraFocus(2, cam1);
+ 	SetCameraSecondaryFocus(2, cam1_target1);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/shs_intro_commie.cog cogs-1.2/shs_Intro_Commie.cog
+--- cogs-1.0/shs_intro_commie.cog	2023-04-29 11:44:44.839000000 +0200
++++ cogs-1.2/shs_Intro_Commie.cog	2023-04-29 12:16:35.579000000 +0200
+@@ -30,7 +30,7 @@
+ 
+ 
+ # Item bin number
+-int			bin=87					local
++int			bin=0					local # was 87 now co-opted for guard duty HB
+ 
+ 
+ 
+@@ -82,6 +82,8 @@
+ 
+ activated:
+ 
++	if (bin != 0) return; # new HB
++
+ 	if (GetSenderRef() != item) return;
+ 	
+ 	player = GetLocalPlayerThing();
+@@ -91,6 +93,9 @@
+ 	# Disable player controls and stuff
+     SetActorFlags(player, 0x200000);
+ 	StartCutscene(1);
++
++	bin = 1; # new HB
++
+ 	StopThing(player);
+ 	DeselectWeaponWait(player);
+     
+@@ -104,7 +109,7 @@
+     SetCameraFOV(70, 0, 0);
+ 
+ 	# Make sure this pickup is valid
+-	if (GetInv(player, bin) < GetInvMax(player, bin))
++	if (GetInv(player, 87) < GetInvMax(player, 87))
+ 	{
+ 		# Capture player so we get callback message
+ 		indyactor = CreateThing(tpl_Indy, player);
+@@ -129,16 +134,20 @@
+ 
+ callback:
+ 
++	if (bin != 1) return; # new HB
++
++	bin = 2; # new HB
++
+ 	ReleaseThing(indyactor);
+ 
+ 	# Get rid of the item
+ 	DestroyThing(item);
+ 	
+ 	# Add to inventory
+-	ChangeInv(player, bin, 1.0);
+-	SetInvAvailable(player, bin, 1);
+-	JonesInvItemChanged(bin);
+-       
++	ChangeInv(player, 87, 1.0);
++	SetInvAvailable(player, 87, 1);
++	JonesInvItemChanged(87);
++      
+ 	# Wait a bit, then start the voice line
+     Sleep(1.0);
+ 	PlayVoice(indyactor, foundSnd, 1.0, 1);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/shs_treasuregate.cog cogs-1.2/shs_TreasureGate.cog
+--- cogs-1.0/shs_treasuregate.cog	2023-04-29 11:44:44.878000000 +0200
++++ cogs-1.2/shs_TreasureGate.cog	2023-04-29 12:16:35.580000000 +0200
+@@ -65,11 +65,11 @@
+     player = GetLocalPlayerThing();
+     SetThingFlags(key, 0x80000);
+     SetAdjoinFlags(blocked, 0x10);
+-	for (x=0; x<=2; x=x+1)
+-    {
+-		SetThingFlags(commie0[x], 0x80000); #make invisible
+-	    AISetCutsceneMode(commie0[x]);
+-	}
++	SetThingFlags(commie0, 0x80000);
++	AISetCutsceneMode(commie0);
++	SetThingFlags(commie1, 0x80000);
++	AISetCutsceneMode(commie1);
++
+ 	return;
+     
+ entered:
+@@ -204,22 +204,20 @@
+ 	{
+ 		print("bulb taken, commies should be here");
+ 		# make commies visible
+-		for (x=0; x<=2; x=x+1)
+-		{
+-			ClearThingFlags(commie0[x], 0x80000); # make visible
+-        }
++
++		ClearThingFlags(commie0, 0x80000); # make visible
++ 		ClearThingFlags(commie1, 0x80000); # make visible
++
+ 		Sleep(2.5);	 # Let Indy finish talking and get ready
+ 		
+ 		# play russian music
+         PlaySoundLocal(music0, 1.0, 0.0, 0x0, 0);
+ 		PlaySoundLocal(comchat, .5, 0, 0x0, 0);
+ 		
+-		for (x=0; x<=2; x=x+1)
+-		{
+-			AIClearCutsceneMode(commie0[x]); 	# wake them up
+-        }
+- 
++		AIClearCutsceneMode(commie0); 	# wake them up
++		AIClearCutsceneMode(commie1); 	# wake them up
+ 	}
++
+ return;
+ 
+ 
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/shw_bosscinematic.cog cogs-1.2/SHW_BossCinematic.cog
+--- cogs-1.0/shw_bosscinematic.cog	2023-04-29 11:44:44.909000000 +0200
++++ cogs-1.2/SHW_BossCinematic.cog	2023-04-29 12:16:35.582000000 +0200
+@@ -4,7 +4,7 @@
+ #
+ # Nifty cutscenes for ice boss startup and death
+ #
+-# [CM]
++# [CM & revised by HB]
+ #
+ # (C) 1999 LucasArts Entertainment Co. All Rights Reserved
+ # ========================================================================================
+@@ -48,7 +48,6 @@
+ #...............TRIGGERS..............
+ 	sector		startsect
+ 
+-
+ #...............CAMERAS..............
+ 	thing		startCam
+ 	thing		boss_shotPos
+@@ -90,6 +89,8 @@
+     int    		i_shatterable=0								local
+     int    		i=0											local
+     int    		crackloop									local
++
++	int			camandtargexist=0							local # new HB
+ 	
+ 
+ #...............TEMPLATES..............
+@@ -120,6 +121,13 @@
+ 	vector		dustend										local
+ 	vector		v_targetpos									local
+ 
++#...............added by HB..........
++	
++	sector		targetsector								local # new HB
++
++	sound		bosshurt_1=aet_mr_defeat.wav				local # new HB
++	sound		bosshurt_2=shs_boss_roar.wav				local # new HB
++
+ end
+ 
+ # ========================================================================================
+@@ -271,14 +279,14 @@
+ 		SendMessage(boss_Cog, USER1);
+ 
+         # create target for secondary focus above the IceBoss
+-		damageTarg = CreateThingAtPos(ghostTpl, GetThingSector(t_CombatIceBoss), VectorAdd(GetThingPos(t_CombatIceBoss),'0 0 0.15'), '0 0 0');	
++		#### damageTarg = CreateThingAtPos(ghostTpl, GetThingSector(t_CombatIceBoss), VectorAdd(GetThingPos(t_CombatIceBoss),'0 0 0.15'), '0 0 0');	
+               
+ 		# create camera for focus above the player
+-		damageCam = CreateThingAtPos(ghostTpl, GetThingSector(player), VectorAdd(GetThingPos(player),'0 0.0 0.15'), '0 0 0');
++		#### damageCam = CreateThingAtPos(ghostTpl, GetThingSector(player), VectorAdd(GetThingPos(player),'0.0 0.0 0.1'), '0 0 0'); # was '0.0 0.0 0.15'
+ 	
+         # lock the objects to their 
+-		AttachThingToThingEx(damageTarg, t_CombatIceBoss, 0x000C);
+-		AttachThingToThingEx(damageCam, player, 0x000C);
++		#### AttachThingToThingEx(damageTarg, t_CombatIceBoss, 0x000C);
++		#### AttachThingToThingEx(damageCam, player, 0x000C);
+ 	}
+ return;
+ 
+@@ -291,32 +299,51 @@
+ 	# Boss AI cog notifies us of boss' defeat
+ 	if ( GetSenderRef() == boss_Cog )
+ 	{
++	    # create cam & target for death scene (new HB)
++		if (camandtargexist != 0)
++		{
++			DestroyThing(damageCam);
++			DestroyThing(damageTarg);
++		}
++		v_targetpos = VectorAdd(VectorTransformToOrient(t_CombatIceBoss, '0.0 0.0 0.15'), GetThingPos(t_CombatIceBoss));
++		targetsector = FindNewSectorFromThing(t_CombatIceBoss, v_targetpos);
++		damageTarg = CreateThingAtPos(ghostTpl, targetsector, v_targetpos, '0 0 0');
++		CaptureThing(damageTarg);	
++		v_targetpos = VectorAdd(VectorTransformToOrient(player, '0.0 0.0 0.15'), GetThingPos(player));
++		targetsector = FindNewSectorFromThing(player, v_targetpos);
++		damageCam = CreateThingAtPos(ghostTpl, targetsector, v_targetpos, '0 0 0');
++		CaptureThing(damageCam);
++		camandtargexist=1;
++		
+ 		# Prep boss for death cutscene
+ 		AISetCutsceneMode(t_CombatIceBoss);
+ 		StopThing(t_CombatIceBoss);
+ 
+ 		# Start a little boss world camera shake
+-		SendmessageEx(GetThingClassCog(t_CombatIceBoss), USER0, 20, 0, 0, 0);
++		#### SendmessageEx(GetThingClassCog(t_CombatIceBoss), USER0, 20, 0, 0, 0);
+ 
+ 		# player control and cam delay
+ 		StartCutscene(1);
+ 		SetActorFlags(player, 0x200000);
+ 		StopThing(player);
+ 		
+-		SetPulse(0.01);
++		#### SetPulse(0.01);
+ 		Sleep(0.75);
+-        
++		PlaySoundLocal(bosshurt_1, 1.0, 0.0, 0x0, 0); # new HB
+ 		
+ 		# SHOW THE CREATURE'S DEATH THROES
++		SetCameraLookInterp(2, 0);
++		SetCameraPosInterp(2, 0);
+ 		SetCameraFocus(2, damageCam);
+ 		SetCameraSecondaryFocus(2, t_CombatIceBoss);
++		SetCurrentCamera(2);
++		SetCameraFOV(90, 0, 0.0);
++		SetThingFlags(player, 0x10);
++
+ 		# camera 2 look interp is on
+ 		SetCameraLookInterp(2,1);
+ 		SetCameraInterpSpeed(2, 1.0);
+-		SetCurrentCamera(2);
+-		SetThingFlags(player, 0x10);
+ 		Sleep(0.01);
+-		SetCameraFOV(90, 0, 0.0);
+ 	
+ #		SetPulse(0.01);
+ 		
+@@ -329,7 +356,10 @@
+ 		PlayMode(t_CombatIceBoss, 61, 1);							# Play 'crouch to stand' anim and wait
+ 		PlayMode(t_CombatIceBoss, 20, 0);							# Start the boss 'death' anim
+ 		
+-		Sleep(2.0);
++		#### SetPulse(0.01); # new HB
++		Sleep(1.0);
++		SendmessageEx(GetThingClassCog(t_CombatIceBoss), USER0, 10, 0, 0, 0);
++		Sleep(1.0);
+ 		SetPulse(0.0);
+ 		# play death cue music
+ 		PlaySoundLocal(kill_cue, 1.0, 0.0, 0x0, 0);
+@@ -358,7 +388,8 @@
+ 		Sleep(2.0);
+ 
+ 		# restore the cam
+-		Sleep(0.01);
++		ResetCameraFOV(0, 0.0);
++		#### Sleep(0.01);
+ 	
+ 	
+ 		# Establish a camera position near Indy and prep follow-cam...			
+@@ -397,7 +428,23 @@
+ 	
+ 	# take player control
+ 	MakeMeStop();
+-    
++
++	# create cam & target for damage scene (new HB)
++	if (camandtargexist != 0)
++	{
++		DestroyThing(damageCam);
++		DestroyThing(damageTarg);
++	}
++	v_targetpos = VectorAdd(VectorTransformToOrient(t_CombatIceBoss, '0.0 0.0 0.15'), GetThingPos(t_CombatIceBoss));
++	targetsector = FindNewSectorFromThing(t_CombatIceBoss, v_targetpos);
++	damageTarg = CreateThingAtPos(ghostTpl, targetsector, v_targetpos, '0 0 0');
++	CaptureThing(damageTarg);	
++	v_targetpos = VectorAdd(VectorTransformToOrient(player, '0.0 0.0 0.15'), GetThingPos(player));
++	targetsector = FindNewSectorFromThing(player, v_targetpos);
++	damageCam = CreateThingAtPos(ghostTpl, targetsector, v_targetpos, '0 0 0');
++	CaptureThing(damageCam);
++	camandtargexist=1;
++  
+     # show the damage to the creature
+     
+ 	#SetExtCamOffsetToThing(damageCam);
+@@ -405,18 +452,24 @@
+ 	#SetExtCamLookOffsetToThing(damageTarg);
+ 	
+ 	# creature scream and animation
+-	#PlaySoundClass(t_CombatIceBoss, 98);						# Play 'roar' sound
+-	#PlayMode(t_CombatIceBoss, 62, 0);
++	# PlaySoundClass(t_CombatIceBoss, 98);						# Play 'roar' sound
++	# PlayMode(t_CombatIceBoss, 62, 0);
++	PlaySoundLocal(bosshurt_1, 1.0, 0.0, 0x0, 0); # new HB
++
+ 	
++	SetCameraLookInterp(2, 0);
++	SetCameraPosInterp(2, 0);
+ 	SetCameraFocus(2, damageCam);
+ 	SetCameraSecondaryFocus(2, t_CombatIceBoss);
++	SetCurrentCamera(2);
++	SetCameraFOV(90, 0, 0.0);
++    SetThingFlags(player, 0x10);
++
+ 	# camera 2 look interp is on
+ 	SetCameraLookInterp(2,1);
+ 	SetCameraInterpSpeed(2, 1.0);
+-	SetCurrentCamera(2);
+-    SetThingFlags(player, 0x10);
+ 	Sleep(0.01);
+-	SetCameraFOV(90, 0, 0.0);
++
+ #	SetCameraFOV(80, 1, 0.5);
+ 
+ #	SetPulse(0.01);
+@@ -429,7 +482,8 @@
+ 	# creature scream and animation
+ 
+ 	PlayMode(t_CombatIceBoss, 61, 1);							# Play 'crouch to stand' anim and wait
+-	PlaySoundClass(t_CombatIceBoss, 98);						# Play 'roar' sound
++	#### PlaySoundClass(t_CombatIceBoss, 98);						# Play 'roar' sound
++	PlaySoundLocal(bosshurt_2, 1.0, 0.0, 0x0, 0); # new HB
+ 	PlayMode(t_CombatIceBoss, 62, 1);                          	# Play 'standing roar' anim and wait
+     PlayMode(t_CombatIceBoss, 64, 0);							# Play 'stand to crouch' anim and wait
+ 	Sleep(0.75);
+@@ -437,7 +491,7 @@
+     # restore the cam
+ 	SetCameraLookInterp(2, 0);	# cut look interp
+ 	ResetCameraFOV(0, 0.0);
+-	Sleep(0.01);
++	#### Sleep(0.01);
+ 	
+ 	
+ 	# Establish a camera position near Indy and prep follow-cam...			
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/sol_introcut.cog cogs-1.2/SOL_IntroCut.cog
+--- cogs-1.0/sol_introcut.cog	2023-04-29 11:44:45.191000000 +0200
++++ cogs-1.2/SOL_IntroCut.cog	2023-04-29 12:16:35.584000000 +0200
+@@ -53,6 +53,8 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	# Start on black...
+ 	SetCameraLookInterp(2, 0);
+ 	SetCameraPosInterp(2, 0);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/tem_introcut.cog cogs-1.2/TEM_IntroCut.cog
+--- cogs-1.0/tem_introcut.cog	2023-04-29 11:44:45.328000000 +0200
++++ cogs-1.2/TEM_IntroCut.cog	2023-04-29 12:16:35.585000000 +0200
+@@ -102,6 +102,8 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	player = GetLocalPlayerThing();
+     
+     # Start on black...
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/teo_introscene.cog cogs-1.2/TEO_Introscene.cog
+--- cogs-1.0/teo_introscene.cog	2023-04-29 11:44:45.459000000 +0200
++++ cogs-1.2/TEO_Introscene.cog	2023-04-29 12:16:35.587000000 +0200
+@@ -86,6 +86,8 @@
+ 
+ 	Sleep(0.001); # Let engine get set up
+ 
++	if (bSeen) return; # new HB
++
+ 	# Start on black...
+ 	SetCameraLookInterp(2, 0); # no t or p
+ 	SetCameraPosInterp(2, 0); # no dolly
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/teo_mirrorgod.cog cogs-1.2/TEO_MirrorGod.cog
+--- cogs-1.0/teo_mirrorgod.cog	2023-04-29 11:44:45.469000000 +0200
++++ cogs-1.2/TEO_MirrorGod.cog	2023-04-29 12:16:35.589000000 +0200
+@@ -122,6 +122,7 @@
+ 	player = GetLocalPlayerThing();
+     resetvec = VectorSet(0, 180, 0);
+     SetThingAlpha(fadeplate, 0);
++	Print("mirrorgod cog starting!");
+     
+ return;
+ 
+@@ -342,6 +343,9 @@
+         RotateToPYR(gear, resetvec, 1);
+         Sleep(1);
+         SetCollideType(statue, 3);
++
++		SetThingCollideSize(statue, 0.17); # was 0.15 new HB
++
+         SetCollideType(column, 3);
+         SetCollideType(column1, 3);
+         SetCollideType(column2, 3);
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/weap_imp1.cog cogs-1.2/weap_IMP1.cog
+--- cogs-1.0/weap_imp1.cog	2023-04-29 11:44:45.619000000 +0200
++++ cogs-1.2/weap_IMP1.cog	2023-04-29 12:16:35.590000000 +0200
+@@ -48,7 +48,7 @@
+ int			handMesh					local
+ int			handNode					local
+ int			callNum						local
+-int			curSound					local
++int			curSound=-1					local
+ int			index						local
+ 
+ int			bDisabled=0					local
+@@ -132,7 +132,7 @@
+ selected:
+ 
+ 	SetAimWait(player, 0.0);
+-	SetMountWait(player, 0.7);
++	SetMountWait(player, 1.0);
+ 
+ 	SetArmedMode(player, 5);
+ 	SetCurWeapon(player, weaponNum);
+@@ -155,7 +155,11 @@
+ 
+ 	SetArmedMode(player, 0);
+ 
+-	StopSound(curSound, 0.0);
++	if (curSound != -1)
++	{
++		StopSound(curSound, 0.0);
++		curSound = -1;
++	}
+ 	PlaySoundThing(off, player, 1, -1, -1, 0x880);
+ 
+ 	return;
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/weap_imp2.cog cogs-1.2/weap_IMP2.cog
+--- cogs-1.0/weap_imp2.cog	2023-04-29 11:44:45.620000000 +0200
++++ cogs-1.2/weap_IMP2.cog	2023-04-29 12:16:35.592000000 +0200
+@@ -41,7 +41,7 @@
+ int			handMesh					local
+ int			handNode					local
+ int			callNum						local
+-int			curSound					local
++int			curSound=-1					local
+ 
+ int			bDisabled=0					local
+ 
+@@ -116,7 +116,7 @@
+ selected:
+ 
+ 	SetAimWait(player, 0.0);
+-	SetMountWait(player, 0.7);
++	SetMountWait(player, 1.0);
+ 
+ 	SetArmedMode(player, 5);
+ 	SetCurWeapon(player, weaponNum);
+@@ -149,7 +149,11 @@
+ 
+ 	SetArmedMode(player, 0);
+ 
+-	StopSound(curSound, 0.0);
++	if (curSound != -1)
++	{
++		StopSound(curSound, 0.0);
++		curSound = -1;
++	}
+ 	PlaySoundThing(off, player, 1, -1, -1, 0x880);
+ 
+ 	return;
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/weap_imp3.cog cogs-1.2/weap_IMP3.cog
+--- cogs-1.0/weap_imp3.cog	2023-04-29 11:44:45.622000000 +0200
++++ cogs-1.2/weap_IMP3.cog	2023-04-29 12:16:35.593000000 +0200
+@@ -41,7 +41,7 @@
+ int			handMesh					local
+ int			handNode					local
+ int			callNum						local
+-int			curSound					local
++int			curSound=-1					local
+ int			index						local
+ 
+ int			bOn=0						local
+@@ -118,7 +118,7 @@
+ selected:
+ 
+ 	SetAimWait(player, 0.0);
+-	SetMountWait(player, 0.7);
++	SetMountWait(player, 1.0);
+ 
+ 	SetArmedMode(player, 5);
+ 	SetCurWeapon(player, weaponNum);
+@@ -149,7 +149,13 @@
+ 
+ 	SetArmedMode(player, 0);
+ 
+-	StopSound(curSound, 0.0);
++	if (curSound != -1)
++	{
++		StopSound(curSound, 0.0);
++		curSound = -1;
++	}
++
++	#### StopSound(curSound, 0.0);
+ 	PlaySoundThing(off, player, 1, -1, -1, 0x880);
+ 
+ 	return;
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/weap_imp4.cog cogs-1.2/weap_IMP4.cog
+--- cogs-1.0/weap_imp4.cog	2023-04-29 11:44:45.625000000 +0200
++++ cogs-1.2/weap_IMP4.cog	2023-04-29 12:16:35.595000000 +0200
+@@ -45,7 +45,7 @@
+ int			handMesh					local
+ int			handNode					local
+ int			callNum						local
+-int			curSound					local
++int			curSound=-1					local
+ int			index						local
+ 
+ int			bDisabled=0					local
+@@ -121,7 +121,7 @@
+ selected:
+ 
+ 	SetAimWait(player, 0.0);
+-	SetMountWait(player, 0.7);
++	SetMountWait(player, 1.0);
+ 
+ 	SetArmedMode(player, 5);
+ 	SetCurWeapon(player, weaponNum);
+@@ -144,7 +144,13 @@
+ 
+ 	SetArmedMode(player, 0);
+ 
+-    StopSound(curSound, 0.0);
++    if (curSound != -1)
++	{
++		StopSound(curSound, 0.0);
++		curSound = -1;
++	}
++
++	#### StopSound(curSound, 0.0);
+ 	PlaySoundThing(off, player, 1, -1, -1, 0x880);
+ 
+ 	return;
+diff -urN --color --ignore-file-name-case --ignore-case cogs-1.0/weap_imp5.cog cogs-1.2/weap_IMP5.cog
+--- cogs-1.0/weap_imp5.cog	2023-04-29 11:44:45.627000000 +0200
++++ cogs-1.2/weap_IMP5.cog	2023-04-29 12:16:35.596000000 +0200
+@@ -43,7 +43,7 @@
+ int			handMesh					local
+ int			handNode					local
+ int			callNum						local
+-int			curSound					local
++int			curSound=-1					local
+ #int			index						local
+ 
+ int			bDisabled=0					local
+@@ -113,7 +113,7 @@
+ selected:
+ 
+ 	SetAimWait(player, 0.0);
+-	SetMountWait(player, 0.7);
++	SetMountWait(player, 1.0);
+ 
+ 	SetArmedMode(player, 5);
+ 	SetCurWeapon(player, weaponNum);
+@@ -136,7 +136,13 @@
+ 
+ 	SetArmedMode(player, 0);
+ 
+-    StopSound(curSound, 0.0);
++    if (curSound != -1)
++	{
++		StopSound(curSound, 0.0);
++		curSound = -1;
++	}
++
++	#### StopSound(curSound, 0.0);
+ 	PlaySoundThing(off, player, 1, -1, -1, 0x880);
+ 
+ 	return;
