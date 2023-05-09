@@ -454,4 +454,4 @@ TODO: are these the compilation dates or something else?
 
 ### Control configuration dialog fix
 
-The `Possible failure of the control configuration dialogue box to function properly has been repaired.` addreesed issue may be documented here. How this was happening initially and how the fix was implemented. TODO!
+The `Possible failure of the control configuration dialogue box to function properly has been repaired.` addressed issue may be documented here. How this was happening initially and how the fix was implemented. TODO!
