@@ -407,24 +407,24 @@ Each entry in the list takes [COG script file](cog.md) name followed by initial 
 The parameters initialize the variables in the exact order as defined in the symbols section of COG script. The variables in [COG script](cog.md) defined as `local` can't be overwritten in NDY. Note that all non-local variables must be initialized or the game won't run.
 
 The symbol values:
- | Symbol type | Value |
-  | --- | --- |
-  | ai | AI filename |
-  | cog | COG index in the COG list |
-  | float/flex | decimal number |
-  | int | integer number |
-  | keyframe | KEY filename |
-  | material | MAT filename |
-  | model | 3DO filename |
-  | sector | sector number in sector list |
-  | sound | WAV filename |
-  | sprite | SPR filename |
-  | surface | surface number in surface list   |
-  | vector | vector value i.e.: `(x/y/z)` |
-  | template | template name |
-  | thing | thing index number in thing's list |
-  
- *Note, if index is `-1` aka null, it means not initialized.*
+| Symbol type | Value                              |
+|-------------|------------------------------------|
+| ai          | AI filename                        |
+| cog         | COG index in the COG list          |
+| float/flex  | decimal number                     |
+| int         | integer number                     |
+| keyframe    | KEY filename                       |
+| material    | MAT filename                       |
+| model       | 3DO filename                       |
+| sector      | sector number in sector list       |
+| sound       | WAV filename                       |
+| sprite      | SPR filename                       |
+| surface     | surface number in surface list     |
+| vector      | vector value i.e.: `(x/y/z)`       |
+| template    | template name                      |
+| thing       | thing index number in thing's list |
+
+*Note, if index is `-1` aka null, it means not initialized.*
 
 ### Structure
 ```
@@ -488,23 +488,25 @@ The child template inherits all parameters from the base template and can overri
 
 ### Thing type
 There are 15 different template/thing types:
-| type | value | description |
-| --- | ---: |--- |
-| Free | 0 | Empty template, used for the engine purpose |
-| Camera | 1 | Camera template. Mostly not used. |
-| Actor | 2 | Enemy, civilian, cutscene actors (indy) etc.. |
-| Weapon | 3 | Weapon properties e.g.: weapon projectile |
-| Debris | 4 | Debris template |
-| Item | 5 | Pickup items e.g.: weapons, ammo, health kit, keys ect... |
-| Explosion | 6 | Explosion template |
-| Cog | 7 | Level decorative objects e.g.: whip climb branch, wall ruins, wheelbarrow etc... |
-| Ghost | 8 | Usually the invisible objects e.g.: camera position object, camera focus object etc... |
-| Corpse | 9 | Dead Thing |
-| Player | 10 | Player template |
-| Particle | 11 | Effects e.g.: waterfall droplets, sparks etc ... |
-| Hint | 12 | Map hint |
-| Sprite | 13 | Sprite object |
-| Polyline | 14 | Polyline object |
+
+| type      | value | description                                                                            |
+|-----------|------:|----------------------------------------------------------------------------------------|
+| Free      | 0     | Empty template, used for the engine purpose                                            |
+| Camera    | 1     | Camera template. Mostly not used.                                                      |
+| Actor     | 2     | Enemy, civilian, cutscene actors (indy) etc..                                          |
+| Weapon    | 3     | Weapon properties e.g.: weapon projectile                                              |
+| Debris    | 4     | Debris template                                                                        |
+| Item      | 5     | Pickup items e.g.: weapons, ammo, health kit, keys ect...                              |
+| Explosion | 6     | Explosion template                                                                     |
+| Cog       | 7     | Level decorative objects e.g.: whip climb branch, wall ruins, wheelbarrow etc...       |
+| Ghost     | 8     | Usually the invisible objects e.g.: camera position object, camera focus object etc... |
+| Corpse    | 9     | Dead Thing                                                                             |
+| Player    | 10    | Player template                                                                        |
+| Particle  | 11    | Effects e.g.: waterfall droplets, sparks etc ...                                       |
+| Hint      | 12    | Map hint                                                                               |
+| Sprite    | 13    | Sprite object                                                                          |
+| Polyline  | 14    | Polyline object                                                                        |
+
 
 Each Template defined in the list must have type other than `Free` or the Template is ignored. The type value is internal representation of the Template type and is used by the engine.
 
@@ -519,8 +521,8 @@ Template name can contain max 63 characters.
 ### The list of parameters
 Below is the table of parameters that can be used by the template and parameter types.
 
-| Parameter | Type  | Applies To | Required additional params | Description |
-|:-|:-:|:-:|:-:|:---------------------------------------|
+| Parameter | Type | Applies To | Required additional params | Description |
+|:----------|:----:|:----------:|:--------------------------:|:------------|
 | aiclass | string | * | / | Assigns AI file to the Thing/Template. |
 | airdrag | float | * | move=`physics` | Sets Thing/Template air drag (air resistance).|
 | angvel | vector | * | move=`physics` | Sets Thing/Template angular velocity.|
