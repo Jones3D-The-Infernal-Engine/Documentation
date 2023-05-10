@@ -37,44 +37,44 @@ Example:
 ```
 
 ### Marker Types
-| Marker Type | Name | Additional Info |
-|-------------|-------|-------------|
-| 0 | Default               | |
-| 1 | LeftFoot              | |
-| 2 | RightFoot             | |
-| 3 | Attack                | |
-| 4 | Swing                 | |
-| 5 | SwingFinish           | |
-| 6 | SwimLeft              | |
-| 7 | Tread                 | water treading |
-| 8 | RunLeftFoot           | |
-| 9 | RunRightFoot          | |
-| 10 | Died                 | |
-| 11 | Jump                 | |
-| 12 | JumpUp               | |
-| 13 | SwimRight            | |
-| 14 | Duck                 | |
-| 15 | Climb                | |
-| 16 | Activate             | Sends [callback message](cog.md#message-callback) to actor's COG. |
-| 17 | Crawl                | Maybe crouch |
-| 18 | RunJumpLand          | |
-| 19 | ActivateRightArm     | |
-| 20 | ActivateRightArmRest | |
-| 21 | PlaceRightArm        | Sends [callback message](cog.md#message-callback) to actor's COG. |
-| 22 | PlaceRightArmRest    | Sends [callback message](cog.md#message-callback) to actor's COG. |
-| 23 | ReachRightArm        | Sends [callback message](cog.md#message-callback) to actor's COG. |
-| 24 | ReachRightArmRest    | Sends [callback message](cog.md#message-callback) to actor's COG. |
-| 25 | Pickup               | Sends [callback message](cog.md#message-callback) to actor's COG. |
-| 26 | Drop                 | Sends [callback message](cog.md#message-callback) to actor's COG. |
-| 27 | Move                 | |
-| 28 | InventoryPull        | Sends [callback message](cog.md#message-callback) to actor's COG. |
-| 29 | InventoryPut         | Sends [callback message](cog.md#message-callback) to actor's COG. |
-| 30 | AttackFinish         | Sends [callback message](cog.md#message-callback) to actor's COG. |
-| 31 | TurnOff              | Sends [callback message](cog.md#message-callback) to actor's COG. |
-| 32 | Row                  | Raft |
-| 33 | RowFinish            | Raft |
-| 34 | LeftHand             | e.g.: Indy snd fx climbhandleft |
-| 35 | RightHand            | e.g.: Indy snd fx climbhandright |
+| Marker Type | Name                 | Additional Info                                                   |
+|-------------|----------------------|-------------------------------------------------------------------|
+| 0           | Default              |                                                                   |
+| 1           | LeftFoot             |                                                                   |
+| 2           | RightFoot            |                                                                   |
+| 3           | Attack               |                                                                   |
+| 4           | Swing                |                                                                   |
+| 5           | SwingFinish          |                                                                   |
+| 6           | SwimLeft             |                                                                   |
+| 7           | Tread                | water treading                                                    |
+| 8           | RunLeftFoot          |                                                                   |
+| 9           | RunRightFoot         |                                                                   |
+| 10          | Died                 |                                                                   |
+| 11          | Jump                 |                                                                   |
+| 12          | JumpUp               |                                                                   |
+| 13          | SwimRight            |                                                                   |
+| 14          | Duck                 |                                                                   |
+| 15          | Climb                |                                                                   |
+| 16          | Activate             | Sends [callback message](cog.md#message-callback) to actor's COG. |
+| 17          | Crawl                | Maybe crouch                                                      |
+| 18          | RunJumpLand          |                                                                   |
+| 19          | ActivateRightArm     |                                                                   |
+| 20          | ActivateRightArmRest |                                                                   |
+| 21          | PlaceRightArm        | Sends [callback message](cog.md#message-callback) to actor's COG. |
+| 22          | PlaceRightArmRest    | Sends [callback message](cog.md#message-callback) to actor's COG. |
+| 23          | ReachRightArm        | Sends [callback message](cog.md#message-callback) to actor's COG. |
+| 24          | ReachRightArmRest    | Sends [callback message](cog.md#message-callback) to actor's COG. |
+| 25          | Pickup               | Sends [callback message](cog.md#message-callback) to actor's COG. |
+| 26          | Drop                 | Sends [callback message](cog.md#message-callback) to actor's COG. |
+| 27          | Move                 |                                                                   |
+| 28          | InventoryPull        | Sends [callback message](cog.md#message-callback) to actor's COG. |
+| 29          | InventoryPut         | Sends [callback message](cog.md#message-callback) to actor's COG. |
+| 30          | AttackFinish         | Sends [callback message](cog.md#message-callback) to actor's COG. |
+| 31          | TurnOff              | Sends [callback message](cog.md#message-callback) to actor's COG. |
+| 32          | Row                  | Raft                                                              |
+| 33          | RowFinish            | Raft                                                              |
+| 34          | LeftHand             | e.g.: Indy snd fx climbhandleft                                   |
+| 35          | RightHand            | e.g.: Indy snd fx climbhandright                                  |
 
 ## KEYFRAME NODES
 This section defines animation frames for 3DO joint nodes.
