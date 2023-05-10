@@ -35,7 +35,8 @@ b.) Manually change the game config in Windows registry:
 
   3. Edit the `Start Mode` DWORD and set the value to 2 (*0x00000002*):
   > ![regedit](resources/images/J3D_docu_regedit.jpg)
-  *If it doesn't exist create new DWORD with name `Start Mode`*.
+  
+  *If it doesn't exist, create a new DWORD with name `Start Mode`*.
 
 After the devmode config is set, launch the game (e.g.: through `Indy3D.exe` located in *Resource* folder) and the developer window should pop-up:  
 ![J3D_docu_devmenu.jpg](resources/images/J3D_docu_devmenu.jpg)  
