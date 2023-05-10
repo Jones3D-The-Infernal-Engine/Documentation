@@ -6,7 +6,7 @@ Before starting, I suggest that you make a copy of the installed game directory 
 
 1. Download tools at: https://github.com/smlu/ProjectMarduk
 2. Extract CD1.gob CD2.gob and JONES3D.gob using `gobext.exe`
-3. You must have different new folders (3do, cog...) in the "Resource" folder.
+3. You must have different new folders (*3do*, *cog*, ...) in the *Resource* folder.
 4. Delete the .GOB files. Then launch your game, if it works you are on the good way. Else retry.
 
 # II. Set the game to start in developer mode.
@@ -34,11 +34,10 @@ b.) Manually change the game config in Windows registry:
         `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\LucasArts Entertainment Company LLC\Indiana Jones and the Infernal Machine`
 
   3. Edit the `Start Mode` DWORD and set the value to 2 (*0x00000002*):
-  |![regedit](resources/images/J3D_docu_regedit.jpg)|
-  -  
+  > ![regedit](resources/images/J3D_docu_regedit.jpg)
   *If it doesn't exist create new DWORD with name `Start Mode`*.
 
-After the devmode config is set, launch the game (e.g.: `Indy3D.exe` located in *Resource* folder) and the developer window should pop-up:  
+After the devmode config is set, launch the game (e.g.: through `Indy3D.exe` located in *Resource* folder) and the developer window should pop-up:  
 ![J3D_docu_devmenu.jpg](resources/images/J3D_docu_devmenu.jpg)  
 Try to start a random `.CND` level, if it works you are on the good way. Else retry.
 
