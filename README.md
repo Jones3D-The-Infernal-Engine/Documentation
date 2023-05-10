@@ -52,7 +52,7 @@ Some of general abbreviations:
    &nbsp;&nbsp;&nbsp;&nbsp; **dflt** - default  
    &nbsp;&nbsp;&nbsp;&nbsp; **bk**   - back  
    &nbsp;&nbsp;&nbsp;&nbsp; **by**   - boy  
-   &nbsp;&nbsp;&nbsp;&nbsp; **com**  - commy    
+   &nbsp;&nbsp;&nbsp;&nbsp; **com**  - commie    
    &nbsp;&nbsp;&nbsp;&nbsp; **fr**   - front    
    &nbsp;&nbsp;&nbsp;&nbsp; **ib**   - ice boss   
    &nbsp;&nbsp;&nbsp;&nbsp; **ij**   - indy jeep  
