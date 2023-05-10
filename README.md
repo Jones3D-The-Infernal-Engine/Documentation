@@ -1,46 +1,35 @@
 # Indiana Jones and The Infernal Machine documentation
 > :warning: **Work in progress!**
 
-This is unofficial and incomplete documentation about the game file structure and modding. Any information not found here please look into [Discussions](https://github.com/Jones3D-The-Infernal-Engine/Documentation/discussions) and post any question there.
+This is an unofficial and incomplete documentation about the game file structure and modding. For any information not found here please look into [Discussions](https://github.com/Jones3D-The-Infernal-Engine/Documentation/discussions) and post any question there.
 
-Before you begin with modding it's good to extract all game resource files.  
-Please follow the instruction in [pre-mod.md](pre-mod.md) for this.
+Before you start with modding it's a good idea to extract all the game's resource files.  
+Please follow the instructions in [pre-mod.md](pre-mod.md) for this.
 
 ## Game Assets
 The game assets are usually stored in `.gob` container files.
-The GOB file can be extracted using [gobext](https://github.com/smlu/ProjectMarduk/releases) tool.
+GOB files can be extracted using [gobext](https://github.com/smlu/ProjectMarduk/releases) tool.
 
 The resource folder structure:
 ```
- Root
-  | 
-  -- 3do -> 3D models (.3do)
-  |  |
-  |  -- key -> animations (.key)
-  |
-  -- cog -> COG scripts (.cog)
-  |
-  -- mat -> Material texture files
-  |
-  -- misc
-  |  |
-  |  -- ai -> AI behavior definition files (.ai)
-  |  |
-  |  -- pup -> Character movement puppet files (.pup)
-  |  |
-  |  -- snd -> Sound definition files (.pup)
-  |  |
-  |  -- spr -> Sprite definition files (.spr)
-  |  |
-  |  -- ui -> contains only unused default font.gcf font atlas file
-  |
-  -- ndy -> Level files (.cnd/.ndy)
-  |
-  -- sound -> Sound files (.wav)
+Root
+│ 
+├── 3do #3D models (.3do)
+│   └── key #animations (.key)
+├── cog #COG scripts (.cog)
+├── mat #Material texture files
+├── misc
+│   ├── ai #AI behavior definition files (.ai)
+│   ├── pup #Character movement puppet files (.pup)
+│   ├── snd #Sound definition files (.pup)
+│   ├── spr #Sprite definition files (.spr)
+│   └── ui #contains only unused default font.gcf font atlas file
+├── ndy #Level files (.cnd/.ndy)
+└── sound #Sound files (.wav)
 ``` 
 
 ### [COG script](cog.md)
- The COG scripts are the heart of game logics. They define the mechanics behind the game, like cute scenes, level goals, unlocking/locking the doors, weapon definition etc...  
+ COG scripts are the heart of game logic. They define the mechanics behind the game, like cutscenes, level goals, unlocking/locking doors, weapon definitions, etc...  
  Documentation on COG scripting can be found in [cog.md](cog.md).
 
 ### [KEY](key.md)
@@ -51,9 +40,9 @@ Documentation for puppet file (.pup) specification can be found in [pup.md](pup.
 
 ### Game level files
 There are 2 types of level files:
-* [NDY](ndy.md) - text based level format which can be edit in any text editor.  
+* [NDY](ndy.md) - text based level format which can be edited in any text editor.  
 The documentation for this file format can be found in [ndy.md](ndy.md)
-* CND - is compact binary level format. The structure of file is similar to NDY file format. File besides defining level structure also stores `mat`, `key` and `sound` game assets for the level.  
+* CND - is compact binary level format. The structure of such file is similar to NDY file format. Such a file, besides defining level structure, also stores `mat`, `key` and `sound` game assets for the level.  
 The C++ code for CND file structure can be found in: [https://github.com/smlu/ProjectMarduk/tree/develop/libraries/libim/content/asset/world/impl/serialization/cnd](https://github.com/smlu/ProjectMarduk/tree/develop/libraries/libim/content/asset/world/impl/serialization/cnd)
 
 ## File naming convention
