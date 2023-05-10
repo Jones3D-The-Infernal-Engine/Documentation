@@ -260,7 +260,7 @@ Message is sent by game engine to Thing COG script and COG script which captured
 User defined message no. 0.
 
 **Sent by the game engine**:
-  * Sent to `weap_whip.cog` script by whip Thing object indicating that the whip swing mode has started..
+  * Sent to `weap_whip.cog` script by whip Thing object indicating that the whip swing mode has started.
 
 | Param             | Value             |
 |-------------------|:------------------|
@@ -277,7 +277,7 @@ User defined message no. 2.
   * When COG function [StartCutscene](#startcutscene-int-type-) is called `user2` message is sent to the player Thing. The player is invulnerable during the cutscene.
 
 | Param             | Value             |
-|-------------------|-:-----------------|
+|-------------------|:------------------|
 | senderType        | COG_SYM_REF_THING |
 | sender            | Player Thing      |
 | sourceType        | COG_SYM_REF_NONE  |
