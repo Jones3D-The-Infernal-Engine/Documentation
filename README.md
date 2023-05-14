@@ -42,7 +42,7 @@ Documentation for puppet file (.pup) specification can be found in [pup.md](pup.
 There are 2 types of level files:
 * [NDY](ndy.md) - text based level format which can be edited in any text editor.  
 The documentation for this file format can be found in [ndy.md](ndy.md)
-* CND - is compact binary level format. The structure of such file is similar to NDY file format. Such a file, besides defining level structure, also stores `mat`, `key` and `sound` game assets for the level.  
+* CND - is compact binary level format. The file has a structure similar as NDY file and stores both the level structure and game assets.  
 The C++ code for CND file structure can be found in: [https://github.com/smlu/ProjectMarduk/tree/develop/libraries/libim/content/asset/world/impl/serialization/cnd](https://github.com/smlu/ProjectMarduk/tree/develop/libraries/libim/content/asset/world/impl/serialization/cnd)
 
 ## File naming convention
