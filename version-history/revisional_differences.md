@@ -4,8 +4,43 @@
 
 The game *Indiana Jones and the Infernal Machine* has been released on the PC platform initially in 1999. Later on, the game has been receiving updates in regards to fixing existing bugs. The updates consist of an updated `Indy3D.exe` and updated [cog scripts](../cog.md).
 
-Right now this document focuses on reviewing the changes between the retail version sold as 2 CDs (called *1.0* in this document) and the *Update 1.2* official patch by LucasArts (called *1.2* in this document).  
-TODO: 1.1 should be checked as well. Maybe also Steam, GOG or other official PC editions - but the ones from unofficial community installers can be added too.
+Right now this document focuses on reviewing the changes between the retail version sold as 2 CDs (called *1.0* in this document) and the *Update 1.1* as well as *Update 1.2* official patches by LucasArts (called *1.1* and *1.2* in this document).  
+
+This is the message the game owner receives when running the *Update 1.1* installer as well as it being placed inside the file `C:\Program Files\LucasArts\The Infernal Machine\Update11.txt`:
+
+```
+Indiana Jones and the Infernal Machine Update 1.1
+
+Below is a list of issues that have been addressed with the 
+Jones Update 1.1 Patch:
+
+1.	After finishing the game, the player will now see the IQ
+	Game Statistics Summary window
+
+2.	Certain problems have been fixed regarding automatically going
+	to the Peru level after completing the Aetherium level.
+
+3.	After finishing the Aetherium level, the Store window will now
+	appear correctly, but only if the player has not purchased the
+	map to Peru earlier in the game.
+
+4.	On the Nub's Tomb level, the player will no longer be able
+	to push or pull the statue of Marduk out into the larger
+	room while attempting to trap Volodnikov.
+
+5.	Certain waypoint and AI issues have been addressed to prohibit
+	Volodnikov from getting stuck on a pushable block while the 
+	player attempts to trap him in Nub's Tomb.
+
+6.	The Store window will appear correctly after finishing the 
+	Infernal Machine level if you have gone to Peru earlier.
+
+
+
+© Lucasfilm Ltd. & TM.
+© LucasArts Entertainment Company LLC.
+All rights reserved. Used under authorization. 
+```
 
 This is the message the game owner receives when running the update installer as well as it being placed inside the file `C:\Program Files\LucasArts\The Infernal Machine\Update102.txt`:
 
@@ -118,6 +153,7 @@ d965c54316e12f615c8d9cc1b5cad75a0c4739dc9dd91f48b203fc0204a32330  resources-1.0/
 6f1bdb95dfb6385c0556ddfd0edac39d999de6f4654f223d26ef249088ecdca1  resources-1.0/weap_imp3.cog
 2cdaae36f30dda9ceac755dadc94279d08ec7a2e3b59106a7a41e59444ba88fb  resources-1.0/weap_imp4.cog
 8a56e8cd21e266c92521cd1ba95766c82641d6492b2e7776989f7351f2de2707  resources-1.0/weap_imp5.cog
+6084ea9503be2b5d1566650164b068adfb58bfe3e2b7dd725e3a03a0b5f9ae13  resources-1.1/nub_CatchVolodnikov.cog
 fc05742f267b4153a8184e45a6fbec37160ec82236e8a766c3b2b32599e0355b  resources-1.2/00_CYN_Opening.cog
 dbc5185ca11c6cbe4259ea08714ddc2abe30133225b7aa0c61311b2fd4f4b4ce  resources-1.2/01_BAB_Cinematic_4.cog
 26a878064b954c5d512c81683b29a05380058de5c553621cb96962cfc1ea97ef  resources-1.2/06_VOL_Opening.cog
@@ -171,7 +207,7 @@ d68f8cba956f1f13471ff1064c817af1acd8acb984bdeef7b260aff128f1442c  resources-1.2/
 40c2ba1bedadc014eb9e21ca16aba02e9c03b935c711593ffff62bdfad4f6392  resources-1.2/weap_IMP5.cog
 ```
 
-The differences between their contents have been provided as the file [cogs_1.0_vs_1.2.diff](./cogs_1.0_vs_1.2.diff).
+The differences between the 1.0 and 1.2 contents have been provided as the file [cogs_1.0_vs_1.2.diff](./cogs_1.0_vs_1.2.diff). 1.1 has been skipped since there's only one updated script, which is identical to 1.2.
 
 Please keep in mind that in this context it's assumed that any difference related to case sensitivity is ignored. For example, it's considered that a line calling the function `sleep(1.0)` and a line calling the function `Sleep(1.0)` are not different at all. The same applies to metadata, i.e. the scripts' names in filesystem.
 
@@ -435,19 +471,21 @@ Just scratching the surface and it looks like there were changes related to hang
 
 ## Indy3D.exe
 
-This section will focus on the analysis of differences between the 1.0 and 1.2 game executable. To make sure the executables can be identified with certainty, their checksums have been provided below.
+This section will focus on the analysis of differences between the 1.0, 1.1 and 1.2 game executables. To make sure the executables can be identified with certainty, their checksums have been provided below.
 
 ```
-$ sha256sum resources-*/Indy3D.exe
+$ sha256sum resources-*/*.exe
 3fbaf8cd401b4af80967cbe42e3420fb803288b336ebbe72a9a01b6dfd661a53  resources-1.0/Indy3D.exe
+5567574791fd91c14874e73bfd1fc1e02967d954b55ffe6075396074db60e2c8  resources-1.1/Indy3D.exe
 55fb00c0a2cb30793ff451dc6fd17681c5128aa32419aa711015fd5117d608bf  resources-1.2/Indy3D.exe
 ```
 
 ### Revisional timestamps
 
-Reversional timestamps can be previewed in-game with the `version` console command. They are also embedded directly in the executable. These are:
+Revisional timestamps can be previewed in-game with the `version` console command. They are also embedded directly in the executable. These are:
 
 - `Oct 29 1999,12:09:14 Release` for 1.0
+- `Nov 22 1999,11:04:16 Release` for 1.1
 - `Jan 28 2000,07:53:27 Release` for 1.2
 
 TODO: are these the compilation dates or something else?
