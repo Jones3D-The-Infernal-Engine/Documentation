@@ -474,7 +474,7 @@ Just scratching the surface and it looks like there were changes related to hang
 This section will focus on the analysis of differences between the 1.0, 1.1 and 1.2 game executables. To make sure the executables can be identified with certainty, their checksums have been provided below.
 
 ```
-$ sha256sum resources-*/*.exe
+$ sha256sum resources-*/Indy3D.exe
 3fbaf8cd401b4af80967cbe42e3420fb803288b336ebbe72a9a01b6dfd661a53  resources-1.0/Indy3D.exe
 5567574791fd91c14874e73bfd1fc1e02967d954b55ffe6075396074db60e2c8  resources-1.1/Indy3D.exe
 55fb00c0a2cb30793ff451dc6fd17681c5128aa32419aa711015fd5117d608bf  resources-1.2/Indy3D.exe
