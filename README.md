@@ -21,7 +21,7 @@ Root
 ├── misc
 │   ├── ai #AI behavior definition files (.ai)
 │   ├── pup #Character movement puppet files (.pup)
-│   ├── snd #Sound definition files (.pup)
+│   ├── snd #Sound definition files (.snd)
 │   ├── spr #Sprite definition files (.spr)
 │   └── ui #contains only unused default font.gcf font atlas file
 ├── ndy #Level files (.cnd/.ndy)
