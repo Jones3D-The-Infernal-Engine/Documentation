@@ -1,7 +1,8 @@
 Table of contents:
-- [Damage class flags](#damage-class-flags)
+- [Damage Class Flags](#damage-class-flags)
+- [Sound Play Flags](#sound-play-flags)
 
-## Damage class flags  
+## Damage Class Flags
 | Value      | Description                                                       |
 |:-----------|-------------------------------------------------------------------|
 | 0x1        | Impact damage (e.g. bullet projectile)                            |
@@ -33,3 +34,28 @@ Table of contents:
 | 0x40000000 | Cold water damage                                                 |
 | 0x80000000 | Dart damage                                                       |
 
+## Sound Play Flags
+| Value   | Description                                 |
+|:--------|---------------------------------------------|
+| 0x1     | Loop until stopped                          |
+| 0x2     | Remove when faded out                       |
+| 0x4     | Ambient (no 3D specialization)              |
+| 0x8     | Used Doppler effects                        |
+| 0x10    | Sound is fading in                          |
+| 0x20    | Sound is fading out                         |
+| 0x40    | Sound position is absolute                  |
+| 0x80    | Sound is linked to position of thing        |
+| 0x100   | Sound has higher priority than default      |
+| 0x200   | Sound has highest priority                  |
+| 0x400   | Sound can't play twice in mixer             |
+| 0x800   | Sound can't play twice when linked to thing |
+| 0x1000  | Sound is pitch blended per velocity         |
+| 0x2000  | Sound is underwater                         |
+| 0x4000  | Sound should be pre-cached                  |
+| 0x8000  | Sound is using duplicate play buffer        |
+| 0x10000 | Sound is a voice                            |
+| 0x20000 | Sound is currently audible                  |
+| 0x40000 | Sound is playing but paused                 |
+| 0x80000 | 3D sound is disabled                        |
+
+*Note, the flags meaning of the flags were sourced form the COG script `ra.snd`  in the Star Wars Jedi Knight: Mysteries of the Sith game.*
