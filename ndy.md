@@ -154,9 +154,9 @@ end
 This section contains the information about level world geometry i.e.: level surfaces, surface vertices, surface texture vertices, surface normals and adjoins.
 
 The surface adjoin represents a "portal" between level sectors.
-The adjoin entry consists of [adjoin flags](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/world/surface_adjoin.h#L17-L23), a opposite mirror adjoin number and the distance of the surface from the adjoin surface to the center of surface's sector.
+The adjoin entry consists of [adjoin flags](flags.md#adjoin-flags), a opposite mirror adjoin number and the distance of the surface from the adjoin surface to the center of surface's sector.
 
-The world surface is n-gon polygon with an optional texture and vertices colors. The surface also has different properties i.e. [surface flags](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/world/surface.h#L15-L66) (surfflags) and polygon [face flags](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/primitives/face.h#L22-L37), [geometry mode](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/primitives/geomode.h#L8-L13), [light mode](https://github.com/smlu/ProjectMarduk/blob/7e1798517e8e28375e0a77b1def754a7da452786/libraries/libim/content/asset/primitives/light_mode.h#L8-L11), texture mode (not used), adjoin number and extra surface light color.
+The world surface is n-gon polygon with an optional texture and vertices colors. The surface also has different properties i.e. [surface flags](flags.md#surface-flags) (surfflags) and polygon [face flags](flags.md#face-type-flags), [geometry mode](flags.md#geometry-mode), [light mode](flags.md#lighting-mode), texture mode (not used), adjoin number and extra surface light color.
 All surfaces must all be convex.
 
 
@@ -233,7 +233,7 @@ World surfaces <int> # The number of world surfaces in the list that follows
 ```
 
 ## Section Sectors
-This section contains the level sectors. A sector is a closed polyhedron defined by vertices and surfaces from GeoResource section. All sectors must be convex. The info about sector flags can be found [here](https://github.com/smlu/ProjectMarduk/blob/86a936765cb36b1f465859af42e7d4b7e77ee25b/libraries/libim/content/asset/world/sector.h#L28-L41).
+This section contains the level sectors. A sector is a closed polyhedron defined by vertices and surfaces from GeoResource section. All sectors must be convex. The info about sector flags can be found [here](flags.md#sector-flags).
 ### Structure
 ```
 SECTION: SECTORS
@@ -537,7 +537,7 @@ Below is the table of parameters that can be used by the template and parameter 
 | count | int | Particle | / | Number of particle elements to create.<br/>Max number is 256. |
 | creatething | string | * | / | The template name from which a Thing is created when this Thing is created.<br/>The template name should be prefixed with '+' i.e. +<thing_name> |
 | damage | float | Explosion, Weapon | / | The amount of damage the weapon/explosion inflicts.<br /><br />*Note:<br /> In case Thing is explosion the engine sets the explosion flags 0x2 - `HasBlastPhase` \| 0x4 - `DamageInBlastRadius`.<br />The weapon damage decays when weapon flag 0x4000 - `DamageDecay` is set and parameter `rate` is > 0.0.* |
-| damageclass | hex_int | Explosion, Weapon | / | The weapon and explosion damage type.<br/>The damage class flags are specified in [flags.md#damage-class-flags](flags.md#damage-class-flags).<br/>*Note: in case of weapon Thing only 1 damage type can be set.* |
+| damageclass | hex_int | Explosion, Weapon | / | The weapon and explosion damage type.<br/>The damage class flags are specified in [flags.md#damage-class-flags](flags.md#damage-class-flags).<br/><br/>*Note: in case of weapon Thing only 1 damage type can be set.* |
 | debris | string | Explosion | / | Assigns the explosion debris template.<br/>Max debris per explosion is 16.<br/><br/>Example:<br/>debris=tmplt_debris_1 debris=tmplt_debris_2 debris=tmplt_debris_3 |
 | elementsize | float | Particle | count | The size of each particle element. |
 | explode | string | Actor, Player, Weapon | / | Assigns actor/player's or weapon's explode Template. i.e `explode=explosion_template`.<br/>The explosion thing is created from explode Template after the Thing dies/is destroyed.<br/>*Note: For Actor Thing the `0x20 - ExplodeWhenKilled` actor flag must be also set to enable explosion.* |
@@ -576,7 +576,7 @@ Below is the table of parameters that can be used by the template and parameter 
 | orientspeed | float | * | move=`physics` | Speed to orient thing. |
 | particle | string | * | / | Assigns PAR particle file to the Thing/Template. <br/>*Note: not limited to but should be used with particle Thing/Template.*
 | perflevel | int | * | / | Thing performance level.<br/>*Note: if Thing performance level is greater than global performance level, the Thing won't be created.* |
-| physflags | hex_int | * | move=`physics` | Sets Thing/Template physics flags.<br/>Available flags can be found [here](https://github.com/smlu/ProjectMarduk/blob/b894268971d285cb6292027d95a14f409af834c0/libraries/libim/content/asset/thing/movement/physicsinfo.h#L12-L36)|
+| physflags | hex_int | * | move=`physics` | Sets Thing/Template physics flags.<br/>Available flags can be found [here](flags.md#physics-flags)|
 | pitchrange | float | Particle | / | Pitch range. |
 | puppet | string | * | / | Assigns [PUP puppet file](pup.md) to the Thing/Template. |
 | range | float | Explosion, Particle, Weapon | Particle: maxthrust | Weapon range<br/><br/>or<br/><br/>Explosion range<br/>*Note: the engine sets explosion flag 0x2 - `HasBlastPhase` in this case.*<br/><br/>or<br/><br/>Particle max growth radius.<br>In this case the param **maxthrust** must be set (growth speed) |
@@ -590,10 +590,10 @@ Below is the table of parameters that can be used by the template and parameter 
 | spritething | string | Explosion | / | The name of the sprite Template from which the explosion sprite is created.|
 | staticdrag | float | * | move=`physics` | Sets additional Thing/Template surface drag. |
 | surfdrag | float | * | move=`physics` |Sets Thing/Template surface drag (traction). |
-| thingflags | hex_int | * | / | Thing flags.<br/>Available flags can be found [here](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/thing/thing.h#L30-L64) |
+| thingflags | hex_int | * | / | Thing flags.<br/>Available flags can be found [here](flags.md#thing-flags) |
 | timer | float | * | / |  When timer is set the Thing life span is finished when timer elapses and the thing is destroyed. |
 | type |  string | * | / | Defines Thing/Template type.<br />Possible value: `free`, `camera`, `actor`, `weapon`, `debris`, `item`, `explosion`, `cog`, `ghost`, `corpse`, `player`, `particle`, `hint`, `sprite`, `polyline` |
-| typeflags | hex_int | * | / | Sets type specific flags.<br/>[Actor/Player type flags](https://github.com/smlu/ProjectMarduk/blob/2b4f0b930bcb16b92ee47b53f2f4e43a3b55871a/libraries/libim/content/asset/thing/actor.h#L11-L44)<br/>[Explosion type flags](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/thing/explosion.h#L15-L29)<br/>[Item type flags](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/thing/item.h#L12-L16)<br/>[Particle type flags](https://github.com/smlu/ProjectMarduk/blob/2b4f0b930bcb16b92ee47b53f2f4e43a3b55871a/libraries/libim/content/asset/thing/particle.h#L12-L19)<br/>[Weapon type flags](https://github.com/smlu/ProjectMarduk/blob/153cac9f5f4ae114c566d4886ce5d6029a3fe51a/libraries/libim/content/asset/thing/weapon.h#L11-L32) |
+| typeflags | hex_int | * | / | Sets type specific flags.<br/>[Actor/Player type flags](flags.md#actor-flags)<br/>[Explosion type flags](flags.md#explosion-flags)<br/>[Item type flags](flags.md#item-flags)<br/>[Particle type flags](flags.md#particle-flags)<br/>[Weapon type flags](flags.md#weapon-flags) |
 | userval | float | * | / | User defined value.<br/>In case of hint Thing it's the hint order sequence number to show on the map.|
 | vel | vector | * | move=`physics` | Sets Thing/Template velocity. |
 | voicecolor | gradient_color | Actor/Player | / | The subtittle color. |
