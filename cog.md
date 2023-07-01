@@ -12,10 +12,11 @@ COG script is a script language used in the game to define game logic. Scripts a
 - [COG Host Functions](#cog-host-functions)
 
 ## File Structure
-The script file is divided into two sections: symbols and code, each of which is ended with the `end` keyword. The `symbols` section defines the script variables and the `code` section defines script code.
+The script file is divided into 3 sections: flags, symbols and code, each of which is ended with the `end` keyword. The flags section is optional and can be omitted. Info on all available flags can be found in [flags.md#cog-flags](flags.md#cog-flags). The `symbols` section defines the script variables and the `code` section defines script code.
 
 Example:
 ```
+flags 0x40 # optional
 symbols
   message startup
   message entered
