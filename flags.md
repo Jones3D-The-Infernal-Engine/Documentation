@@ -48,7 +48,7 @@ Thing type flags for Thing object of type Actor or Player.
 | 0x100000                | Actor & Player | Actor can't be targeted                                                                          |
 | 0x200000                | Player         | Actor's controls are disabled                                                                    |
 | 0x400000                | Player         | Actor is killed by falling into fall death sector (engine)                                       |
-| 0x800000                | Player         | Idle camera is disabled                                                                          |
+| 0x800000                | Actor & Player | Idle camera is disabled for external camera (camera no. 1)                                       |
 | 0x1000000               | Actor & Player | Actor receives full damage from weapon projectiles and explosions (default half the fire damage) |
 | 0x2000000               | Actor          | Actor can see in the dark                                                                        |
 | 0x4000000               | Unknown        | Unknown                                                                                          |
