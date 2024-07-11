@@ -286,7 +286,12 @@ User defined message no. 2.
 | Param0 ... Param3 | 0                 |
 
 ## COG Host Functions
-## System Cog functions
-### StartCutscene( int type )
-[Thing Cog functions](cog/thing.md)  
-[Weapon Cog functions](cog/weapon.md)
+**[AI COG functions](cog/cog_ai.md)**  
+**[Jones System COG functions](cog/cog_jones.md)**  
+**[Player COG functions](cog/cog_player.md)**  
+**[Sector COG functions](cog/cog_sector.md)**  
+**[Sound COG functions](cog/cog_sound.md)**  
+**[Surface COG functions](cog/cog_surface.md)**  
+**[System COG functions](cog/cog_system.md)**  
+**[Thing COG functions](cog/cog_thing.md)**  
+**[Voice COG functions](cog/cog_voice.md)**
