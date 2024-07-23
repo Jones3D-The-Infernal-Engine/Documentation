@@ -362,13 +362,13 @@ Thing type flags for Thing object of type Particle
 | 0x2          | Surface is COG linked                                                          |
 | 0x4          | Surface has face collision                                                     |
 | 0x8          | AI can't movement onto the surface                                             |
-| 0x10         | 2x scroll size (Affects the speed of `SlideWall` COG function)                 |
-| 0x20         | 1/2 scroll size (Affects the speed of `SlideWall` COG function)                |
-| 0x40         | 1/8 scroll size (Affects the speed of `SlideWall` COG function)                |
+| 0x10         | 2x scroll size (Affects the speed of [SlideWall](cog/cog_surface.md#slidewall) COG function)                 |
+| 0x20         | 1/2 scroll size (Affects the speed of [SlideWall](cog/cog_surface.md#slidewall) COG function)                |
+| 0x40         | 1/8 scroll size (Affects the speed of [SlideWall](cog/cog_surface.md#slidewall) COG function)                |
 | 0x80         | Surface is part of aetherium sector                                            |
 | 0x200        | Surface is part of horizon sky                                                 |
 | 0x400        | Surface is part of ceiling sky                                                 |
-| 0x800        | Surface is scrolling (engine, set `SlideWall` COG function)                    |
+| 0x800        | Surface is scrolling (engine, set [SlideWall](cog/cog_surface.md#slidewall) COG function)                    |
 | 0x1000       | Kill floor, i.e.: thing object is killed if it touches the surface             |
 | 0x2000       | Surface is climbable                                                           |
 | 0x4000       | Track surface (e.g. minecar track)                                             |
@@ -383,8 +383,8 @@ Thing type flags for Thing object of type Particle
 | 0x800000     | Wood surface and makes wood sound fx when hit or walked on                     |
 | 0x1000000    | Ledge surface. Player can grab onto and hang from it                           |
 | 0x2000000    | Water ledge for climbing out of water                                          |
-| 0x4000000    | 1/4 scroll size (Affects the speed of `SlideWall` COG function)                |
-| 0x8000000    | 4x scroll size (Affects the speed of `SlideWall` COG function)                 |
+| 0x4000000    | 1/4 scroll size (Affects the speed of [SlideWall](cog/cog_surface.md#slidewall) COG function)                |
+| 0x8000000    | 4x scroll size (Affects the speed of [SlideWall](cog/cog_surface.md#slidewall) COG function)                 |
 | 0x10000000   | Whip aim. Surface triggers whip aim system for the player when standing on it  |
 | 0x20000000   | Makes indoor/echo sound fx when hit or walked on                               |
 | 0x40000000   | Wood echo surface and makes wood indoor/echo sound fx when hit or walked on    |
