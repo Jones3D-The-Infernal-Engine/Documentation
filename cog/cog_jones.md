@@ -47,6 +47,10 @@ ExitToShell()
 ```cog
 StartCutscene(int type)
 ```
+`type` argument controls the appearance of HUD elements during the cutscene.
+- 0 - All HUD remains visible during the cutscene.
+- 1 - Health indicator fades out smoothly. Stamina bar disappears instantly.
+- 2 - All HUD elements instantly disappear.
 
 ## EndCutscene
 
