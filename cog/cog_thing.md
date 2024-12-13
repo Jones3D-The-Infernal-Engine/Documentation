@@ -1670,8 +1670,15 @@ GetCameraPosition(int camNum) -> Vector
 ## SetCameraFadeThing
 
 ```cog
-SetCameraFadeThing(int camNum, Thing secondaryFocusThing, Thing primaryFocusThing, int bBackside)
+SetCameraFadeThing(int camNum, Thing fadeThing, Thing camPosThing, int bWhiteFade)
 ```
+Sets fade thing for camera at `camNum`.
+**Parameters**:
+  - `camNum` - The camera number for which to set the fade thing for.
+  - `fadeThing` - The fade plate thing
+  - `camPosThing` - The thing to be used as camera postition thing (primary thing).  
+      The thing position and orientation will be changed to the camera pose. Can be daynamic thinf created in script.
+  - `bWhiteFade` - If true the white side of the fade plate will face the camera.
 
 ## SetExtCamOffset
 
