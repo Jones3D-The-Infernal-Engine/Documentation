@@ -2,12 +2,28 @@
 
 Before starting, I suggest that you make a copy of the installed game directory in case you make a mistake in the procedure.
 
-# I. Extract main archives. (.GOB)
+# Automated method:
 
-1. Download tools at: https://github.com/smlu/ProjectMarduk
-2. Extract CD1.gob CD2.gob and JONES3D.gob using `gobext.exe`
-3. You must have different new folders (*3do*, *cog*, ...) in the *Resource* folder.
-4. Delete the .GOB files. Then launch your game, if it works you are on the good way. Else retry.
+> Note: The following automated methods only work with a *clean* install of the game.
+
+### Indy3D Mod Installer (GUI)
+
+the_kovic has written a **graphical tool for Windows** that automates this process and can install mods for you. Read more information about the tool and how to use it in its [README](https://github.com/thekovic/Indy3DModInstaller/blob/main/README.md).
+- **Download the tool** from GitHub: https://github.com/thekovic/Indy3DModInstaller/releases/latest
+
+### IndyPatcher (Powershell)
+
+NekoJonez has written a PowerShell script to automate this process.<br>For more information, you can look here: https://github.com/NekoJonez/RandomProjects/releases
+
+# Manual method:
+
+# Prerequisite
+Download all required tools from: https://github.com/smlu/ProjectMarduk
+
+# I. Extract main archives. (.GOB)
+1. Extract CD1.gob, CD2.gob and JONES3D.gob using `gobext.exe`
+2. You must have different new folders (*3do*, *cog*, ...) in the *Resource* folder.
+3. Rename the `*.GOB` files to `*.GOB.bak`. Then launch your game, if it works you are on the good way. Else retry.
 
 # II. Set the game to start in developer mode.
 There are 2 options to run the game in developer mode:
